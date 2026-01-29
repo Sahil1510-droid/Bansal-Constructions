@@ -212,14 +212,14 @@
             color: #1e272e;
         }
 
-        /* ======================================
-   CALCULATOR
-====================================== */
+        /* ================================
+   CALCULATOR (FIXED)
+================================ */
         .calculator {
-            background: #fff;
+            background: #ffffff;
             padding: 40px;
             border-radius: 18px;
-            max-width: 680px;
+            max-width: 700px;
             margin: auto;
             box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
         }
@@ -227,43 +227,47 @@
         .calculator h3 {
             text-align: center;
             margin-bottom: 30px;
-            font-size: 24px;
+            font-size: 26px;
+            color: #1e272e;
+            font-weight: 600;
         }
 
-        .form-group {
+        /* FORM GROUP */
+        .calculator .form-group {
             margin-bottom: 20px;
         }
 
-        label {
+        .calculator label {
             display: block;
             font-weight: 500;
             margin-bottom: 6px;
+            color: #333;
         }
 
         /* INPUTS */
-        select,
-        input[type="number"] {
+        .calculator select,
+        .calculator input[type="number"] {
             width: 100%;
             padding: 12px 14px;
             border-radius: 10px;
             border: 1px solid #ccc;
             font-size: 15px;
             outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
-        select:focus,
-        input:focus {
+        .calculator select:focus,
+        .calculator input:focus {
             border-color: #1e272e;
+            box-shadow: 0 0 0 2px rgba(30, 39, 46, 0.15);
         }
 
-        /* ======================================
-   CHECKBOX FIX (Aligned Properly)
-====================================== */
+        /* CHECKBOX GRID */
         .checkbox-group {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 12px;
-            margin-top: 8px;
+            margin-top: 10px;
         }
 
         .checkbox-item {
@@ -271,6 +275,7 @@
             align-items: center;
             gap: 8px;
             font-size: 15px;
+            cursor: pointer;
         }
 
         .checkbox-item input {
@@ -279,19 +284,42 @@
             cursor: pointer;
         }
 
-        /* ======================================
-   RESULT
-====================================== */
+        /* RESULT BOX */
         .result {
-            margin-top: 25px;
-            padding: 16px;
+            margin-top: 30px;
+            padding: 18px;
             background: #f1f5f9;
-            border-radius: 10px;
+            border-radius: 12px;
             text-align: center;
             font-size: 22px;
             font-weight: 600;
             color: #1e272e;
         }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .calculator {
+                padding: 28px;
+            }
+
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+
+            .calculator h3 {
+                font-size: 22px;
+            }
+        }
+
+        .result {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .result.updating {
+            transform: scale(1.03);
+            box-shadow: 0 0 0 3px rgba(30, 39, 46, 0.15);
+        }
+
 
         /* ======================================
    FOOTER
@@ -363,6 +391,7 @@
             gap: 24px;
         }
 
+        /* TESTIMONIAL BOX */
         .testimonial-box {
             flex: 0 0 300px;
             background: #fff;
@@ -371,27 +400,60 @@
             box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
             font-style: italic;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
+        .testimonial-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* IMAGE */
+        .testimonial-box img.testimonial-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid #1e272e;
+        }
+
+        /* CLIENT NAME / TITLE */
         .testimonial-box h3 {
-            margin-top: 12px;
+            margin-top: 8px;
             font-style: normal;
             font-weight: 600;
             color: #1e272e;
             font-size: 16px;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
             .testimonial-box {
                 flex: 0 0 250px;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .testimonial-box {
+                flex: 0 0 220px;
+                padding: 18px;
             }
         }
 
         @media (max-width: 480px) {
             .testimonial-box {
                 flex: 0 0 200px;
-                padding: 18px;
+                padding: 16px;
+            }
+
+            .testimonial-box img.testimonial-img {
+                width: 60px;
+                height: 60px;
             }
         }
 
@@ -416,6 +478,168 @@
             .map-container {
                 height: 250px;
             }
+        }
+
+        /* NAVIGATION */
+        nav {
+            background: #1e272e;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            max-width: 1200px;
+            margin: auto;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #ccc;
+        }
+
+        /* CONTACT FORM */
+        .contact-form {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+            outline: none;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 12px;
+            background: #1e272e;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background: #485460;
+        }
+
+        .whatsapp-btn {
+            width: 100%;
+            margin-top: 18px;
+            padding: 14px;
+            background: #25D366;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        /* MODAL POPUP */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        .modal-box {
+            background: #fff;
+            padding: 30px;
+            width: 90%;
+            max-width: 420px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+            animation: popIn 0.25s ease;
+        }
+
+        @keyframes popIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .modal-box h3 {
+            margin-bottom: 8px;
+            color: #1e272e;
+        }
+
+        .modal-box p {
+            font-size: 14px;
+            margin-bottom: 16px;
+            color: #555;
+        }
+
+        .modal-box input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-cancel {
+            flex: 1;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            background: #ccc;
+            cursor: pointer;
+        }
+
+        .btn-confirm {
+            flex: 1;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            background: #25D366;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-confirm:hover {
+            background: #1ebe5d;
         }
     </style>
 
@@ -444,8 +668,16 @@
         </div>
     </header>
 
+    <nav>
+        <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#calculator">Calculator</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-    <section>
+    <section id="services">
         <h2>Our Expertise</h2>
         <div class="services">
             <div class="service-box">
@@ -466,36 +698,45 @@
         </div>
     </section>
 
-    <section>
-        <h2>Testimonials</h2>
+    <section id="testimonials">
+        <h2>What Our Clients Say</h2>
         <div class="testimonial-slider">
             <div class="testimonial-track" id="testimonialTrack">
+                <!-- Testimonial 1 -->
                 <div class="testimonial-box">
+                    <img src="Bathroom.png" alt="Bathroom Project" class="testimonial-img">
                     <p>"Bansal Constructions transformed our home beautifully. Excellent craftsmanship and timely
                         delivery!"</p>
-                    <h3>Bathroom</h3>
+                    <h3>— Bathroom Project</h3>
                 </div>
 
+                <!-- Testimonial 2 -->
                 <div class="testimonial-box">
+                    <img src="images/office.jpg" alt="Office Project" class="testimonial-img">
                     <p>"Professional team, amazing quality. Our office renovation exceeded expectations."</p>
-                    <h3>Bedroom</h3>
+                    <h3>— Bedroom Project</h3>
                 </div>
 
+                <!-- Testimonial 3 -->
                 <div class="testimonial-box">
+                    <img src="images/factory.jpg" alt="Factory Project" class="testimonial-img">
                     <p>"Their manufacturing project setup was seamless. Highly recommend for industrial projects."</p>
-                    <h3>Lobby</h3>
+                    <h3>— Factory Setup</h3>
                 </div>
 
+                <!-- Testimonial 4 -->
                 <div class="testimonial-box">
+                    <img src="images/livingroom.jpg" alt="Living Room Project" class="testimonial-img">
                     <p>"Great team, transparent communication, and delivered on time. Highly satisfied!"</p>
-                    <h3>Kitchen</h3>
+                    <h3>— Living Room Renovation</h3>
                 </div>
             </div>
         </div>
     </section>
 
+
     <section>
-        <div class="calculator">
+        <div id="calculator" class="calculator">
             <h3>Construction Cost Estimate Calculator</h3>
 
             <div class="form-group">
@@ -503,6 +744,7 @@
                 <select id="projectNature">
                     <option value="residential">Residential</option>
                     <option value="commercial">Commercial</option>
+                    <option value="manufacturing">Manufacturing</option>
                 </select>
             </div>
 
@@ -525,6 +767,7 @@
                     <option value="basic">Basic</option>
                     <option value="standard">Standard</option>
                     <option value="premium">Premium</option>
+                    <option value="luxury">Luxury</option>
                 </select>
             </div>
 
@@ -537,6 +780,8 @@
                     <label class="checkbox-item"><input type="checkbox" id="ac"> AC Installation</label>
                     <label class="checkbox-item"><input type="checkbox" id="ceiling"> False Ceiling</label>
                     <label class="checkbox-item"><input type="checkbox" id="painting"> Painting</label>
+                    <label class="checkbox-item"><input type="checkbox" id="plumbing"> Plumbing</label>
+                    <label class="checkbox-item"><input type="checkbox" id="carpentry"> Carpentry</label>
                 </div>
             </div>
 
@@ -544,6 +789,10 @@
             <!-- <button onclick="calculateCost()">Calculate Estimate</button> -->
 
             <div class="result" id="result"></div>
+            <button class="whatsapp-btn" onclick="openNameModal()">
+                📲 Send Estimate on WhatsApp
+            </button>
+
         </div>
     </section>
 
@@ -559,13 +808,51 @@
         </div>
     </section>
 
-
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form class="contact-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
 
     <footer>
-        © 2026 Bansal Constructions. Trusted Construction Partner.
+        © 2024 Bansal Constructions. Trusted Construction Partner.
     </footer>
 
     <script>
+        let currentValue = 0; // stores last animated value
+
+        function animateValue(start, end, duration) {
+            const resultEl = document.getElementById("result");
+            const startTime = performance.now();
+
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+
+                const value = Math.floor(start + (end - start) * progress);
+                resultEl.innerHTML = `Estimated Project Cost: ₹ ${value.toLocaleString("en-IN")}`;
+
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                }
+            }
+
+            requestAnimationFrame(update);
+        }
+
         function calculateCost() {
             const nature = document.getElementById("projectNature").value;
             const type = document.getElementById("projectType").value;
@@ -574,75 +861,176 @@
 
             if (!area || area <= 0) {
                 document.getElementById("result").innerHTML = "Enter area to see estimate";
+                currentValue = 0;
                 return;
             }
 
             let rate = 0;
 
-            // Base rate logic
+            // Base rate
             if (type === "new") {
                 rate = nature === "residential" ? 2000 : 2300;
             }
 
-            if (type === "renovation") {
-                rate = 1500;
-            }
-
-            if (type === "manufacturing") {
-                rate = 1800;
-            }
+            if (type === "renovation") rate = 1500;
+            if (type === "manufacturing") rate = 1800;
 
             // Quality adjustment
             if (quality === "standard") rate += 300;
             if (quality === "premium") rate += 700;
+            if (quality === "luxury") rate += 1200;
 
             let total = rate * area;
 
-            // Inclusions (per sq.ft.)
-            if (document.getElementById("tiles").checked) total += area * 150;
-            if (document.getElementById("electrical").checked) total += area * 90;
-            if (document.getElementById("fans").checked) total += area * 70;
-            if (document.getElementById("ac").checked) total += area * 90;
-            if (document.getElementById("ceiling").checked) total += area * 150;
-            if (document.getElementById("painting").checked) total += area * 60;
+            // Add inclusions
+            if (tiles.checked) total += area * 150;
+            if (electrical.checked) total += area * 90;
+            if (fans.checked) total += area * 70;
+            if (ac.checked) total += area * 90;
+            if (ceiling.checked) total += area * 150;
+            if (painting.checked) total += area * 60;
+            if (plumbing.checked) total += area * 100;
+            if (carpentry.checked) total += area * 120;
 
-            document.getElementById("result").innerHTML =
-                `Estimated Project Cost: ₹ ${total.toLocaleString("en-IN")}`;
+            // Animate number
+            animateValue(currentValue, total, 700);
+            currentValue = total;
         }
 
-        // LIVE UPDATE LISTENERS
+        // LIVE UPDATE
         document.querySelectorAll(
             "#projectNature, #projectType, #area, #quality, input[type='checkbox']"
-        ).forEach(element => {
-            element.addEventListener("input", calculateCost);
-            element.addEventListener("change", calculateCost);
+        ).forEach(el => {
+            el.addEventListener("input", calculateCost);
+            el.addEventListener("change", calculateCost);
         });
 
-        // Initial message
         document.getElementById("result").innerHTML = "Enter area to see estimate";
 
-        // Infinite Carousel
-        const track = document.getElementById('testimonialTrack');
-        // Duplicate testimonials for infinite loop
-        track.innerHTML += track.innerHTML;
-
-        let speed = 1; // pixels per frame
-        let pos = 0;
-
-        function animate() {
-            pos -= speed;
-            if (pos <= -track.scrollWidth / 2) {
-                pos = 0;
-            }
-            track.style.transform = `translateX(${pos}px)`;
-            requestAnimationFrame(animate);
-        }
-
-        animate();
+        resultEl.classList.add("updating");
+        if (progress === 1) resultEl.classList.remove("updating");
 
     </script>
 
+    <script>
+        function openNameModal() {
+            const area = document.getElementById("area").value;
+            if (!area || area <= 0) {
+                alert("Please enter area to generate estimate");
+                return;
+            }
+            document.getElementById("nameModal").style.display = "flex";
+        }
 
+        function closeModal() {
+            document.getElementById("nameModal").style.display = "none";
+        }
+
+        function confirmNameAndSend() {
+            const name = document.getElementById("clientName").value.trim();
+            if (!name) {
+                alert("Please enter your name");
+                return;
+            }
+            closeModal();
+            sendToWhatsApp(name);
+        }
+
+        function sendToWhatsApp(clientName) {
+
+            if (typeof currentValue === "undefined" || currentValue <= 0) {
+                alert("Please calculate estimate first");
+                return;
+            }
+
+            const nature = projectNature.selectedOptions[0].text;
+            const type = projectType.selectedOptions[0].text;
+            const quality = qualitySelect.selectedOptions[0].text;
+            const area = document.getElementById("area").value;
+
+            const estimate = currentValue.toLocaleString("en-IN");
+
+            const inclusions = [];
+            document.querySelectorAll(".checkbox-item input:checked").forEach(cb => {
+                inclusions.push(cb.parentElement.textContent.trim());
+            });
+
+            const message = `
+Hello Bansal Constructions,
+
+My name is ${clientName}. I would like to request a construction cost estimate.
+
+Project Details:
+• Project Nature: ${nature}
+• Project Type: ${type}
+• Built-up Area: ${area} sq. ft.
+• Quality Level: ${quality}
+
+Work Inclusions:
+${inclusions.length ? inclusions.map(i => "• " + i).join("\n") : "• No additional inclusions selected"}
+
+Estimated Project Cost:
+₹ ${estimate}
+
+Kindly contact me for further discussion.
+
+Thank you,
+${clientName}
+`;
+
+            const phone = "919217777835";
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+            window.open(url, "_blank");
+        }
+
+        // cache selects
+        const projectNature = document.getElementById("projectNature");
+        const projectType = document.getElementById("projectType");
+        const qualitySelect = document.getElementById("quality");
+    </script>
+
+    <script>
+        function openNameModal() {
+            const area = document.getElementById("area").value;
+            if (!area || area <= 0) {
+                alert("Please enter area to generate estimate");
+                return;
+            }
+
+            document.getElementById("clientName").value = "";
+            document.getElementById("nameModal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("nameModal").style.display = "none";
+        }
+
+        function confirmNameAndSend() {
+            const name = document.getElementById("clientName").value.trim();
+
+            if (!name) {
+                alert("Please enter your name");
+                return;
+            }
+
+            closeModal();
+            sendToWhatsApp(name);
+        }
+    </script>
+
+    <div class="modal-overlay" id="nameModal">
+        <div class="modal-box">
+            <h3>Enter Your Name</h3>
+            <p>Please enter your name to send the estimate</p>
+
+            <input type="text" id="clientName" placeholder="Your full name">
+
+            <div class="modal-actions">
+                <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+                <button class="btn-confirm" onclick="confirmNameAndSend()">Send</button>
+            </div>
+        </div>
+    </div>
 
 </body>
 
