@@ -109,9 +109,6 @@
             color: #fff;
             text-decoration: none;
             font-weight: 500;
-        }
-
-        nav a {
             position: relative;
             transition: color 0.3s ease;
         }
@@ -143,6 +140,15 @@
             max-width: 1200px;
             margin: auto;
             padding: 60px 20px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        section:nth-child(odd) {
+            animation-delay: 0.1s;
+        }
+
+        section:nth-child(even) {
+            animation-delay: 0.2s;
         }
 
         h2 {
@@ -225,7 +231,6 @@
             cursor: pointer;
         }
 
-        /* RESULT */
         .result {
             margin-top: 30px;
             padding: 18px;
@@ -236,7 +241,6 @@
             font-weight: 600;
         }
 
-        /* WHATSAPP BUTTON */
         .whatsapp-btn {
             width: 100%;
             margin-top: 18px;
@@ -257,7 +261,7 @@
         }
 
         /* ======================================
-   PREMIUM TESTIMONIAL CAROUSEL
+   TESTIMONIALS
 ====================================== */
         .testimonial-slider {
             position: relative;
@@ -304,7 +308,6 @@
             color: #1e272e;
         }
 
-        /* ARROWS */
         .carousel-arrow {
             position: absolute;
             top: 50%;
@@ -332,7 +335,6 @@
             right: 10px;
         }
 
-        /* DOTS */
         .carousel-dots {
             display: flex;
             justify-content: center;
@@ -364,7 +366,7 @@
         }
 
         /* ======================================
-   PREMIUM CONTACT SECTION
+   CONTACT
 ====================================== */
         .contact-wrapper {
             max-width: 1100px;
@@ -375,7 +377,6 @@
             align-items: stretch;
         }
 
-        /* LEFT PANEL */
         .contact-info {
             background: linear-gradient(135deg, #1e272e, #485460);
             color: #fff;
@@ -402,7 +403,6 @@
             margin-bottom: 16px;
         }
 
-        /* FORM PANEL */
         .premium-form {
             background: #fff;
             padding: 40px;
@@ -424,7 +424,6 @@
             outline: none;
         }
 
-        /* BUTTON */
         .contact-btn {
             margin-top: 10px;
             padding: 14px;
@@ -444,18 +443,15 @@
             box-shadow: 0 12px 30px rgba(30, 39, 46, 0.4);
         }
 
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .contact-wrapper {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-info,
-            .premium-form {
-                padding: 30px;
-            }
+        /* ======================================
+   FOOTER
+====================================== */
+        footer {
+            background: #1e272e;
+            color: #fff;
+            text-align: center;
+            padding: 24px;
         }
-
 
         /* ======================================
    MODAL
@@ -518,70 +514,6 @@
         }
 
         /* ======================================
-   FOOTER
-====================================== */
-        footer {
-            background: #1e272e;
-            color: #fff;
-            text-align: center;
-            padding: 24px;
-        }
-
-        /* ======================================
-   RESPONSIVE
-====================================== */
-        @media (max-width: 768px) {
-            .header-inner {
-                flex-direction: column;
-                text-align: center;
-                gap: 16px;
-            }
-
-            .header-text h1 {
-                font-size: 36px;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 16px;
-            }
-
-            .services {
-                grid-template-columns: 1fr;
-            }
-
-            .checkbox-group {
-                grid-template-columns: 1fr;
-            }
-
-            .testimonial-box {
-                flex: 0 0 240px;
-            }
-
-            .calculator {
-                padding: 30px 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h2 {
-                font-size: 22px;
-            }
-
-            .header-text h1 {
-                font-size: 28px;
-            }
-
-            .testimonial-box {
-                flex: 0 0 200px;
-            }
-
-            .calculator h3 {
-                font-size: 20px;
-            }
-        }
-
-        /* ======================================
    ANIMATIONS & MICRO-INTERACTIONS
 ====================================== */
         @keyframes fadeInUp {
@@ -596,19 +528,6 @@
             }
         }
 
-        section {
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        section:nth-child(odd) {
-            animation-delay: 0.1s;
-        }
-
-        section:nth-child(even) {
-            animation-delay: 0.2s;
-        }
-
-        /* Loading state for buttons */
         .btn-loading {
             position: relative;
             color: transparent !important;
@@ -668,8 +587,121 @@
             width: 20px;
             height: 20px;
         }
-    </style>
 
+        /* ======================================
+   RESPONSIVE
+====================================== */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                text-align: center;
+                gap: 16px;
+            }
+
+            .header-text h1 {
+                font-size: 32px;
+            }
+
+            .header-text p {
+                font-size: 16px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .services {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .calculator {
+                padding: 25px 15px;
+            }
+
+            .calculator h3 {
+                font-size: 22px;
+            }
+
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-box {
+                flex: 0 0 240px;
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .contact-info,
+            .premium-form {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-text h1 {
+                font-size: 26px;
+            }
+
+            .header-text p {
+                font-size: 14px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            .calculator h3 {
+                font-size: 18px;
+            }
+
+            .form-group label {
+                font-size: 14px;
+            }
+
+            select,
+            input[type="number"],
+            input[type="text"],
+            textarea {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            .testimonial-box {
+                flex: 0 0 200px;
+                padding: 18px;
+            }
+
+            .contact-info h3 {
+                font-size: 20px;
+            }
+
+            .contact-info p,
+            .info-item {
+                font-size: 14px;
+            }
+
+            footer {
+                font-size: 14px;
+                padding: 20px 10px;
+            }
+
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+            }
+
+            .back-to-top svg {
+                width: 18px;
+                height: 18px;
+            }
+        }
+    </style>
 
 </head>
 
