@@ -369,20 +369,32 @@
         /* ======================================
    CENTER TESTIMONIALS ON MOBILE
 ====================================== */
-        @media (max-width: 768px) {
-            .testimonial-track {
-                justify-content: center;
-            }
+@media (max-width: 768px) {
 
-            .testimonial-slider {
-                padding: 0 10px;
-            }
+    .testimonial-slider {
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+    }
 
-            .carousel-arrow {
-                display: none;
-                /* Optional: hide arrows on mobile */
-            }
-        }
+    .testimonial-track {
+        justify-content: center;
+        transform: none !important;
+        scroll-snap-type: x mandatory;
+        overflow-x: auto;
+    }
+
+    .testimonial-box {
+        margin: 0 auto;
+        flex: 0 0 85%;
+        max-width: 85%;
+        scroll-snap-align: center;
+    }
+
+    .carousel-arrow {
+        display: none;
+    }
+}
 
 
         /* ======================================
