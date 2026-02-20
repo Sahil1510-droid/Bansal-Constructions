@@ -1160,19 +1160,19 @@ ${clientName}
 
 
     <script>
-        window.onload = function () {
+        document.addEventListener("DOMContentLoaded", function () {
 
             const counterElement = document.getElementById("visitorCount");
 
-            fetch("https://api.counterapi.dev/v2/sahil-bansals-team-2985/bansal-constructions", {
-                method: "POST"
+            fetch("https://api.counterapi.dev/v2/sahil-bansals-team-2985/bansal-constructions/up", {
+                method: "GET"
             })
                 .then(response => response.json())
                 .then(result => {
 
-                    console.log(result);
+                    console.log(result); // Debugging
 
-                    if (result && result.data && result.data.up_count !== undefined) {
+                    if (result.code === "200" && result.data && result.data.up_count !== undefined) {
                         counterElement.innerText = result.data.up_count;
                     } else {
                         counterElement.innerText = "0";
@@ -1184,9 +1184,8 @@ ${clientName}
                     counterElement.innerText = "0";
                 });
 
-        };
+        });
     </script>
-
     <script>
         const track = document.getElementById("testimonialTrack");
         let cards = Array.from(track.children);
