@@ -694,6 +694,36 @@
             width: 20px;
             height: 20px;
         }
+
+        /* Visitors */
+        .visitor-counter {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: white;
+            color: #111;
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            font-family: "Poppins", sans-serif;
+            z-index: 999;
+        }
+
+        .visitor-counter span {
+            color: #f9b233;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .visitor-counter {
+                bottom: 15px;
+                right: 15px;
+                font-size: 12px;
+                padding: 8px 14px;
+            }
+        }
     </style>
 
 </head>
@@ -911,6 +941,12 @@
         </div>
     </section>
 
+    <section>
+        <div class="visitor-counter">
+            👀 Visitors: <span id="visitorCount">0</span>
+        </div>
+    </section>
+
 
     <footer>
         © <span id="year"></span> Bansal Constructions. Trusted Construction Partner.
@@ -1123,7 +1159,28 @@ ${clientName}
     </script>
 
 
+    <script>
+        window.onload = function () {
 
+            const counterElement = document.getElementById("visitorCount");
+
+            if (!counterElement) {
+                console.error("visitorCount element not found!");
+                return;
+            }
+
+            fetch("https://api.counterapi.dev/v2/sahil-bansals-team-2985/bansal-constructions")
+                .then(response => response.json())
+                .then(data => {
+                    counterElement.innerText = data.value;
+                })
+                .catch(error => {
+                    console.error("Fetch error:", error);
+                    counterElement.innerText = "0";
+                });
+
+        };
+    </script>
 
     <script>
         const track = document.getElementById("testimonialTrack");
