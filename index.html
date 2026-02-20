@@ -1164,18 +1164,23 @@ ${clientName}
 
             const counterElement = document.getElementById("visitorCount");
 
-            if (!counterElement) {
-                console.error("visitorCount element not found!");
-                return;
-            }
-
-            fetch("https://api.counterapi.dev/v2/sahil-bansals-team-2985/bansal-constructions")
+            fetch("https://api.counterapi.dev/v2/sahil-bansals-team-2985/bansal-constructions", {
+                method: "POST"
+            })
                 .then(response => response.json())
-                .then(data => {
-                    counterElement.innerText = data.value;
+                .then(result => {
+
+                    console.log(result);
+
+                    if (result && result.data && result.data.up_count !== undefined) {
+                        counterElement.innerText = result.data.up_count;
+                    } else {
+                        counterElement.innerText = "0";
+                    }
+
                 })
                 .catch(error => {
-                    console.error("Fetch error:", error);
+                    console.error("Error:", error);
                     counterElement.innerText = "0";
                 });
 
