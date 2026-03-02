@@ -751,31 +751,74 @@
         }
 
 
-        .whatsapp-button {
+        /* Container styling */
+        .whatsapp-float {
             position: fixed;
             bottom: 80px;
             left: 20px;
-            width: 60px;
-            height: 60px;
             background-color: #25d366;
+            color: #fff;
             border-radius: 50px;
-            text-align: center;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
             display: flex;
             align-items: center;
-            justify-content: center;
-            transition: transform 0.3s ease;
+            padding: 10px 18px;
+            z-index: 1000;
+            text-decoration: none;
+            box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
-        .whatsapp-button img {
-            width: 35px;
-            height: 35px;
+        /* Icon size */
+        .whatsapp-float img {
+            width: 30px;
+            height: 30px;
         }
 
-        .whatsapp-button:hover {
-            transform: scale(1.1);
+        /* Text next to icon */
+        .float-text {
+            margin-left: 10px;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        /* Hover effect */
+        .whatsapp-float:hover {
             background-color: #128c7e;
+            transform: translateY(-5px);
+            color: #fff;
+        }
+
+        /* Subtle pulse animation */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        .whatsapp-float {
+            animation: pulse 2s infinite;
+        }
+
+        /* Mobile responsive: Hide text on small screens to keep it clean */
+        @media screen and (max-width: 768px) {
+            .float-text {
+                display: none;
+            }
+
+            .whatsapp-float {
+                padding: 12px;
+                bottom: 15px;
+                left: 15px;
+            }
         }
     </style>
 
@@ -997,10 +1040,15 @@
         </div>
     </section>
 
-    <a href="https://wa.me/9217777835?text=I'm%20interested%20in%20your%20services" class="whatsapp-button"
-        target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-    </a>
+
+   <a href="https://wa.me/9217777835?text=Hello!%20I%20found%20your%20website%20and%20was%20hoping%20to%20get%20more%20information%20about%20your%20services.%20Thanks!" 
+   class="whatsapp-float" 
+   target="_blank" 
+   rel="noopener noreferrer"
+   aria-label="Chat with us on WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    <span class="float-text">Chat with us</span>
+</a>
 
     <section>
         <div class="visitor-counter">
