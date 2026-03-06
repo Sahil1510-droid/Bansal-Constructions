@@ -134,6 +134,36 @@
             width: 100%;
         }
 
+        /* --- Mobile Support for 5+ Sections --- */
+        @media (max-width: 600px) {
+            nav {
+                padding: 15px 10px;
+            }
+
+            nav ul {
+                /* This allows the 5 items to sit in a scrollable row 
+           if they don't fit, preventing ugly text wrapping */
+                justify-content: flex-start;
+                overflow-x: auto;
+                white-space: nowrap;
+                gap: 20px;
+                padding-bottom: 5px;
+
+                /* Hides scrollbar for a cleaner look on Chrome/Safari/Firefox */
+                scrollbar-width: none;
+            }
+
+            nav ul::-webkit-scrollbar {
+                display: none;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+                /* Slightly smaller for mobile fit */
+                padding: 5px 2px;
+            }
+        }
+
         /* ======================================
    SECTIONS
 ====================================== */
