@@ -1085,6 +1085,7 @@
             <!-- Header Content -->
             <div class="header-text">
                 <h1>Bansal Constructions</h1>
+                <h3>Precision in Every Layer</h3>
                 <p>Residential • Commercial • Renovation • Manufacturing Solutions</p>
                 <p>With Construction Material</p>
             </div>
@@ -1172,7 +1173,6 @@
                 <select id="projectNature">
                     <option value="residential">Residential</option>
                     <option value="commercial">Commercial</option>
-                    <option value="manufacturing">Manufacturing</option>
                 </select>
             </div>
 
@@ -1189,7 +1189,7 @@
                 <input type="number" id="area" placeholder="Enter total area">
             </div>
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label>Quality Level</label>
                 <select id="quality">
                     <option value="basic">Basic</option>
@@ -1197,9 +1197,9 @@
                     <option value="premium">Premium</option>
                     <option value="luxury">Luxury</option>
                 </select>
-            </div>
+            </div> -->
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label>Project Inclusions</label>
                 <div class="checkbox-group">
                     <label class="checkbox-item"><input type="checkbox" id="tiles"> Tiles Work</label>
@@ -1211,7 +1211,7 @@
                     <label class="checkbox-item"><input type="checkbox" id="plumbing"> Plumbing</label>
                     <label class="checkbox-item"><input type="checkbox" id="carpentry"> Carpentry</label>
                 </div>
-            </div>
+            </div> -->
 
 
             <!-- <button onclick="calculateCost()">Calculate Estimate</button> -->
@@ -1404,11 +1404,10 @@
 
                 // Base rate calculation
                 if (type === "new") {
-                    rate = nature === "residential" ? 2000 : 2300;
+                    rate = (nature === "residential") ? 2400 : 3000;
                 } else if (type === "renovation") {
-                    rate = 1500;
-                } else if (type === "manufacturing") {
-                    rate = 1800;
+                    // Renovation is 500 less than the 'new' rates
+                    rate = (nature === "residential") ? 1900 : 2500;
                 }
 
                 // Quality adjustment
