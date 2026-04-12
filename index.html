@@ -1065,6 +1065,86 @@
                 font-size: 1.2rem;
             }
         }
+
+        /* --- Core Slider Window & Layout --- */
+        .updates-grid-window {
+            position: relative;
+            /* Critical: acts as the anchor for absolute positioning */
+            overflow: hidden;
+            /* Hides cards outside the viewable area */
+            width: 100%;
+        }
+
+        .updates-grid {
+            display: flex;
+            /* Lines cards up side-by-side */
+            transition: transform 0.5s ease-in-out;
+            /* Smooth slide animation */
+            /* If you have gaps between cards in your existing CSS, e.g., gap: 20px;
+       ensure your JS move logic accounts for it, or use min-width: calc(100% - 20px) 
+       on the cards */
+        }
+
+        .update-card {
+            min-width: 100%;
+            /* Shows one card at a time */
+            box-sizing: border-box;
+        }
+
+        /* Ensure images take up space for the buttons to overlay */
+        .update-image {
+            position: relative;
+            width: 1150px;
+            /* Set a height or aspect ratio for images so they don't collapse */
+            height: 620px;
+        }
+
+        .update-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Prevents image stretching */
+        }
+
+        /* --- Position and Styling the Buttons Over the Image --- */
+        .slider-controls button {
+            position: absolute;
+            /* Relative to .updates-grid-window */
+            z-index: 10;
+            /* ensures they float above the image and content */
+
+            /* Center vertically relative to the entire window (roughly over image area) */
+            top: 50%;
+            transform: translateY(-50%);
+
+            /* Styling for visibility over images */
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Semi-transparent black */
+            color: white;
+            border: none;
+            padding: 15px 18px;
+            cursor: pointer;
+            font-size: 20px;
+            border-radius: 50%;
+            /* circular buttons */
+            transition: background-color 0.3s ease;
+        }
+
+        .slider-controls button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+            /* Darker on hover */
+        }
+
+        /* specific placement */
+        .prev-btn {
+            left: 15px;
+            /* Spacing from left edge */
+        }
+
+        .next-btn {
+            right: 15px;
+            /* Spacing from right edge */
+        }
     </style>
 
 </head>
@@ -1228,38 +1308,54 @@
         <div class="updates-container">
             <h2 class="section-title">Latest Updates</h2>
 
-            <div class="updates-grid">
+            <div class="updates-grid-window">
 
-                <article class="update-card ha-discount-card">
-                    <div class="update-image">
-                        <img src="10.png" alt="Smart Home Control Panel and Modern Living Room">
+                <div class="slider-controls">
+                    <button class="prev-btn" onclick="moveSlider(-1)" aria-label="Previous Slide">❮</button>
+                    <button class="next-btn" onclick="moveSlider(1)" aria-label="Next Slide">❯</button>
+                </div>
 
-                        <span class="discount-badge">SAVE 33%</span>
+                <div class="updates-grid" id="sliderGrid">
 
-                    </div>
-
-                    <div class="update-content">
-                        <span class="update-date">Updated: March 15, 2026</span>
-                        <h3>Festive Sale: 33% OFF on All Home Automation</h3>
-
-                        <div class="price-container">
-                            <span class="msrp-label">MSRP:</span>
-                            <span class="old-price">₹3,00,000</span>
-                            <span class="new-price">₹2,00,000</span>
-                            <span class="save-amount">(Save ₹1,00,000)</span>
+                    <article class="update-card ha-discount-card">
+                        <div class="update-image">
+                            <img src="10.png" alt="Smart Home Control Panel">
+                            <span class="discount-badge">SAVE 33%</span>
                         </div>
+                        <div class="update-content">
+                            <span class="update-date">Updated: March 15, 2026</span>
+                            <h3>Festive Sale: 33% OFF on All Home Automation</h3>
+                            <div class="price-container">
+                                <span class="msrp-label">MSRP:</span>
+                                <span class="old-price">₹3,00,000</span>
+                                <span class="new-price">₹2,00,000</span>
+                                <span class="save-amount">(Save ₹1,00,000)</span>
+                            </div>
+                            <p class="update-description">Ready to make your home smarter? Get a massive 33% discount.
+                            </p>
+                            <a href="tel:8968967835" class="update-cta-button call-btn">
+                                <span class="phone-icon">📞</span> Call to Claim Offer
+                            </a>
+                        </div>
+                    </article>
 
-                        <p class="update-description">
-                            Ready to make your home smarter? This spring, get a massive 33% discount on all our home
-                            automation services and smart device installations.
-                        </p>
+                    <article class="update-card">
+                        <div class="update-image">
+                            <img src="11.png" alt="Solar Panels Construction">
+                        </div>
+                        <div class="update-content">
+                            <span class="update-date">New Launch</span>
+                            <h3>Solar Power + Full Construction</h3>
+                            <p class="update-description">
+                                Get Solar Panels integrated with your home construction, starting at ₹2500 per sq. ft.
+                            </p>
+                            <a href="tel:8968967835" class="update-cta-button call-btn">
+                                <span class="phone-icon">📞</span> Call to Claim Offer
+                            </a>
+                        </div>
+                    </article>
 
-                        <a href="tel:+1234567890" class="update-cta-button call-btn">
-                            <span class="phone-icon">📞</span> Call to Claim Offer
-                        </a>
-                    </div>
-                </article>
-
+                </div>
             </div>
         </div>
     </section>
@@ -1686,6 +1782,29 @@ ${clientName}
             };
         });
     </script>
+
+    <script>let currentIndex = 0;
+
+        function moveSlider(direction) {
+            const grid = document.getElementById('sliderGrid');
+            const cards = document.querySelectorAll('.update-card');
+            const totalCards = cards.length;
+
+            // Update index
+            currentIndex += direction;
+
+            // Loop back to start/end
+            if (currentIndex >= totalCards) {
+                currentIndex = 0;
+            } else if (currentIndex < 0) {
+                currentIndex = totalCards - 1;
+            }
+
+            // Calculate move percentage (including gap)
+            const moveAmount = currentIndex * 100;
+            // If you have gaps between cards, you may need to use offsetWidth instead
+            grid.style.transform = `translateX(-${moveAmount}%)`;
+        }</script>
 
 
     <div class="modal-overlay" id="nameModal">
