@@ -1631,61 +1631,53 @@
                 alert("Please enter your name");
                 return;
             }
-            closeModal();
+            // No need to call a separate calculate function; 
+            // we calculate and send in one go now.
             sendToWhatsApp(name);
+            closeModal();
         }
 
         function sendToWhatsApp(clientName) {
+            // 1. Get Values
+            const areaInput = document.getElementById("area").value;
+            const natureSelect = document.getElementById("projectNature");
+            const typeSelect = document.getElementById("projectType");
 
-            if (typeof currentValue === "undefined" || currentValue <= 0) {
-                alert("Please calculate estimate first");
-                return;
-            }
+            // 2. Logic for Rates (Residential: 2500, Commercial: 3000)
+            const rate = (natureSelect.value === "commercial") ? 3000 : 2500;
+            const totalEstimate = areaInput * rate;
 
-            const nature = projectNature.selectedOptions[0].text;
-            const type = projectType.selectedOptions[0].text;
-            const quality = qualitySelect.selectedOptions[0].text;
-            const area = document.getElementById("area").value;
+            // 3. Get text labels for the message
+            const natureText = natureSelect.options[natureSelect.selectedIndex].text;
+            const typeText = typeSelect.options[typeSelect.selectedIndex].text;
+            const formattedEstimate = totalEstimate.toLocaleString("en-IN");
 
-            const estimate = currentValue.toLocaleString("en-IN");
-
-            const inclusions = [];
-            document.querySelectorAll(".checkbox-item input:checked").forEach(cb => {
-                inclusions.push(cb.parentElement.textContent.trim());
-            });
-
-            const message = `
-Hello Bansal Constructions,
+            // 4. Construct Message
+            const message = `Hello Bansal Constructions,
 
 My name is ${clientName}. I would like to request a construction cost estimate.
 
-Project Details:
-• Project Nature: ${nature}
-• Project Type: ${type}
-• Built-up Area: ${area} sq. ft.
-• Quality Level: ${quality}
+*Project Details:*
+• Project Nature: ${natureText}
+• Project Type: ${typeText}
+• Built-up Area: ${areaInput} sq. ft.
+• Rate: ₹${rate}/sq. ft.
 
-Work Inclusions:
-${inclusions.length ? inclusions.map(i => "• " + i).join("\n") : "• No additional inclusions selected"}
-
-Estimated Project Cost:
-₹ ${estimate}
+*Estimated Project Cost:*
+*₹ ${formattedEstimate}*
 
 Kindly contact me for further discussion.
 
 Thank you,
-${clientName}
-`;
+${clientName}`;
 
+            // 5. WhatsApp Integration
             const phone = "919217777835";
             const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+            // Open WhatsApp
             window.open(url, "_blank");
         }
-
-        // cache selects
-        const projectNature = document.getElementById("projectNature");
-        const projectType = document.getElementById("projectType");
-        const qualitySelect = document.getElementById("quality");
     </script>
 
 
