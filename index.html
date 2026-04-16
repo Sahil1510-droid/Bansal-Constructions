@@ -1631,8 +1631,6 @@
                 alert("Please enter your name");
                 return;
             }
-            // No need to call a separate calculate function; 
-            // we calculate and send in one go now.
             sendToWhatsApp(name);
             closeModal();
         }
@@ -1643,8 +1641,20 @@
             const natureSelect = document.getElementById("projectNature");
             const typeSelect = document.getElementById("projectType");
 
-            // 2. Logic for Rates (Residential: 2500, Commercial: 3000)
-            const rate = (natureSelect.value === "commercial") ? 3000 : 2500;
+            const nature = natureSelect.value; // residential or commercial
+            const type = typeSelect.value;     // new or renovation
+
+            // 2. Logic for Rates
+            let rate = 0;
+
+            if (nature === "residential") {
+                // New: 2500, Renovation: 1500 
+                rate = (type === "renovation") ? 1500 : 2400;
+            } else if (nature === "commercial") {
+                // New: 3000, Renovation: 2100
+                rate = (type === "renovation") ? 2100 : 3000;
+            }
+
             const totalEstimate = areaInput * rate;
 
             // 3. Get text labels for the message
@@ -1661,7 +1671,7 @@ My name is ${clientName}. I would like to request a construction cost estimate.
 • Project Nature: ${natureText}
 • Project Type: ${typeText}
 • Built-up Area: ${areaInput} sq. ft.
-• Rate: ₹${rate}/sq. ft.
+• Applicable Rate: ₹${rate}/sq. ft.
 
 *Estimated Project Cost:*
 *₹ ${formattedEstimate}*
@@ -1675,7 +1685,6 @@ ${clientName}`;
             const phone = "919217777835";
             const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 
-            // Open WhatsApp
             window.open(url, "_blank");
         }
     </script>
