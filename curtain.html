@@ -1,1454 +1,654 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <title>Curtain Materials & Designs — Interior Collection</title>
-  <link rel="icon" type="image/x-icon" href="logo.ico">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap"
-        rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="logo.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
     <style>
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0
-        }
-
-        :root {
-            --cream: #f5f0e8;
-            --cream2: #ede7d9;
-            --cream3: #e0d8c8;
-            --warm: #2c2318;
-            --warm2: #4a3c2d;
-            --warm3: #7a6650;
-            --gold: #b8953a;
-            --gold2: #d4af5a;
-            --burgundy: #6b2737;
-            --sage: #4a6050;
-            --slate: #3a4a5a;
-            --rose: #8b4a52;
-            --text: #2c2318;
-            --text2: #7a6650;
-            --text3: #b0a090;
-            --border: #d8cfc0;
-            --border2: #c8bfb0;
-            --radius: 2px;
-        }
-
-        html {
-            scroll-behavior: smooth
-        }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--cream);
-            color: var(--text);
-            line-height: 1.6;
-            cursor: default
-        }
-
-        /* SCROLLBAR */
-        ::-webkit-scrollbar {
-            width: 6px
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--cream2)
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--gold);
-            border-radius: 3px
-        }
-
-        /* NAV */
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: var(--cream);
-            border-bottom: 1px solid var(--border);
-            padding: 0 3rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 68px;
-        }
-
-        .nav-back {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-            color: var(--text2);
-            font-size: 13px;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            transition: color 0.2s;
-        }
-
-        .nav-back:hover {
-            color: var(--gold)
-        }
-
-        .nav-back svg {
-            transition: transform 0.2s
-        }
-
-        .nav-back:hover svg {
-            transform: translateX(-3px)
-        }
-
-        .nav-brand {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 20px;
-            font-weight: 300;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--warm);
-        }
-
-        .nav-brand em {
-            font-style: italic;
-            color: var(--gold);
-        }
-
-        .nav-right {
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--text3);
-        }
-
-        /* HERO */
-        .hero {
-            padding: 5rem 3rem 3rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: end;
-            border-bottom: 1px solid var(--border);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -80px;
-            right: -80px;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(184, 149, 58, 0.08) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .hero-eyebrow {
-            font-size: 11px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .hero-eyebrow::before {
-            content: '';
-            width: 30px;
-            height: 1px;
-            background: var(--gold)
-        }
-
-        .hero-title {
-            font-family: 'DM Serif Display', serif;
-            font-size: clamp(2.8rem, 5vw, 4.5rem);
-            line-height: 1.05;
-            color: var(--warm);
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-title em {
-            font-style: italic;
-            color: var(--gold);
-        }
-
-        .hero-desc {
-            font-size: 15px;
-            color: var(--text2);
-            max-width: 420px;
-            line-height: 1.8
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 2rem;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .hero-stat-num {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 36px;
-            font-weight: 300;
-            color: var(--warm);
-            line-height: 1;
-            margin-bottom: 4px;
-        }
-
-        .hero-stat-label {
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--text3)
-        }
-
-        .hero-visual {
-            display: flex;
-            gap: 12px;
-            justify-content: flex-end;
-            align-items: flex-end;
-        }
-
-        .hero-swatch-col {
-            display: flex;
-            flex-direction: column;
-            gap: 12px
-        }
-
-        .hero-swatch {
-            width: 90px;
-            border-radius: var(--radius);
-            position: relative;
-            overflow: hidden
-        }
-
-        /* FILTER BAR */
-        .filter-bar {
-            padding: 1.5rem 3rem;
-            display: flex;
-            align-items: center;
-            gap: 0;
-            border-bottom: 1px solid var(--border);
-            overflow-x: auto;
-            background: var(--cream);
-            position: sticky;
-            top: 68px;
-            z-index: 90;
-        }
-
-        .filter-label {
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--text3);
-            margin-right: 20px;
-            flex-shrink: 0
-        }
-
-        .filter-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 13px;
-            color: var(--text2);
-            padding: 6px 16px;
-            letter-spacing: 0.5px;
-            border-bottom: 2px solid transparent;
-            transition: all 0.2s;
-            flex-shrink: 0;
-        }
-
-        .filter-btn:hover {
-            color: var(--warm)
-        }
-
-        .filter-btn.active {
-            color: var(--gold);
-            border-bottom-color: var(--gold);
-            font-weight: 500
-        }
-
-        /* MAIN GRID */
-        .section-header {
-            padding: 3rem 3rem 1.5rem;
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-        }
-
-        .section-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
-            font-weight: 300;
-            color: var(--warm);
-            letter-spacing: 1px;
-        }
-
-        .section-count {
-            font-size: 13px;
-            color: var(--text3)
-        }
-
-        .grid {
-            padding: 0 3rem 4rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2px;
-        }
-
-        /* CARD */
-        .card {
-            background: var(--cream);
-            cursor: pointer;
-            position: relative;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid transparent;
-            animation: fadeUp 0.5s ease both;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 60px rgba(44, 35, 24, 0.12);
-            border-color: var(--border);
-            z-index: 2;
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px)
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0)
-            }
-        }
-
-        .card-swatch {
-            height: 220px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card-swatch::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, transparent 50%, rgba(44, 35, 24, 0.5));
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .card:hover .card-swatch::after {
-            opacity: 1
-        }
-
-        .card-badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            z-index: 2;
-            font-size: 10px;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            padding: 4px 10px;
-            border-radius: var(--radius);
-            font-weight: 500;
-        }
-
-        .badge-luxury {
-            background: rgba(107, 39, 55, 0.9);
-            color: #f5d0d8
-        }
-
-        .badge-popular {
-            background: rgba(184, 149, 58, 0.9);
-            color: #2c1a00
-        }
-
-        .badge-eco {
-            background: rgba(74, 96, 80, 0.9);
-            color: #d0e8d4
-        }
-
-        .badge-budget {
-            background: rgba(58, 74, 90, 0.9);
-            color: #c8dce8
-        }
-
-        .badge-sheer {
-            background: rgba(139, 74, 82, 0.9);
-            color: #f5d8da
-        }
-
-        .card-hover-overlay {
-            position: absolute;
-            bottom: 12px;
-            left: 12px;
-            right: 12px;
-            z-index: 3;
-            display: flex;
-            gap: 8px;
-            opacity: 0;
-            transition: opacity 0.3s;
-            transform: translateY(6px);
-            transition: all 0.3s;
-        }
-
-        .card:hover .card-hover-overlay {
-            opacity: 1;
-            transform: translateY(0)
-        }
-
-        .overlay-tag {
-            background: rgba(245, 240, 232, 0.92);
-            font-size: 10px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            padding: 4px 8px;
-            color: var(--warm2);
-        }
-
-        .card-body {
-            padding: 1.25rem 1.25rem 1rem
-        }
-
-        .card-cat {
-            font-size: 10px;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 6px
-        }
-
-        .card-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 22px;
-            font-weight: 400;
-            color: var(--warm);
-            line-height: 1.15;
-            margin-bottom: 6px;
-        }
-
-        .card-sub {
-            font-size: 13px;
-            color: var(--text2);
-            margin-bottom: 12px;
-            line-height: 1.5
-        }
-
-        .card-props {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 14px
-        }
-
-        .prop-pill {
-            font-size: 11px;
-            padding: 3px 10px;
-            border: 1px solid var(--border2);
-            border-radius: 20px;
-            color: var(--text2);
-            letter-spacing: 0.5px;
-        }
-
-        .card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid var(--border);
-            padding-top: 12px;
-        }
-
-        .card-price {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 18px;
-            color: var(--warm);
-            font-weight: 300;
-        }
-
-        .card-price span {
-            font-size: 12px;
-            color: var(--text3);
-            font-family: 'DM Sans', sans-serif;
-        }
-
-        .card-rooms {
-            font-size: 11px;
-            color: var(--text3);
-            letter-spacing: 0.5px
-        }
-
-        /* MODAL */
-        .modal-bg {
-            position: fixed;
-            inset: 0;
-            z-index: 500;
-            background: rgba(44, 35, 24, 0.7);
-            backdrop-filter: blur(4px);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-
-        .modal-bg.open {
-            display: flex
-        }
-
-        .modal {
-            background: var(--cream);
-            max-width: 860px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            border-radius: var(--radius);
-            animation: modalIn 0.3s ease;
-            position: relative;
-        }
-
-        @keyframes modalIn {
-            from {
-                opacity: 0;
-                transform: scale(0.95)
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1)
-            }
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            z-index: 10;
-            background: none;
-            border: 1px solid var(--border);
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            color: var(--text2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s;
-        }
-
-        .modal-close:hover {
-            background: var(--warm);
-            color: var(--cream);
-            border-color: var(--warm)
-        }
-
-        .modal-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr
-        }
-
-        .modal-swatch {
-            height: 100%;
-            min-height: 400px;
-            position: relative
-        }
-
-        .modal-content {
-            padding: 2.5rem 2rem
-        }
-
-        .modal-eyebrow {
-            font-size: 10px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 12px
-        }
-
-        .modal-title {
-            font-family: 'DM Serif Display', serif;
-            font-size: 32px;
-            color: var(--warm);
-            margin-bottom: 8px;
-            line-height: 1.1
-        }
-
-        .modal-subtitle {
-            font-size: 14px;
-            color: var(--text2);
-            margin-bottom: 1.5rem;
-            line-height: 1.7
-        }
-
-        .modal-section-title {
-            font-size: 10px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--text3);
-            margin: 1.25rem 0 8px
-        }
-
-        .modal-specs {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px
-        }
-
-        .spec-item {
-            background: var(--cream2);
-            padding: 10px 12px;
-            border-radius: var(--radius)
-        }
-
-        .spec-label {
-            font-size: 10px;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: var(--text3);
-            margin-bottom: 4px
-        }
-
-        .spec-val {
-            font-size: 13px;
-            color: var(--warm);
-            font-weight: 500
-        }
-
-        .modal-designs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 8px
-        }
-
-        .design-tag {
-            font-size: 12px;
-            padding: 5px 12px;
-            border: 1px solid var(--border2);
-            color: var(--warm2);
-            transition: all 0.2s;
-            cursor: default;
-            border-radius: var(--radius);
-        }
-
-        .design-tag:hover {
-            background: var(--gold);
-            color: var(--cream);
-            border-color: var(--gold)
-        }
-
-        .modal-cta {
-            margin-top: 1.5rem;
-            display: flex;
-            gap: 10px;
-        }
-
-        .btn-enquire {
-            flex: 1;
-            background: var(--warm);
-            color: var(--cream);
-            border: none;
-            padding: 12px 20px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 13px;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: background 0.2s;
-            border-radius: var(--radius);
-        }
-
-        .btn-enquire:hover {
-            background: var(--gold)
-        }
-
-        .btn-save {
-            background: none;
-            border: 1px solid var(--border2);
-            color: var(--text2);
-            padding: 12px 16px;
-            cursor: pointer;
-            font-size: 13px;
-            transition: all 0.2s;
-            border-radius: var(--radius);
-        }
-
-        .btn-save:hover {
-            border-color: var(--warm);
-            color: var(--warm)
-        }
-
-        /* DESIGN STYLES SECTION */
-        .styles-section {
-            padding: 4rem 3rem;
-            background: var(--cream2);
-            border-top: 1px solid var(--border)
-        }
-
-        .styles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 16px;
-            margin-top: 2rem
-        }
-
-        .style-card {
-            background: var(--cream);
-            padding: 1.5rem 1rem;
-            text-align: center;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            transition: all 0.2s;
-            cursor: pointer;
-        }
-
-        .style-card:hover {
-            border-color: var(--gold);
-            transform: translateY(-2px)
-        }
-
-        .style-icon {
-            width: 70px;
-            height: 100px;
-            margin: 0 auto 12px;
-            position: relative;
-        }
-
-        .style-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 17px;
-            color: var(--warm);
-            margin-bottom: 4px
-        }
-
-        .style-desc {
-            font-size: 12px;
-            color: var(--text3);
-            line-height: 1.5
-        }
-
-        /* CARE GUIDE */
-        .care-section {
-            padding: 3rem 3rem;
-            border-top: 1px solid var(--border)
-        }
-
-        .care-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin-top: 2rem
-        }
-
-        .care-card {
-            text-align: center;
-            padding: 1.5rem 1rem
-        }
-
-        .care-icon {
-            font-size: 28px;
-            margin-bottom: 12px
-        }
-
-        .care-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 16px;
-            color: var(--warm);
-            margin-bottom: 6px
-        }
-
-        .care-text {
-            font-size: 12px;
-            color: var(--text2);
-            line-height: 1.6
-        }
-
-        /* FOOTER */
-        footer {
-            background: var(--warm);
-            color: var(--cream3);
-            padding: 2rem 3rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .footer-brand {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 18px;
-            font-weight: 300;
-            letter-spacing: 3px;
-            text-transform: uppercase
-        }
-
-        .footer-text {
-            font-size: 12px;
-            color: var(--warm3);
-            letter-spacing: 0.5px
-        }
-
-        .footer-back {
-            text-decoration: none;
-            color: var(--gold);
-            font-size: 12px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: gap 0.2s;
-        }
-
-        .footer-back:hover {
-            gap: 10px
-        }
-
-        /* FABRIC TEXTURES via CSS */
-        /* Silk */
-        .t-silk {
-            background: linear-gradient(105deg, #d4b8c8 0%, #e8d4de 25%, #c8a8bc 50%, #ddc8d4 75%, #d0b0c0 100%);
-            background-size: 200% 200%;
-            animation: shimmer 4s ease-in-out infinite alternate
-        }
-
-        @keyframes shimmer {
-            0% {
-                background-position: 0% 0%
-            }
-
-            100% {
-                background-position: 100% 100%
-            }
-        }
-
-        /* Velvet */
-        .t-velvet {
-            background: var(--burgundy);
-            background-image: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.03) 0px, rgba(255, 255, 255, 0.03) 1px, transparent 1px, transparent 4px), repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.05) 0px, rgba(0, 0, 0, 0.05) 1px, transparent 1px, transparent 4px)
-        }
-
-        /* Linen */
-        .t-linen {
-            background: #c8b898;
-            background-image: repeating-linear-gradient(0deg, rgba(160, 140, 110, 0.4) 0px, transparent 1px, transparent 4px), repeating-linear-gradient(90deg, rgba(160, 140, 110, 0.3) 0px, transparent 1px, transparent 5px)
-        }
-
-        /* Cotton */
-        .t-cotton {
-            background: #e8dfc8;
-            background-image: repeating-linear-gradient(0deg, rgba(180, 165, 138, 0.35) 0px, transparent 1px, transparent 6px), repeating-linear-gradient(90deg, rgba(180, 165, 138, 0.25) 0px, transparent 1px, transparent 6px)
-        }
-
-        /* Sheer Voile */
-        .t-sheer {
-            background: linear-gradient(180deg, rgba(240, 235, 225, 0.5), rgba(220, 210, 195, 0.7));
-            background-image: repeating-linear-gradient(0deg, rgba(200, 190, 175, 0.25) 0px, transparent 1px, transparent 8px)
-        }
-
-        /* Jacquard */
-        .t-jacquard {
-            background: #3a4a5a;
-            background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.07) 0px, rgba(255, 255, 255, 0.07) 1px, transparent 1px, transparent 8px), repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.05) 0px, rgba(255, 255, 255, 0.05) 1px, transparent 1px, transparent 8px)
-        }
-
-        /* Brocade */
-        .t-brocade {
-            background: #4a3020;
-            background-image: radial-gradient(ellipse 16px 20px at 50% 50%, rgba(212, 175, 90, 0.3) 0%, transparent 60%);
-            background-size: 32px 40px
-        }
-
-        /* Organza */
-        .t-organza {
-            background: linear-gradient(135deg, rgba(240, 228, 212, 0.8), rgba(220, 210, 195, 0.9));
-            background-image: repeating-linear-gradient(0deg, rgba(200, 185, 165, 0.2) 0px, transparent 1px, transparent 10px), repeating-linear-gradient(90deg, rgba(200, 185, 165, 0.15) 0px, transparent 1px, transparent 10px)
-        }
-
-        /* Blackout */
-        .t-blackout {
-            background: #1a1a24;
-            background-image: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0px, transparent 1px, transparent 3px), repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.02) 0px, transparent 1px, transparent 3px)
-        }
-
-        /* Dupioni */
-        .t-dupioni {
-            background: linear-gradient(100deg, #c8a060, #e8c080, #b89050, #d8b070);
-            background-size: 300% 100%;
-            animation: shimmer 5s ease-in-out infinite alternate
-        }
-
-        /* Chenille */
-        .t-chenille {
-            background: #5a3a3a;
-            background-image: radial-gradient(circle 2px at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
-            background-size: 6px 6px
-        }
-
-        /* Polyester */
-        .t-polyester {
-            background: #6a7a8a;
-            background-image: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.04) 0px, transparent 1px, transparent 5px), repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0px, transparent 1px, transparent 5px)
-        }
-
-        @media(max-width:768px) {
-            .hero {
-                grid-template-columns: 1fr;
-                padding: 2.5rem 1.5rem
-            }
-
-            .hero-visual {
-                display: none
-            }
-
-            .filter-bar,
-            .grid,
-            .section-header,
-            .styles-section,
-            .care-section {
-                padding-left: 1.5rem;
-                padding-right: 1.5rem
-            }
-
-            nav {
-                padding: 0 1.5rem
-            }
-
-            .modal-grid {
-                grid-template-columns: 1fr
-            }
-
-            .modal-swatch {
-                min-height: 220px
-            }
-
-            .care-grid {
-                grid-template-columns: 1fr 1fr
-            }
-
-            footer {
-                flex-direction: column;
-                gap: 12px;
-                text-align: center
-            }
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        :root{
+            --cream:#f5f0e8;--cream2:#ede7d9;--cream3:#e0d8c8;
+            --warm:#2c2318;--warm2:#4a3c2d;--warm3:#7a6650;
+            --gold:#b8953a;--gold2:#d4af5a;
+            --burgundy:#6b2737;--sage:#4a6050;--slate:#3a4a5a;--rose:#8b4a52;
+            --text:#2c2318;--text2:#7a6650;--text3:#b0a090;
+            --border:#d8cfc0;--border2:#c8bfb0;--radius:2px;
+        }
+        html{scroll-behavior:smooth}
+        body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);line-height:1.6}
+        ::-webkit-scrollbar{width:4px}
+        ::-webkit-scrollbar-track{background:var(--cream2)}
+        ::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
+
+        /* ── NAV ── */
+        nav{
+            position:sticky;top:0;z-index:100;
+            background:var(--cream);border-bottom:1px solid var(--border);
+            padding:0 1.25rem;
+            display:flex;align-items:center;justify-content:space-between;
+            height:56px;
+        }
+        .nav-back{
+            display:flex;align-items:center;gap:6px;text-decoration:none;
+            color:var(--text2);font-size:12px;letter-spacing:1.2px;text-transform:uppercase;
+            transition:color .2s;flex-shrink:0;
+        }
+        .nav-back:hover{color:var(--gold)}
+        .nav-back svg{transition:transform .2s}
+        .nav-back:hover svg{transform:translateX(-3px)}
+        .nav-brand{
+            font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;
+            letter-spacing:3px;text-transform:uppercase;color:var(--warm);
+            position:absolute;left:50%;transform:translateX(-50%);white-space:nowrap;
+        }
+        .nav-brand em{font-style:italic;color:var(--gold)}
+        .nav-right{display:none}
+
+        /* ── HERO ── */
+        .hero{
+            padding:2rem 1.25rem 1.75rem;
+            border-bottom:1px solid var(--border);
+            position:relative;overflow:hidden;
+        }
+        .hero::before{
+            content:'';position:absolute;top:-60px;right:-60px;
+            width:300px;height:300px;border-radius:50%;
+            background:radial-gradient(circle,rgba(184,149,58,0.1) 0%,transparent 70%);
+            pointer-events:none;
+        }
+        .hero-eyebrow{
+            font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);
+            margin-bottom:.75rem;display:flex;align-items:center;gap:8px;
+        }
+        .hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--gold)}
+        .hero-title{
+            font-family:'DM Serif Display',serif;
+            font-size:clamp(2.4rem,9vw,3.6rem);line-height:1.05;
+            color:var(--warm);margin-bottom:1rem;
+        }
+        .hero-title em{font-style:italic;color:var(--gold)}
+        .hero-desc{font-size:14px;color:var(--text2);line-height:1.75;max-width:500px}
+        .hero-stats{
+            display:flex;gap:1.5rem;margin-top:1.5rem;padding-top:1.5rem;
+            border-top:1px solid var(--border);
+        }
+        .hero-stat-num{
+            font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;
+            color:var(--warm);line-height:1;margin-bottom:2px;
+        }
+        .hero-stat-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text3)}
+        /* swatch strip - horizontal scroller on mobile */
+        .hero-swatch-strip{
+            display:flex;gap:8px;margin-top:1.5rem;
+            overflow-x:auto;-webkit-overflow-scrolling:touch;
+            scrollbar-width:none;padding-bottom:4px;
+        }
+        .hero-swatch-strip::-webkit-scrollbar{display:none}
+        .strip-swatch{
+            flex-shrink:0;width:64px;height:80px;border-radius:var(--radius);
+        }
+
+        /* ── FILTER BAR ── */
+        .filter-bar{
+            padding:.875rem 1.25rem;
+            display:flex;align-items:center;gap:0;
+            border-bottom:1px solid var(--border);
+            overflow-x:auto;-webkit-overflow-scrolling:touch;
+            scrollbar-width:none;
+            background:var(--cream);position:sticky;top:56px;z-index:90;
+        }
+        .filter-bar::-webkit-scrollbar{display:none}
+        .filter-label{
+            font-size:10px;letter-spacing:2px;text-transform:uppercase;
+            color:var(--text3);margin-right:14px;flex-shrink:0;
+        }
+        .filter-btn{
+            background:none;border:none;cursor:pointer;
+            font-family:'DM Sans',sans-serif;font-size:12px;
+            color:var(--text2);padding:5px 12px;letter-spacing:.4px;
+            border-bottom:2px solid transparent;transition:all .2s;flex-shrink:0;
+            -webkit-tap-highlight-color:transparent;
+        }
+        .filter-btn:hover{color:var(--warm)}
+        .filter-btn.active{color:var(--gold);border-bottom-color:var(--gold);font-weight:500}
+
+        /* ── SECTION HEADER ── */
+        .section-header{
+            padding:2rem 1.25rem 1rem;
+            display:flex;align-items:baseline;justify-content:space-between;
+        }
+        .section-title{
+            font-family:'Cormorant Garamond',serif;font-size:24px;
+            font-weight:300;color:var(--warm);letter-spacing:1px;
+        }
+        .section-count{font-size:12px;color:var(--text3)}
+
+        /* ── CARD GRID ── */
+        .grid{
+            padding:0 1.25rem 3rem;
+            display:grid;
+            grid-template-columns:repeat(2,1fr);
+            gap:10px;
+        }
+        @media(min-width:480px){.grid{grid-template-columns:repeat(2,1fr)}}
+        @media(min-width:700px){.grid{grid-template-columns:repeat(3,1fr)}}
+        @media(min-width:1000px){.grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2px}}
+
+        /* ── CARD ── */
+        .card{
+            background:var(--cream);cursor:pointer;position:relative;
+            transition:transform .3s,box-shadow .3s;
+            border:1px solid var(--border);
+            border-radius:var(--radius);
+            animation:fadeUp .5s ease both;
+            overflow:hidden;
+        }
+        .card:active{transform:scale(.98)}
+        @media(hover:hover){
+            .card:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(44,35,24,.12);z-index:2}
+        }
+        @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+        .card-swatch{height:160px;position:relative;overflow:hidden}
+        @media(min-width:700px){.card-swatch{height:200px}}
+        @media(min-width:1000px){.card-swatch{height:220px}}
+
+        .card-swatch::after{
+            content:'';position:absolute;inset:0;
+            background:linear-gradient(to bottom,transparent 50%,rgba(44,35,24,.5));
+            opacity:0;transition:opacity .3s;
+        }
+        @media(hover:hover){.card:hover .card-swatch::after{opacity:1}}
+
+        .card-badge{
+            position:absolute;top:8px;right:8px;z-index:2;
+            font-size:9px;letter-spacing:1.2px;text-transform:uppercase;
+            padding:3px 8px;border-radius:var(--radius);font-weight:500;
+        }
+        .badge-luxury{background:rgba(107,39,55,.9);color:#f5d0d8}
+        .badge-popular{background:rgba(184,149,58,.9);color:#2c1a00}
+        .badge-eco{background:rgba(74,96,80,.9);color:#d0e8d4}
+        .badge-budget{background:rgba(58,74,90,.9);color:#c8dce8}
+        .badge-sheer{background:rgba(139,74,82,.9);color:#f5d8da}
+
+        /* overlay tags — hidden on mobile, shown on hover desktop */
+        .card-hover-overlay{
+            position:absolute;bottom:8px;left:8px;right:8px;z-index:3;
+            display:flex;gap:6px;flex-wrap:wrap;
+            opacity:0;transform:translateY(4px);transition:all .3s;
+        }
+        @media(hover:hover){.card:hover .card-hover-overlay{opacity:1;transform:translateY(0)}}
+        .overlay-tag{
+            background:rgba(245,240,232,.92);font-size:9px;
+            letter-spacing:.8px;text-transform:uppercase;padding:3px 7px;color:var(--warm2);
+        }
+
+        .card-body{padding:1rem .875rem .875rem}
+        .card-cat{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+        .card-name{
+            font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;
+            color:var(--warm);line-height:1.15;margin-bottom:4px;
+        }
+        .card-sub{font-size:12px;color:var(--text2);margin-bottom:10px;line-height:1.4}
+        .card-props{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}
+        .prop-pill{
+            font-size:10px;padding:2px 8px;
+            border:1px solid var(--border2);border-radius:20px;
+            color:var(--text2);letter-spacing:.3px;
+        }
+        .card-footer{
+            display:flex;justify-content:space-between;align-items:center;
+            border-top:1px solid var(--border);padding-top:10px;
+        }
+        .card-price{
+            font-family:'Cormorant Garamond',serif;font-size:16px;
+            color:var(--warm);font-weight:300;
+        }
+        .card-price span{font-size:10px;color:var(--text3);font-family:'DM Sans',sans-serif}
+        .card-rooms{font-size:10px;color:var(--text3);letter-spacing:.3px;text-align:right;max-width:90px;line-height:1.3}
+
+        /* ── MODAL ── */
+        .modal-bg{
+            position:fixed;inset:0;z-index:500;
+            background:rgba(44,35,24,.75);backdrop-filter:blur(4px);
+            display:none;align-items:flex-end;justify-content:center;
+            padding:0;
+        }
+        .modal-bg.open{display:flex}
+        @media(min-width:640px){
+            .modal-bg{align-items:center;padding:1.5rem}
+        }
+
+        .modal{
+            background:var(--cream);width:100%;max-width:860px;
+            max-height:93vh;overflow-y:auto;
+            border-radius:12px 12px 0 0;
+            animation:modalSlideUp .32s cubic-bezier(.22,.61,.36,1);
+            position:relative;
+        }
+        @media(min-width:640px){
+            .modal{border-radius:var(--radius);animation:modalIn .28s ease;max-height:88vh}
+        }
+        @keyframes modalSlideUp{from{opacity:0;transform:translateY(60px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes modalIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+
+        /* drag handle for bottom sheet feel */
+        .modal-handle{
+            display:block;width:40px;height:4px;
+            background:var(--border2);border-radius:2px;
+            margin:12px auto 0;
+        }
+        @media(min-width:640px){.modal-handle{display:none}}
+
+        .modal-close{
+            position:absolute;top:14px;right:14px;z-index:10;
+            background:none;border:1px solid var(--border);
+            width:34px;height:34px;border-radius:50%;cursor:pointer;
+            font-size:16px;color:var(--text2);
+            display:flex;align-items:center;justify-content:center;
+            transition:all .2s;
+        }
+        .modal-close:hover{background:var(--warm);color:var(--cream);border-color:var(--warm)}
+
+        .modal-grid{display:grid;grid-template-columns:1fr}
+        @media(min-width:640px){.modal-grid{grid-template-columns:1fr 1fr}}
+
+        .modal-swatch{height:220px;position:relative}
+        @media(min-width:640px){.modal-swatch{height:100%;min-height:400px}}
+
+        .modal-content{padding:1.5rem 1.25rem}
+        @media(min-width:640px){.modal-content{padding:2.5rem 2rem}}
+
+        .modal-eyebrow{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+        .modal-title{font-family:'DM Serif Display',serif;font-size:26px;color:var(--warm);margin-bottom:6px;line-height:1.1}
+        @media(min-width:640px){.modal-title{font-size:32px}}
+        .modal-subtitle{font-size:13px;color:var(--text2);margin-bottom:1.25rem;line-height:1.7}
+        .modal-section-title{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin:1rem 0 6px}
+
+        .modal-specs{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+        .spec-item{background:var(--cream2);padding:8px 10px;border-radius:var(--radius)}
+        .spec-label{font-size:9px;letter-spacing:1.2px;text-transform:uppercase;color:var(--text3);margin-bottom:3px}
+        .spec-val{font-size:12px;color:var(--warm);font-weight:500}
+
+        .modal-designs{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+        .design-tag{
+            font-size:11px;padding:4px 10px;
+            border:1px solid var(--border2);color:var(--warm2);
+            transition:all .2s;cursor:default;border-radius:var(--radius);
+        }
+        .design-tag:hover{background:var(--gold);color:var(--cream);border-color:var(--gold)}
+
+        .modal-cta{margin-top:1.25rem;display:flex;gap:8px}
+        .btn-enquire{
+            flex:1;background:var(--warm);color:var(--cream);border:none;
+            padding:13px 20px;font-family:'DM Sans',sans-serif;font-size:13px;
+            letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;
+            transition:background .2s;border-radius:var(--radius);
+            -webkit-tap-highlight-color:transparent;
+        }
+        .btn-enquire:hover{background:var(--gold)}
+        .btn-save{
+            background:none;border:1px solid var(--border2);color:var(--text2);
+            padding:13px 16px;cursor:pointer;font-size:16px;
+            transition:all .2s;border-radius:var(--radius);
+            -webkit-tap-highlight-color:transparent;
+        }
+        .btn-save:hover{border-color:var(--warm);color:var(--warm)}
+
+        /* ── STYLES SECTION ── */
+        .styles-section{
+            padding:3rem 1.25rem;background:var(--cream2);
+            border-top:1px solid var(--border);
+        }
+        @media(min-width:640px){.styles-section{padding:4rem 2rem}}
+        @media(min-width:1000px){.styles-section{padding:4rem 3rem}}
+
+        .styles-grid{
+            display:grid;
+            grid-template-columns:repeat(2,1fr);
+            gap:10px;margin-top:1.5rem;
+        }
+        @media(min-width:480px){.styles-grid{grid-template-columns:repeat(3,1fr)}}
+        @media(min-width:900px){.styles-grid{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}}
+
+        .style-card{
+            background:var(--cream);padding:1.25rem .875rem;
+            text-align:center;border:1px solid var(--border);
+            border-radius:var(--radius);transition:all .2s;cursor:pointer;
+            -webkit-tap-highlight-color:transparent;
+        }
+        .style-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+        .style-icon{width:56px;height:80px;margin:0 auto 10px;position:relative}
+        @media(min-width:640px){.style-icon{width:70px;height:100px}}
+        .style-name{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--warm);margin-bottom:4px}
+        .style-desc{font-size:11px;color:var(--text3);line-height:1.5}
+
+        /* ── CARE GUIDE ── */
+        .care-section{padding:2.5rem 1.25rem;border-top:1px solid var(--border)}
+        @media(min-width:640px){.care-section{padding:3rem 2rem}}
+        @media(min-width:1000px){.care-section{padding:3rem 3rem}}
+
+        .care-grid{
+            display:grid;grid-template-columns:1fr 1fr;
+            gap:1rem;margin-top:1.5rem;
+        }
+        @media(min-width:700px){.care-grid{grid-template-columns:repeat(4,1fr)}}
+        .care-card{text-align:center;padding:1.25rem .875rem}
+        .care-icon{font-size:26px;margin-bottom:10px}
+        .care-title{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--warm);margin-bottom:5px}
+        .care-text{font-size:11px;color:var(--text2);line-height:1.6}
+
+        /* ── FOOTER ── */
+        footer{
+            background:var(--warm);color:var(--cream3);
+            padding:1.75rem 1.25rem;
+            display:flex;flex-direction:column;align-items:center;
+            gap:10px;text-align:center;
+        }
+        @media(min-width:640px){
+            footer{flex-direction:row;justify-content:space-between;padding:2rem 3rem;text-align:left}
+        }
+        .footer-brand{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:300;letter-spacing:3px;text-transform:uppercase}
+        .footer-text{font-size:11px;color:var(--warm3);letter-spacing:.4px}
+        .footer-back{
+            text-decoration:none;color:var(--gold);font-size:12px;
+            letter-spacing:2px;text-transform:uppercase;
+            display:flex;align-items:center;gap:6px;transition:gap .2s;
+        }
+        .footer-back:hover{gap:10px}
+
+        /* ── SECTION HEADER shared ── */
+        .hero-eyebrow-sm{
+            font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);
+            margin-bottom:6px;display:flex;align-items:center;gap:8px;
+        }
+        .hero-eyebrow-sm::before{content:'';width:20px;height:1px;background:var(--gold)}
+        .section-display{font-family:'DM Serif Display',serif;font-size:24px;color:var(--warm)}
+        @media(min-width:640px){.section-display{font-size:28px}}
+
+        /* ── FABRIC TEXTURES (unchanged) ── */
+        .t-silk{background:linear-gradient(105deg,#d4b8c8 0%,#e8d4de 25%,#c8a8bc 50%,#ddc8d4 75%,#d0b0c0 100%);background-size:200% 200%;animation:shimmer 4s ease-in-out infinite alternate}
+        @keyframes shimmer{0%{background-position:0% 0%}100%{background-position:100% 100%}}
+        .t-velvet{background:var(--burgundy);background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0px,rgba(255,255,255,.03) 1px,transparent 1px,transparent 4px),repeating-linear-gradient(90deg,rgba(0,0,0,.05) 0px,rgba(0,0,0,.05) 1px,transparent 1px,transparent 4px)}
+        .t-linen{background:#c8b898;background-image:repeating-linear-gradient(0deg,rgba(160,140,110,.4) 0px,transparent 1px,transparent 4px),repeating-linear-gradient(90deg,rgba(160,140,110,.3) 0px,transparent 1px,transparent 5px)}
+        .t-cotton{background:#e8dfc8;background-image:repeating-linear-gradient(0deg,rgba(180,165,138,.35) 0px,transparent 1px,transparent 6px),repeating-linear-gradient(90deg,rgba(180,165,138,.25) 0px,transparent 1px,transparent 6px)}
+        .t-sheer{background:linear-gradient(180deg,rgba(240,235,225,.5),rgba(220,210,195,.7));background-image:repeating-linear-gradient(0deg,rgba(200,190,175,.25) 0px,transparent 1px,transparent 8px)}
+        .t-jacquard{background:#3a4a5a;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.07) 0px,rgba(255,255,255,.07) 1px,transparent 1px,transparent 8px),repeating-linear-gradient(-45deg,rgba(255,255,255,.05) 0px,rgba(255,255,255,.05) 1px,transparent 1px,transparent 8px)}
+        .t-brocade{background:#4a3020;background-image:radial-gradient(ellipse 16px 20px at 50% 50%,rgba(212,175,90,.3) 0%,transparent 60%);background-size:32px 40px}
+        .t-organza{background:linear-gradient(135deg,rgba(240,228,212,.8),rgba(220,210,195,.9));background-image:repeating-linear-gradient(0deg,rgba(200,185,165,.2) 0px,transparent 1px,transparent 10px),repeating-linear-gradient(90deg,rgba(200,185,165,.15) 0px,transparent 1px,transparent 10px)}
+        .t-blackout{background:#1a1a24;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.02) 0px,transparent 1px,transparent 3px),repeating-linear-gradient(90deg,rgba(255,255,255,.02) 0px,transparent 1px,transparent 3px)}
+        .t-dupioni{background:linear-gradient(100deg,#c8a060,#e8c080,#b89050,#d8b070);background-size:300% 100%;animation:shimmer 5s ease-in-out infinite alternate}
+        .t-chenille{background:#5a3a3a;background-image:radial-gradient(circle 2px at 50% 50%,rgba(255,255,255,.1) 0%,transparent 100%);background-size:6px 6px}
+        .t-polyester{background:#6a7a8a;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.04) 0px,transparent 1px,transparent 5px),repeating-linear-gradient(90deg,rgba(255,255,255,.04) 0px,transparent 1px,transparent 5px)}
+
+        /* desktop overrides */
+        @media(min-width:1000px){
+            nav{padding:0 3rem;height:68px}
+            .nav-right{display:block;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text3)}
+            .hero{padding:5rem 3rem 3rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:end}
+            .hero-visual{display:flex;gap:12px;justify-content:flex-end;align-items:flex-end}
+            .hero-swatch-strip{display:none}
+            .hero-swatch-col{display:flex;flex-direction:column;gap:12px}
+            .hero-swatch{width:90px;border-radius:var(--radius);position:relative;overflow:hidden}
+            .filter-bar{top:68px;padding:1.5rem 3rem}
+            .section-header{padding:3rem 3rem 1.5rem}
+            .grid{padding:0 3rem 4rem;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2px}
+        }
+        @media(max-width:999px){
+            .hero-visual{display:none}
         }
     </style>
 </head>
-
 <body>
 
-    <!-- NAV -->
-    <nav>
-        <a href="index.html" class="nav-back">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="15 18 9 12 15 6" />
-            </svg>
-            Back to Home
-        </a>
-        <div class="nav-brand">Drapery &amp; <em>Fabric</em> Studio</div>
-        <div class="nav-right">Interior Collections</div>
-    </nav>
+<!-- NAV -->
+<nav>
+    <a href="index.html" class="nav-back">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Back
+    </a>
+    <div class="nav-brand">Drapery &amp; <em>Fabric</em></div>
+    <div class="nav-right">Interior Collections</div>
+</nav>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div>
-            <div class="hero-eyebrow">Curated for Interior Spaces</div>
-            <h1 class="hero-title">The Art of<br /><em>Fine Curtains</em></h1>
-            <p class="hero-desc">Explore premium curtain fabrics and draping styles handpicked for every room, mood, and
-                budget. From sheer voiles to opulent velvets — find your perfect window treatment.</p>
-            <div class="hero-stats">
-                <div>
-                    <div class="hero-stat-num">12</div>
-                    <div class="hero-stat-label">Fabrics</div>
-                </div>
-                <div>
-                    <div class="hero-stat-num">6</div>
-                    <div class="hero-stat-label">Pleat Styles</div>
-                </div>
-                <div>
-                    <div class="hero-stat-num">50+</div>
-                    <div class="hero-stat-label">Colour Options</div>
-                </div>
-            </div>
+<!-- HERO -->
+<section class="hero">
+    <div>
+        <div class="hero-eyebrow">Curated for Interior Spaces</div>
+        <h1 class="hero-title">The Art of<br/><em>Fine Curtains</em></h1>
+        <p class="hero-desc">Explore premium curtain fabrics and draping styles handpicked for every room, mood, and budget — from sheer voiles to opulent velvets.</p>
+        <!-- mobile swatch strip -->
+        <div class="hero-swatch-strip">
+            <div class="strip-swatch t-velvet"></div>
+            <div class="strip-swatch t-silk"></div>
+            <div class="strip-swatch t-linen"></div>
+            <div class="strip-swatch t-jacquard"></div>
+            <div class="strip-swatch t-dupioni"></div>
+            <div class="strip-swatch t-brocade"></div>
+            <div class="strip-swatch t-sheer"></div>
         </div>
-        <div class="hero-visual">
-            <div class="hero-swatch-col">
-                <div class="hero-swatch t-velvet" style="height:180px"></div>
-                <div class="hero-swatch t-linen" style="height:120px"></div>
-            </div>
-            <div class="hero-swatch-col">
-                <div class="hero-swatch t-silk" style="height:100px"></div>
-                <div class="hero-swatch t-jacquard" style="height:140px"></div>
-                <div class="hero-swatch t-sheer" style="height:80px"></div>
-            </div>
-            <div class="hero-swatch-col">
-                <div class="hero-swatch t-dupioni" style="height:160px"></div>
-                <div class="hero-swatch t-brocade" style="height:140px"></div>
-            </div>
+        <div class="hero-stats">
+            <div><div class="hero-stat-num">12</div><div class="hero-stat-label">Fabrics</div></div>
+            <div><div class="hero-stat-num">6</div><div class="hero-stat-label">Pleat Styles</div></div>
+            <div><div class="hero-stat-num">50+</div><div class="hero-stat-label">Colours</div></div>
         </div>
-    </section>
-
-    <!-- FILTER BAR -->
-    <div class="filter-bar">
-        <span class="filter-label">Filter:</span>
-        <button class="filter-btn active" data-filter="all">All Fabrics</button>
-        <button class="filter-btn" data-filter="natural">Natural Fibres</button>
-        <button class="filter-btn" data-filter="luxury">Luxury</button>
-        <button class="filter-btn" data-filter="sheer">Sheer &amp; Light</button>
-        <button class="filter-btn" data-filter="functional">Functional</button>
-        <button class="filter-btn" data-filter="patterned">Patterned</button>
     </div>
-
-    <!-- CARDS SECTION -->
-    <div class="section-header">
-        <div class="section-title">Fabric Collection</div>
-        <div class="section-count" id="card-count">12 materials</div>
+    <!-- desktop visual (hidden below 1000px via CSS) -->
+    <div class="hero-visual">
+        <div class="hero-swatch-col">
+            <div class="hero-swatch t-velvet" style="height:180px"></div>
+            <div class="hero-swatch t-linen" style="height:120px"></div>
+        </div>
+        <div class="hero-swatch-col">
+            <div class="hero-swatch t-silk" style="height:100px"></div>
+            <div class="hero-swatch t-jacquard" style="height:140px"></div>
+            <div class="hero-swatch t-sheer" style="height:80px"></div>
+        </div>
+        <div class="hero-swatch-col">
+            <div class="hero-swatch t-dupioni" style="height:160px"></div>
+            <div class="hero-swatch t-brocade" style="height:140px"></div>
+        </div>
     </div>
+</section>
 
-    <div class="grid" id="card-grid"></div>
+<!-- FILTER BAR -->
+<div class="filter-bar">
+    <span class="filter-label">Filter:</span>
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="natural">Natural</button>
+    <button class="filter-btn" data-filter="luxury">Luxury</button>
+    <button class="filter-btn" data-filter="sheer">Sheer</button>
+    <button class="filter-btn" data-filter="functional">Functional</button>
+    <button class="filter-btn" data-filter="patterned">Patterned</button>
+</div>
 
-    <!-- DESIGN STYLES SECTION -->
-    <section class="styles-section">
-        <div class="hero-eyebrow" style="margin-bottom:8px">How It Drapes</div>
-        <div style="font-family:'DM Serif Display',serif;font-size:28px;color:var(--warm)">Pleat &amp; Hanging Styles
+<!-- CARDS SECTION -->
+<div class="section-header">
+    <div class="section-title">Fabric Collection</div>
+    <div class="section-count" id="card-count">12 materials</div>
+</div>
+<div class="grid" id="card-grid"></div>
+
+<!-- DESIGN STYLES SECTION -->
+<section class="styles-section">
+    <div class="hero-eyebrow-sm">How It Drapes</div>
+    <div class="section-display">Pleat &amp; Hanging Styles</div>
+    <div class="styles-grid" id="styles-grid"></div>
+</section>
+
+<!-- CARE GUIDE -->
+<section class="care-section">
+    <div class="hero-eyebrow-sm">Maintenance Guide</div>
+    <div class="section-display">Fabric Care Tips</div>
+    <div class="care-grid">
+        <div class="care-card">
+            <div class="care-icon">🧺</div>
+            <div class="care-title">Washing</div>
+            <div class="care-text">Delicate fabrics like silk and velvet require dry cleaning. Linen and cotton can be machine-washed on gentle cycle at 30°C. Always check label.</div>
         </div>
-        <div class="styles-grid" id="styles-grid"></div>
-    </section>
-
-    <!-- CARE GUIDE -->
-    <section class="care-section">
-        <div class="hero-eyebrow" style="margin-bottom:8px">Maintenance Guide</div>
-        <div style="font-family:'DM Serif Display',serif;font-size:28px;color:var(--warm)">Fabric Care Tips</div>
-        <div class="care-grid">
-            <div class="care-card">
-                <div class="care-icon">🧺</div>
-                <div class="care-title">Washing</div>
-                <div class="care-text">Delicate fabrics like silk and velvet require dry cleaning. Linen and cotton can
-                    be machine-washed on gentle cycle at 30°C. Always check label.</div>
-            </div>
-            <div class="care-card">
-                <div class="care-icon">☀️</div>
-                <div class="care-title">Sun Exposure</div>
-                <div class="care-text">Rotate curtains seasonally to prevent uneven fading. UV-resistant linings protect
-                    fabric in south-facing rooms. Silk is most vulnerable.</div>
-            </div>
-            <div class="care-card">
-                <div class="care-icon">♨️</div>
-                <div class="care-title">Ironing</div>
-                <div class="care-text">Steam-iron linen and cotton while damp. Velvet should only be steamed — never
-                    pressed flat. Use a pressing cloth for silk and organza.</div>
-            </div>
-            <div class="care-card">
-                <div class="care-icon">📏</div>
-                <div class="care-title">Measurement</div>
-                <div class="care-text">For fullness, use 2–2.5× the window width. Floor-length curtains should break 1–2
-                    cm on the floor for a luxurious pool effect.</div>
-            </div>
+        <div class="care-card">
+            <div class="care-icon">☀️</div>
+            <div class="care-title">Sun Exposure</div>
+            <div class="care-text">Rotate curtains seasonally to prevent uneven fading. UV-resistant linings protect fabric in south-facing rooms. Silk is most vulnerable.</div>
         </div>
-    </section>
+        <div class="care-card">
+            <div class="care-icon">♨️</div>
+            <div class="care-title">Ironing</div>
+            <div class="care-text">Steam-iron linen and cotton while damp. Velvet should only be steamed — never pressed flat. Use a pressing cloth for silk and organza.</div>
+        </div>
+        <div class="care-card">
+            <div class="care-icon">📏</div>
+            <div class="care-title">Measurement</div>
+            <div class="care-text">For fullness, use 2–2.5× the window width. Floor-length curtains should break 1–2 cm on the floor for a luxurious pool effect.</div>
+        </div>
+    </div>
+</section>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-brand">Drapery Studio</div>
-        <div class="footer-text">© 2025 Interior Collection · All fabrics are for decorative reference</div>
-        <a href="index.html" class="footer-back">← Home</a>
-    </footer>
+<!-- FOOTER -->
+<footer>
+    <div class="footer-brand">Drapery Studio</div>
+    <div class="footer-text">© 2025 Interior Collection · Decorative reference only</div>
+    <a href="index.html" class="footer-back">← Home</a>
+</footer>
 
-    <!-- MODAL -->
-    <div class="modal-bg" id="modal-bg">
-        <div class="modal" id="modal">
-            <button class="modal-close" id="modal-close">✕</button>
-            <div class="modal-grid">
-                <div class="modal-swatch" id="modal-swatch"></div>
-                <div class="modal-content">
-                    <div class="modal-eyebrow" id="m-cat"></div>
-                    <div class="modal-title" id="m-name"></div>
-                    <div class="modal-subtitle" id="m-desc"></div>
-                    <div class="modal-section-title">Specifications</div>
-                    <div class="modal-specs" id="m-specs"></div>
-                    <div class="modal-section-title">Best Pleat Styles</div>
-                    <div class="modal-designs" id="m-designs"></div>
-                    <div class="modal-section-title">Best Used In</div>
-                    <div class="modal-designs" id="m-rooms"></div>
-                    <div class="modal-cta">
-                        <button class="btn-enquire">Request Sample</button>
-                        <button class="btn-save">♡ Save</button>
-                    </div>
+<!-- MODAL -->
+<div class="modal-bg" id="modal-bg">
+    <div class="modal" id="modal">
+        <div class="modal-handle"></div>
+        <button class="modal-close" id="modal-close">✕</button>
+        <div class="modal-grid">
+            <div class="modal-swatch" id="modal-swatch"></div>
+            <div class="modal-content">
+                <div class="modal-eyebrow" id="m-cat"></div>
+                <div class="modal-title" id="m-name"></div>
+                <div class="modal-subtitle" id="m-desc"></div>
+                <div class="modal-section-title">Specifications</div>
+                <div class="modal-specs" id="m-specs"></div>
+                <div class="modal-section-title">Best Pleat Styles</div>
+                <div class="modal-designs" id="m-designs"></div>
+                <div class="modal-section-title">Best Used In</div>
+                <div class="modal-designs" id="m-rooms"></div>
+                <div class="modal-cta">
+                    <button class="btn-enquire">Request Sample</button>
+                    <button class="btn-save">♡</button>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <script>
-        const materials = [
-            {
-                id: 1, name: 'Raw Silk', sub: 'Dupioni & Pure Silk', cat: 'Luxury', badge: 'badge-luxury', filter: 'luxury',
-                texture: 't-silk',
-                desc: 'A timeless luxury fabric with a natural sheen and subtle slub texture. Catches light beautifully, adding warmth and elegance to formal spaces.',
-                price: '₹850–₹2,800/m', priceRange: 3,
-                specs: [
-                    { l: 'Weight', v: 'Light–Medium' },
-                    { l: 'Light Filter', v: 'Semi-sheer' },
-                    { l: 'Durability', v: 'Moderate' },
-                    { l: 'Care', v: 'Dry Clean Only' },
-                    { l: 'Lining Required', v: 'Yes' },
-                    { l: 'Shrinkage', v: 'Low' },
-                ],
-                designs: ['Pinch Pleat', 'Goblet Pleat', 'Box Pleat', 'Pencil Pleat'],
-                rooms: ['Living Room', 'Master Bedroom', 'Formal Dining', 'Puja Room'],
-                overlayTags: ['Semi-Sheer', 'Lustrous', 'Elegant'],
-            },
-            {
-                id: 2, name: 'Velvet', sub: 'Crushed & Panel Velvet', cat: 'Luxury', badge: 'badge-luxury', filter: 'luxury',
-                texture: 't-velvet',
-                desc: 'Opulent and dramatic, velvet curtains add depth, insulation and a rich tactile quality. The pile creates a colour-shifting effect under changing light.',
-                price: '₹400/m', priceRange: 3,
-                specs: [
-                    { l: 'Weight', v: 'Heavy' },
-                    { l: 'Light Filter', v: 'Blackout' },
-                    { l: 'Durability', v: 'High' },
-                    { l: 'Care', v: 'Dry Clean / Steam' },
-                    { l: 'Lining Required', v: 'Optional' },
-                    { l: 'Insulation', v: 'Excellent' },
-                ],
-                designs: ['Pinch Pleat', 'Eyelet', 'Tab Top', 'Goblet Pleat'],
-                rooms: ['Bedroom', 'Living Room', 'Theatre Room', 'Study'],
-                overlayTags: ['Blackout', 'Plush', 'Insulating'],
-            },
-            {
-                id: 3, name: 'Linen', sub: 'Belgian & Stone-washed Linen', cat: 'Natural Fibre', badge: 'badge-eco', filter: 'natural',
-                texture: 't-linen',
-                desc: 'The quintessential natural fabric — breathable, textured and effortlessly chic. Linen brings an organic, relaxed quality ideal for casual and Scandinavian interiors.',
-                price: '₹380–₹980/m', priceRange: 2,
-                specs: [
-                    { l: 'Weight', v: 'Medium' },
-                    { l: 'Light Filter', v: 'Semi-Sheer' },
-                    { l: 'Durability', v: 'Very High' },
-                    { l: 'Care', v: 'Machine Wash 30°C' },
-                    { l: 'Lining Required', v: 'Optional' },
-                    { l: 'Eco Rating', v: '★★★★★' },
-                ],
-                designs: ['Eyelet', 'Rod Pocket', 'Tab Top', 'Ripple Fold'],
-                rooms: ['Living Room', 'Kitchen', 'Bedroom', 'Balcony'],
-                overlayTags: ['Breathable', 'Natural', 'Textured'],
-            },
-            {
-                id: 4, name: 'Sheer Voile', sub: 'Poly Voile & Cotton Lawn', cat: 'Sheer', badge: 'badge-sheer', filter: 'sheer',
-                texture: 't-sheer',
-                desc: 'Gossamer-thin and ethereal, voile diffuses harsh sunlight into a soft glow. Perfect for layering over heavier curtains or as a standalone breezy treatment.',
-                price: '₹120–₹380/m', priceRange: 1,
-                specs: [
-                    { l: 'Weight', v: 'Very Light' },
-                    { l: 'Light Filter', v: 'Diffuse / Sheer' },
-                    { l: 'Durability', v: 'Moderate' },
-                    { l: 'Care', v: 'Machine Wash Cold' },
-                    { l: 'Lining Required', v: 'No' },
-                    { l: 'Privacy', v: 'Low' },
-                ],
-                designs: ['Rod Pocket', 'Eyelet', 'Ripple Fold', 'Pencil Pleat'],
-                rooms: ['Living Room', 'Bathroom', 'Kitchen', 'Nursery'],
-                overlayTags: ['Sheer', 'Airy', 'Layering'],
-            },
-            {
-                id: 5, name: 'Jacquard', sub: 'Damask & Floral Jacquard', cat: 'Patterned', badge: 'badge-popular', filter: 'patterned',
-                texture: 't-jacquard',
-                desc: 'Woven with intricate patterns directly into the fabric — no print, no fade. Jacquard brings classical opulence with geometric or floral motifs that last a lifetime.',
-                price: '₹480–₹1,600/m', priceRange: 2,
-                specs: [
-                    { l: 'Weight', v: 'Medium–Heavy' },
-                    { l: 'Light Filter', v: 'Semi-Opaque' },
-                    { l: 'Durability', v: 'Very High' },
-                    { l: 'Care', v: 'Dry Clean' },
-                    { l: 'Lining Required', v: 'Yes' },
-                    { l: 'Pattern', v: 'Woven-in' },
-                ],
-                designs: ['Pinch Pleat', 'Box Pleat', 'Goblet Pleat', 'Wave'],
-                rooms: ['Drawing Room', 'Formal Dining', 'Hotel Lobby', 'Heritage Home'],
-                overlayTags: ['Woven Pattern', 'Formal', 'Long-lasting'],
-            },
-            {
-                id: 6, name: 'Brocade', sub: 'Zari & Silk Brocade', cat: 'Luxury', badge: 'badge-luxury', filter: 'luxury',
-                texture: 't-brocade',
-                desc: 'With its metallic threads and raised motifs, brocade is the most regal of all curtain fabrics. Rooted in Indian weaving tradition — Banarasi brocade is world-renowned.',
-                price: '₹1,200–₹4,500/m', priceRange: 3,
-                specs: [
-                    { l: 'Weight', v: 'Heavy' },
-                    { l: 'Light Filter', v: 'Opaque' },
-                    { l: 'Durability', v: 'High' },
-                    { l: 'Care', v: 'Dry Clean Only' },
-                    { l: 'Lining Required', v: 'Yes (essential)' },
-                    { l: 'Origin', v: 'Varanasi / Surat' },
-                ],
-                designs: ['Pinch Pleat', 'Goblet Pleat', 'Box Pleat'],
-                rooms: ['Puja Room', 'Formal Drawing Room', 'Bridal Suite', 'Heritage Property'],
-                overlayTags: ['Metallic Threads', 'Heritage', 'Statement'],
-            },
-            {
-                id: 7, name: 'Pure Cotton', sub: 'Canvas & Printed Cotton', cat: 'Natural Fibre', badge: 'badge-eco', filter: 'natural',
-                texture: 't-cotton',
-                desc: 'Versatile, breathable and easy to maintain, cotton is the workhorse of curtain fabrics. Accepts dyes and prints beautifully — ideal for every room in the home.',
-                price: '₹180–₹650/m', priceRange: 1,
-                specs: [
-                    { l: 'Weight', v: 'Light–Medium' },
-                    { l: 'Light Filter', v: 'Semi-Sheer–Opaque' },
-                    { l: 'Durability', v: 'High' },
-                    { l: 'Care', v: 'Machine Wash 40°C' },
-                    { l: 'Lining Required', v: 'Optional' },
-                    { l: 'Shrinkage', v: 'Pre-wash recommended' },
-                ],
-                designs: ['Eyelet', 'Tab Top', 'Rod Pocket', 'Pencil Pleat'],
-                rooms: ['All Rooms', 'Kids Room', 'Kitchen', 'Office'],
-                overlayTags: ['Versatile', 'Easy Care', 'Budget-friendly'],
-            },
-            {
-                id: 8, name: 'Dupioni Silk', sub: 'Raw Silk with Slub Texture', cat: 'Luxury', badge: 'badge-luxury', filter: 'luxury',
-                texture: 't-dupioni',
-                desc: 'Woven from two threads simultaneously, dupioni has a distinctive irregular slub and crisp hand. The brilliant sheen makes it a favourite for festive and bridal interiors.',
-                price: '₹700–₹2,400/m', priceRange: 3,
-                specs: [
-                    { l: 'Weight', v: 'Medium' },
-                    { l: 'Light Filter', v: 'Semi-Sheer' },
-                    { l: 'Durability', v: 'Moderate' },
-                    { l: 'Care', v: 'Dry Clean Only' },
-                    { l: 'Lining Required', v: 'Yes' },
-                    { l: 'Texture', v: 'Slub / Irregular' },
-                ],
-                designs: ['Goblet Pleat', 'Pinch Pleat', 'Box Pleat'],
-                rooms: ['Master Bedroom', 'Puja Room', 'Bridal Suite', 'Drawing Room'],
-                overlayTags: ['Iridescent', 'Festive', 'Crisp Hand'],
-            },
-            {
-                id: 9, name: 'Blackout Polyester', sub: 'Triple-weave & Thermal Lined', cat: 'Functional', badge: 'badge-budget', filter: 'functional',
-                texture: 't-blackout',
-                desc: 'Engineered for total darkness and thermal efficiency. Triple-weave construction blocks 99% of light and insulates against heat — essential for Indian summers.',
-                price: '₹300/m', priceRange: 1,
-                specs: [
-                    { l: 'Weight', v: 'Medium–Heavy' },
-                    { l: 'Light Filter', v: '99–100% Blackout' },
-                    { l: 'Durability', v: 'Very High' },
-                    { l: 'Care', v: 'Machine Wash 30°C' },
-                    { l: 'Lining Required', v: 'Built-in' },
-                    { l: 'Thermal', v: 'Excellent' },
-                ],
-                designs: ['Eyelet', 'Rod Pocket', 'Pinch Pleat', 'Wave'],
-                rooms: ['Bedroom', 'Home Theatre', 'Nursery', 'Hospital'],
-                overlayTags: ['Full Blackout', 'Thermal', 'Low Maintenance'],
-            },
-            {
-                id: 10, name: 'Organza', sub: 'Silk & Polyester Organza', cat: 'Sheer', badge: 'badge-sheer', filter: 'sheer',
-                texture: 't-organza',
-                desc: 'A crisp, transparent fabric with subtle stiffness. Organza holds its shape beautifully and is often used for dramatic balloon blinds and layered festoon effects.',
-                price: '₹280–₹950/m', priceRange: 2,
-                specs: [
-                    { l: 'Weight', v: 'Very Light' },
-                    { l: 'Light Filter', v: 'Sheer' },
-                    { l: 'Durability', v: 'Moderate' },
-                    { l: 'Care', v: 'Dry Clean / Hand Wash' },
-                    { l: 'Lining Required', v: 'No' },
-                    { l: 'Drape', v: 'Structured / Crisp' },
-                ],
-                designs: ['Balloon Pleat', 'Festoon', 'Rod Pocket', 'Box Pleat'],
-                rooms: ['Formal Dining', 'Puja Room', 'Drawing Room', 'Events'],
-                overlayTags: ['Crisp', 'Structured', 'Celebratory'],
-            },
-            {
-                id: 11, name: 'Chenille', sub: 'Woven Chenille Stripe', cat: 'Natural Fibre', badge: 'badge-popular', filter: 'natural',
-                texture: 't-chenille',
-                desc: 'Soft, velvety pile woven in a caterpillar-like construction gives chenille its characteristic plushness. Chenille stripes are an enduring classic in living rooms.',
-                price: '₹420–₹1,100/m', priceRange: 2,
-                specs: [
-                    { l: 'Weight', v: 'Heavy' },
-                    { l: 'Light Filter', v: 'Semi-Opaque' },
-                    { l: 'Durability', v: 'High' },
-                    { l: 'Care', v: 'Dry Clean / Gentle Machine' },
-                    { l: 'Lining Required', v: 'Recommended' },
-                    { l: 'Texture', v: 'Soft Pile' },
-                ],
-                designs: ['Pinch Pleat', 'Eyelet', 'Tab Top', 'Wave'],
-                rooms: ['Living Room', 'Bedroom', 'Study', 'Lounge'],
-                overlayTags: ['Plush', 'Warm', 'Stripe Patterns'],
-            },
-            {
-                id: 12, name: 'Polyester Blend', sub: 'Poly-Cotton & Microfibre', cat: 'Functional', badge: 'badge-budget', filter: 'functional',
-                texture: 't-polyester',
-                desc: 'The practical everyday curtain — wrinkle-resistant, colourfast and affordable. Modern microfibre blends mimic the look of silk or linen at a fraction of the cost.',
-                price: '₹120–₹450/m', priceRange: 1,
-                specs: [
-                    { l: 'Weight', v: 'Light–Medium' },
-                    { l: 'Light Filter', v: 'Semi-Sheer–Opaque' },
-                    { l: 'Durability', v: 'Very High' },
-                    { l: 'Care', v: 'Machine Wash 40°C' },
-                    { l: 'Lining Required', v: 'Optional' },
-                    { l: 'Value', v: 'Excellent' },
-                ],
-                designs: ['Eyelet', 'Rod Pocket', 'Tab Top', 'Pencil Pleat'],
-                rooms: ['All Rooms', 'Rental Property', 'Office', 'Kids Room'],
-                overlayTags: ['Budget-Friendly', 'Easy Care', 'Wrinkle-Free'],
-            },
-        ];
+<script>
+const materials=[
+    {id:1,name:'Raw Silk',sub:'Dupioni & Pure Silk',cat:'Luxury',badge:'badge-luxury',filter:'luxury',texture:'t-silk',desc:'A timeless luxury fabric with a natural sheen and subtle slub texture. Catches light beautifully, adding warmth and elegance to formal spaces.',price:'₹850–₹2,800/m',specs:[{l:'Weight',v:'Light–Medium'},{l:'Light Filter',v:'Semi-sheer'},{l:'Durability',v:'Moderate'},{l:'Care',v:'Dry Clean Only'},{l:'Lining',v:'Yes'},{l:'Shrinkage',v:'Low'}],designs:['Pinch Pleat','Goblet Pleat','Box Pleat','Pencil Pleat'],rooms:['Living Room','Master Bedroom','Formal Dining','Puja Room'],overlayTags:['Semi-Sheer','Lustrous','Elegant']},
+    {id:2,name:'Velvet',sub:'Crushed & Panel Velvet',cat:'Luxury',badge:'badge-luxury',filter:'luxury',texture:'t-velvet',desc:'Opulent and dramatic, velvet curtains add depth, insulation and a rich tactile quality. The pile creates a colour-shifting effect under changing light.',price:'₹400/m',specs:[{l:'Weight',v:'Heavy'},{l:'Light Filter',v:'Blackout'},{l:'Durability',v:'High'},{l:'Care',v:'Dry Clean / Steam'},{l:'Lining',v:'Optional'},{l:'Insulation',v:'Excellent'}],designs:['Pinch Pleat','Eyelet','Tab Top','Goblet Pleat'],rooms:['Bedroom','Living Room','Theatre Room','Study'],overlayTags:['Blackout','Plush','Insulating']},
+    {id:3,name:'Linen',sub:'Belgian & Stone-washed Linen',cat:'Natural Fibre',badge:'badge-eco',filter:'natural',texture:'t-linen',desc:'The quintessential natural fabric — breathable, textured and effortlessly chic. Brings an organic, relaxed quality ideal for casual and Scandinavian interiors.',price:'₹380–₹980/m',specs:[{l:'Weight',v:'Medium'},{l:'Light Filter',v:'Semi-Sheer'},{l:'Durability',v:'Very High'},{l:'Care',v:'Machine Wash 30°C'},{l:'Lining',v:'Optional'},{l:'Eco Rating',v:'★★★★★'}],designs:['Eyelet','Rod Pocket','Tab Top','Ripple Fold'],rooms:['Living Room','Kitchen','Bedroom','Balcony'],overlayTags:['Breathable','Natural','Textured']},
+    {id:4,name:'Sheer Voile',sub:'Poly Voile & Cotton Lawn',cat:'Sheer',badge:'badge-sheer',filter:'sheer',texture:'t-sheer',desc:'Gossamer-thin and ethereal, voile diffuses harsh sunlight into a soft glow. Perfect for layering over heavier curtains or as a standalone breezy treatment.',price:'₹120–₹380/m',specs:[{l:'Weight',v:'Very Light'},{l:'Light Filter',v:'Diffuse / Sheer'},{l:'Durability',v:'Moderate'},{l:'Care',v:'Machine Wash Cold'},{l:'Lining',v:'No'},{l:'Privacy',v:'Low'}],designs:['Rod Pocket','Eyelet','Ripple Fold','Pencil Pleat'],rooms:['Living Room','Bathroom','Kitchen','Nursery'],overlayTags:['Sheer','Airy','Layering']},
+    {id:5,name:'Jacquard',sub:'Damask & Floral Jacquard',cat:'Patterned',badge:'badge-popular',filter:'patterned',texture:'t-jacquard',desc:'Woven with intricate patterns directly into the fabric — no print, no fade. Brings classical opulence with geometric or floral motifs that last a lifetime.',price:'₹480–₹1,600/m',specs:[{l:'Weight',v:'Medium–Heavy'},{l:'Light Filter',v:'Semi-Opaque'},{l:'Durability',v:'Very High'},{l:'Care',v:'Dry Clean'},{l:'Lining',v:'Yes'},{l:'Pattern',v:'Woven-in'}],designs:['Pinch Pleat','Box Pleat','Goblet Pleat','Wave'],rooms:['Drawing Room','Formal Dining','Hotel Lobby','Heritage Home'],overlayTags:['Woven Pattern','Formal','Long-lasting']},
+    {id:6,name:'Brocade',sub:'Zari & Silk Brocade',cat:'Luxury',badge:'badge-luxury',filter:'luxury',texture:'t-brocade',desc:'With its metallic threads and raised motifs, brocade is the most regal of all curtain fabrics. Rooted in Indian weaving tradition — Banarasi brocade is world-renowned.',price:'₹1,200–₹4,500/m',specs:[{l:'Weight',v:'Heavy'},{l:'Light Filter',v:'Opaque'},{l:'Durability',v:'High'},{l:'Care',v:'Dry Clean Only'},{l:'Lining',v:'Yes (essential)'},{l:'Origin',v:'Varanasi / Surat'}],designs:['Pinch Pleat','Goblet Pleat','Box Pleat'],rooms:['Puja Room','Formal Drawing Room','Bridal Suite','Heritage Property'],overlayTags:['Metallic Threads','Heritage','Statement']},
+    {id:7,name:'Pure Cotton',sub:'Canvas & Printed Cotton',cat:'Natural Fibre',badge:'badge-eco',filter:'natural',texture:'t-cotton',desc:'Versatile, breathable and easy to maintain, cotton is the workhorse of curtain fabrics. Accepts dyes and prints beautifully — ideal for every room in the home.',price:'₹180–₹650/m',specs:[{l:'Weight',v:'Light–Medium'},{l:'Light Filter',v:'Semi-Sheer–Opaque'},{l:'Durability',v:'High'},{l:'Care',v:'Machine Wash 40°C'},{l:'Lining',v:'Optional'},{l:'Shrinkage',v:'Pre-wash recommended'}],designs:['Eyelet','Tab Top','Rod Pocket','Pencil Pleat'],rooms:['All Rooms','Kids Room','Kitchen','Office'],overlayTags:['Versatile','Easy Care','Budget-friendly']},
+    {id:8,name:'Dupioni Silk',sub:'Raw Silk with Slub Texture',cat:'Luxury',badge:'badge-luxury',filter:'luxury',texture:'t-dupioni',desc:'Woven from two threads simultaneously, dupioni has a distinctive irregular slub and crisp hand. The brilliant sheen makes it a favourite for festive and bridal interiors.',price:'₹700–₹2,400/m',specs:[{l:'Weight',v:'Medium'},{l:'Light Filter',v:'Semi-Sheer'},{l:'Durability',v:'Moderate'},{l:'Care',v:'Dry Clean Only'},{l:'Lining',v:'Yes'},{l:'Texture',v:'Slub / Irregular'}],designs:['Goblet Pleat','Pinch Pleat','Box Pleat'],rooms:['Master Bedroom','Puja Room','Bridal Suite','Drawing Room'],overlayTags:['Iridescent','Festive','Crisp Hand']},
+    {id:9,name:'Blackout Polyester',sub:'Triple-weave & Thermal Lined',cat:'Functional',badge:'badge-budget',filter:'functional',texture:'t-blackout',desc:'Engineered for total darkness and thermal efficiency. Triple-weave construction blocks 99% of light and insulates against heat — essential for Indian summers.',price:'₹300/m',specs:[{l:'Weight',v:'Medium–Heavy'},{l:'Light Filter',v:'99–100% Blackout'},{l:'Durability',v:'Very High'},{l:'Care',v:'Machine Wash 30°C'},{l:'Lining',v:'Built-in'},{l:'Thermal',v:'Excellent'}],designs:['Eyelet','Rod Pocket','Pinch Pleat','Wave'],rooms:['Bedroom','Home Theatre','Nursery','Hospital'],overlayTags:['Full Blackout','Thermal','Low Maintenance']},
+    {id:10,name:'Organza',sub:'Silk & Polyester Organza',cat:'Sheer',badge:'badge-sheer',filter:'sheer',texture:'t-organza',desc:'A crisp, transparent fabric with subtle stiffness. Organza holds its shape beautifully and is often used for dramatic balloon blinds and layered festoon effects.',price:'₹280–₹950/m',specs:[{l:'Weight',v:'Very Light'},{l:'Light Filter',v:'Sheer'},{l:'Durability',v:'Moderate'},{l:'Care',v:'Dry Clean / Hand Wash'},{l:'Lining',v:'No'},{l:'Drape',v:'Structured / Crisp'}],designs:['Balloon Pleat','Festoon','Rod Pocket','Box Pleat'],rooms:['Formal Dining','Puja Room','Drawing Room','Events'],overlayTags:['Crisp','Structured','Celebratory']},
+    {id:11,name:'Chenille',sub:'Woven Chenille Stripe',cat:'Natural Fibre',badge:'badge-popular',filter:'natural',texture:'t-chenille',desc:'Soft, velvety pile woven in a caterpillar-like construction gives chenille its characteristic plushness. Chenille stripes are an enduring classic in living rooms.',price:'₹420–₹1,100/m',specs:[{l:'Weight',v:'Heavy'},{l:'Light Filter',v:'Semi-Opaque'},{l:'Durability',v:'High'},{l:'Care',v:'Dry Clean / Gentle Machine'},{l:'Lining',v:'Recommended'},{l:'Texture',v:'Soft Pile'}],designs:['Pinch Pleat','Eyelet','Tab Top','Wave'],rooms:['Living Room','Bedroom','Study','Lounge'],overlayTags:['Plush','Warm','Stripe Patterns']},
+    {id:12,name:'Polyester Blend',sub:'Poly-Cotton & Microfibre',cat:'Functional',badge:'badge-budget',filter:'functional',texture:'t-polyester',desc:'The practical everyday curtain — wrinkle-resistant, colourfast and affordable. Modern microfibre blends mimic the look of silk or linen at a fraction of the cost.',price:'₹120–₹450/m',specs:[{l:'Weight',v:'Light–Medium'},{l:'Light Filter',v:'Semi-Sheer–Opaque'},{l:'Durability',v:'Very High'},{l:'Care',v:'Machine Wash 40°C'},{l:'Lining',v:'Optional'},{l:'Value',v:'Excellent'}],designs:['Eyelet','Rod Pocket','Tab Top','Pencil Pleat'],rooms:['All Rooms','Rental Property','Office','Kids Room'],overlayTags:['Budget-Friendly','Easy Care','Wrinkle-Free']},
+];
 
-        const styles = [
-            { name: 'Pinch Pleat', desc: 'Classic triple-fold pleat. Formal and structured — the gold standard for traditional interiors.', icon: 'pinch' },
-            { name: 'Eyelet / Grommet', desc: 'Metal rings punched through the top. Modern, clean, and very easy to slide open and close.', icon: 'eyelet' },
-            { name: 'Rod Pocket', desc: 'Fabric sleeve hides the rod. Creates a casual, gathered look — perfect for sheers and voiles.', icon: 'rod' },
-            { name: 'Tab Top', desc: 'Fabric loops over the rod. Relaxed and informal. Great for linen and cotton fabrics.', icon: 'tab' },
-            { name: 'Goblet Pleat', desc: 'Elegant wine-glass shaped pleat. The most formal and luxurious — often padded for shape.', icon: 'goblet' },
-            { name: 'Box Pleat', desc: 'Flat, structured pleat facing forward. Tailored and contemporary — suits heavier fabrics.', icon: 'box' },
-        ];
+const styles=[
+    {name:'Pinch Pleat',desc:'Classic triple-fold pleat. Formal and structured — the gold standard for traditional interiors.',icon:'pinch'},
+    {name:'Eyelet / Grommet',desc:'Metal rings through the top. Modern, clean, and very easy to slide open and close.',icon:'eyelet'},
+    {name:'Rod Pocket',desc:'Fabric sleeve hides the rod. Creates a casual, gathered look — perfect for sheers and voiles.',icon:'rod'},
+    {name:'Tab Top',desc:'Fabric loops over the rod. Relaxed and informal. Great for linen and cotton fabrics.',icon:'tab'},
+    {name:'Goblet Pleat',desc:'Elegant wine-glass shaped pleat. The most formal and luxurious — often padded for shape.',icon:'goblet'},
+    {name:'Box Pleat',desc:'Flat, structured pleat facing forward. Tailored and contemporary — suits heavier fabrics.',icon:'box'},
+];
 
-        function drawStyleIcon(type) {
-            const svgs = {
-                pinch: `<svg viewBox="0 0 70 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="1" y="1" width="68" height="98" rx="1" stroke="#b0a090" stroke-width="0.5" fill="#f0ebe0"/>
-      <line x1="10" y1="1" x2="14" y2="20" stroke="#7a6650" stroke-width="1.2"/>
-      <line x1="18" y1="1" x2="14" y2="20" stroke="#7a6650" stroke-width="1.2"/>
-      <line x1="35" y1="1" x2="39" y2="20" stroke="#7a6650" stroke-width="1.2"/>
-      <line x1="43" y1="1" x2="39" y2="20" stroke="#7a6650" stroke-width="1.2"/>
-      <line x1="58" y1="1" x2="62" y2="20" stroke="#7a6650" stroke-width="1.2"/>
-      <line x1="66" y1="1" x2="62" y2="20" stroke="#7a6650" stroke-width="1.2"/>
-      <line x1="14" y1="20" x2="14" y2="99" stroke="#c8b898" stroke-width="0.5"/>
-      <line x1="39" y1="20" x2="39" y2="99" stroke="#c8b898" stroke-width="0.5"/>
-      <line x1="62" y1="20" x2="62" y2="99" stroke="#c8b898" stroke-width="0.5"/>
-    </svg>`,
-                eyelet: `<svg viewBox="0 0 70 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="1" y="14" width="68" height="85" rx="1" stroke="#b0a090" stroke-width="0.5" fill="#f0ebe0"/>
-      <circle cx="12" cy="7" r="5.5" stroke="#7a6650" stroke-width="1.2" fill="#e8dfc8"/>
-      <circle cx="12" cy="7" r="2.5" fill="#7a6650"/>
-      <circle cx="30" cy="7" r="5.5" stroke="#7a6650" stroke-width="1.2" fill="#e8dfc8"/>
-      <circle cx="30" cy="7" r="2.5" fill="#7a6650"/>
-      <circle cx="48" cy="7" r="5.5" stroke="#7a6650" stroke-width="1.2" fill="#e8dfc8"/>
-      <circle cx="48" cy="7" r="2.5" fill="#7a6650"/>
-      <circle cx="66" cy="7" r="5.5" stroke="#7a6650" stroke-width="1.2" fill="#e8dfc8"/>
-      <circle cx="66" cy="7" r="2.5" fill="#7a6650"/>
-      <line x1="1" y1="7" x2="69" y2="7" stroke="#b8953a" stroke-width="1.5"/>
-    </svg>`,
-                rod: `<svg viewBox="0 0 70 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="1" y="12" width="68" height="87" rx="1" stroke="#b0a090" stroke-width="0.5" fill="#f0ebe0"/>
-      <rect x="1" y="5" width="68" height="12" rx="1" fill="#e8dfc8" stroke="#b0a090" stroke-width="0.5"/>
-      <line x1="1" y1="10" x2="69" y2="10" stroke="#b8953a" stroke-width="2"/>
-      <circle cx="2" cy="10" r="3" fill="#b8953a"/>
-      <circle cx="68" cy="10" r="3" fill="#b8953a"/>
-    </svg>`,
-                tab: `<svg viewBox="0 0 70 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="1" y="22" width="68" height="77" rx="1" stroke="#b0a090" stroke-width="0.5" fill="#f0ebe0"/>
-      <path d="M10 22 Q10 4 18 4 Q26 4 26 22" stroke="#7a6650" stroke-width="1.2" fill="none"/>
-      <path d="M32 22 Q32 4 40 4 Q48 4 48 22" stroke="#7a6650" stroke-width="1.2" fill="none"/>
-      <path d="M54 22 Q54 4 62 4 Q69 4 69 22" stroke="#7a6650" stroke-width="1.2" fill="none"/>
-      <line x1="1" y1="4" x2="69" y2="4" stroke="#b8953a" stroke-width="2"/>
-    </svg>`,
-                goblet: `<svg viewBox="0 0 70 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="1" y="32" width="68" height="67" rx="1" stroke="#b0a090" stroke-width="0.5" fill="#f0ebe0"/>
-      <path d="M6 1 Q6 32 20 32" stroke="#7a6650" stroke-width="1" fill="none"/>
-      <path d="M34 1 Q34 32 20 32" stroke="#7a6650" stroke-width="1" fill="none"/>
-      <ellipse cx="20" cy="10" rx="13" ry="10" stroke="#b8953a" stroke-width="1.2" fill="rgba(184,149,58,0.1)"/>
-      <path d="M36 1 Q36 32 50 32" stroke="#7a6650" stroke-width="1" fill="none"/>
-      <path d="M64 1 Q64 32 50 32" stroke="#7a6650" stroke-width="1" fill="none"/>
-      <ellipse cx="50" cy="10" rx="13" ry="10" stroke="#b8953a" stroke-width="1.2" fill="rgba(184,149,58,0.1)"/>
-    </svg>`,
-                box: `<svg viewBox="0 0 70 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="1" y="1" width="68" height="98" rx="1" stroke="#b0a090" stroke-width="0.5" fill="#f0ebe0"/>
-      <polyline points="1,1 12,1 12,18 24,18 24,1 46,1 46,18 58,18 58,1 69,1" stroke="#7a6650" stroke-width="1.2" fill="none"/>
-      <line x1="18" y1="18" x2="18" y2="99" stroke="#c8b898" stroke-width="0.5"/>
-      <line x1="52" y1="18" x2="52" y2="99" stroke="#c8b898" stroke-width="0.5"/>
-    </svg>`,
-            };
-            return svgs[type] || '';
-        }
+function drawStyleIcon(type){
+    const svgs={
+        pinch:`<svg viewBox="0 0 70 100" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="68" height="98" rx="1" stroke="#b0a090" stroke-width="0.5" fill="#f0ebe0"/><line x1="10" y1="1" x2="14" y2="20" stroke="#7a6650" stroke-width="1.2"/><line x1="18" y1="1" x2="14" y2="20" stroke="#7a6650" stroke-width="1.2"/><line x1="35" y1="1" x2="39" y2="20" stroke="#7a6650" stroke-width="1.2"/><line x1="43" y1="1" x2="39" y2="20" stroke="#7a6650" stroke-width="1.2"/><line x1="58" y1="1" x2="62" y2="20" stroke="#7a6650" stroke-width="1.2"/><line x1="66" y1="1" x2="62" y2="20" stroke="#7a6650" stroke-width="1.2"/><line x1="14" y1="20" x2="14" y2="99" stroke="#c8b898" stroke-width="0.5"/><line x1="39" y1="20" x2="39" y2="99" stroke="#c8b898" stroke-width="0.5"/><line x1="62" y1="20" x2="62" y2="99" stroke="#c8b898" stroke-width="0.5"/></svg>`,
+        eyelet:`<svg viewBox="0 0 70 100" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="14" width="68" height="85" rx="1" stroke="#b0a090" stroke-width="0.5" fill="#f0ebe0"/><circle cx="12" cy="7" r="5.5" stroke="#7a6650" stroke-width="1.2" fill="#e8dfc8"/><circle cx="12" cy="7" r="2.5" fill="#7a6650"/><circle cx="30" cy="7" r="5.5" stroke="#7a6650" stroke-width="1.2" fill="#e8dfc8"/><circle cx="30" cy="7" r="2.5" fill="#7a6650"/><circle cx="48" cy="7" r="5.5" stroke="#7a6650" stroke-width="1.2" fill="#e8dfc8"/><circle cx="48" cy="7" r="2.5" fill="#7a6650"/><circle cx="66" cy="7" r="5.5" stroke="#7a6650" stroke-width="1.2" fill="#e8dfc8"/><circle cx="66" cy="7" r="2.5" fill="#7a6650"/><line x1="1" y1="7" x2="69" y2="7" stroke="#b8953a" stroke-width="1.5"/></svg>`,
+        rod:`<svg viewBox="0 0 70 100" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="12" width="68" height="87" rx="1" stroke="#b0a090" stroke-width="0.5" fill="#f0ebe0"/><rect x="1" y="5" width="68" height="12" rx="1" fill="#e8dfc8" stroke="#b0a090" stroke-width="0.5"/><line x1="1" y1="10" x2="69" y2="10" stroke="#b8953a" stroke-width="2"/><circle cx="2" cy="10" r="3" fill="#b8953a"/><circle cx="68" cy="10" r="3" fill="#b8953a"/></svg>`,
+        tab:`<svg viewBox="0 0 70 100" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="22" width="68" height="77" rx="1" stroke="#b0a090" stroke-width="0.5" fill="#f0ebe0"/><path d="M10 22 Q10 4 18 4 Q26 4 26 22" stroke="#7a6650" stroke-width="1.2" fill="none"/><path d="M32 22 Q32 4 40 4 Q48 4 48 22" stroke="#7a6650" stroke-width="1.2" fill="none"/><path d="M54 22 Q54 4 62 4 Q69 4 69 22" stroke="#7a6650" stroke-width="1.2" fill="none"/><line x1="1" y1="4" x2="69" y2="4" stroke="#b8953a" stroke-width="2"/></svg>`,
+        goblet:`<svg viewBox="0 0 70 100" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="32" width="68" height="67" rx="1" stroke="#b0a090" stroke-width="0.5" fill="#f0ebe0"/><path d="M6 1 Q6 32 20 32" stroke="#7a6650" stroke-width="1" fill="none"/><path d="M34 1 Q34 32 20 32" stroke="#7a6650" stroke-width="1" fill="none"/><ellipse cx="20" cy="10" rx="13" ry="10" stroke="#b8953a" stroke-width="1.2" fill="rgba(184,149,58,0.1)"/><path d="M36 1 Q36 32 50 32" stroke="#7a6650" stroke-width="1" fill="none"/><path d="M64 1 Q64 32 50 32" stroke="#7a6650" stroke-width="1" fill="none"/><ellipse cx="50" cy="10" rx="13" ry="10" stroke="#b8953a" stroke-width="1.2" fill="rgba(184,149,58,0.1)"/></svg>`,
+        box:`<svg viewBox="0 0 70 100" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="68" height="98" rx="1" stroke="#b0a090" stroke-width="0.5" fill="#f0ebe0"/><polyline points="1,1 12,1 12,18 24,18 24,1 46,1 46,18 58,18 58,1 69,1" stroke="#7a6650" stroke-width="1.2" fill="none"/><line x1="18" y1="18" x2="18" y2="99" stroke="#c8b898" stroke-width="0.5"/><line x1="52" y1="18" x2="52" y2="99" stroke="#c8b898" stroke-width="0.5"/></svg>`,
+    };
+    return svgs[type]||'';
+}
 
-        function buildCards(filter) {
-            const grid = document.getElementById('card-grid');
-            const count = document.getElementById('card-count');
-            const filtered = filter === 'all' ? materials : materials.filter(m => m.filter === filter);
-            count.textContent = filtered.length + ' material' + (filtered.length !== 1 ? 's' : '');
-            grid.innerHTML = filtered.map((m, i) => `
-    <div class="card" data-id="${m.id}" style="animation-delay:${i * 0.05}s">
-      <div class="card-swatch ${m.texture}">
-        <span class="card-badge ${m.badge}">${m.cat}</span>
-        <div class="card-hover-overlay">
-          ${m.overlayTags.map(t => `<span class="overlay-tag">${t}</span>`).join('')}
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="card-cat">${m.filter.charAt(0).toUpperCase() + m.filter.slice(1)}</div>
-        <div class="card-name">${m.name}</div>
-        <div class="card-sub">${m.sub}</div>
-        <div class="card-props">
-          ${m.designs.slice(0, 3).map(d => `<span class="prop-pill">${d}</span>`).join('')}
-        </div>
-        <div class="card-footer">
-          <div class="card-price">${m.price} <span>per metre</span></div>
-          <div class="card-rooms">${m.rooms.slice(0, 2).join(' · ')}</div>
-        </div>
-      </div>
-    </div>
-  `).join('');
-            grid.querySelectorAll('.card').forEach(card => {
-                card.addEventListener('click', () => openModal(parseInt(card.dataset.id)));
-            });
-        }
-
-        function openModal(id) {
-            const m = materials.find(x => x.id === id);
-            if (!m) return;
-            document.getElementById('m-cat').textContent = m.cat;
-            document.getElementById('m-name').textContent = m.name;
-            document.getElementById('m-desc').textContent = m.desc;
-            document.getElementById('modal-swatch').className = 'modal-swatch ' + m.texture;
-            document.getElementById('m-specs').innerHTML = m.specs.map(s =>
-                `<div class="spec-item"><div class="spec-label">${s.l}</div><div class="spec-val">${s.v}</div></div>`
-            ).join('');
-            document.getElementById('m-designs').innerHTML = m.designs.map(d =>
-                `<span class="design-tag">${d}</span>`).join('');
-            document.getElementById('m-rooms').innerHTML = m.rooms.map(r =>
-                `<span class="design-tag">${r}</span>`).join('');
-            document.getElementById('modal-bg').classList.add('open');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            document.getElementById('modal-bg').classList.remove('open');
-            document.body.style.overflow = '';
-        }
-
-        document.getElementById('modal-close').addEventListener('click', closeModal);
-        document.getElementById('modal-bg').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', function () {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                buildCards(this.dataset.filter);
-            });
-        });
-
-        // Build styles
-        document.getElementById('styles-grid').innerHTML = styles.map(s => `
-  <div class="style-card">
-    <div class="style-icon">${drawStyleIcon(s.icon)}</div>
-    <div class="style-name">${s.name}</div>
-    <div class="style-desc">${s.desc}</div>
+function buildCards(filter){
+    const grid=document.getElementById('card-grid');
+    const count=document.getElementById('card-count');
+    const filtered=filter==='all'?materials:materials.filter(m=>m.filter===filter);
+    count.textContent=filtered.length+' material'+(filtered.length!==1?'s':'');
+    grid.innerHTML=filtered.map((m,i)=>`
+<div class="card" data-id="${m.id}" style="animation-delay:${i*.05}s">
+  <div class="card-swatch ${m.texture}">
+    <span class="card-badge ${m.badge}">${m.cat}</span>
+    <div class="card-hover-overlay">${m.overlayTags.map(t=>`<span class="overlay-tag">${t}</span>`).join('')}</div>
   </div>
-`).join('');
+  <div class="card-body">
+    <div class="card-cat">${m.filter.charAt(0).toUpperCase()+m.filter.slice(1)}</div>
+    <div class="card-name">${m.name}</div>
+    <div class="card-sub">${m.sub}</div>
+    <div class="card-props">${m.designs.slice(0,2).map(d=>`<span class="prop-pill">${d}</span>`).join('')}</div>
+    <div class="card-footer">
+      <div class="card-price">${m.price} <span>/m</span></div>
+      <div class="card-rooms">${m.rooms.slice(0,2).join(' · ')}</div>
+    </div>
+  </div>
+</div>`).join('');
+    grid.querySelectorAll('.card').forEach(card=>{
+        card.addEventListener('click',()=>openModal(parseInt(card.dataset.id)));
+    });
+}
 
-        buildCards('all');
-    </script>
+function openModal(id){
+    const m=materials.find(x=>x.id===id);
+    if(!m)return;
+    document.getElementById('m-cat').textContent=m.cat;
+    document.getElementById('m-name').textContent=m.name;
+    document.getElementById('m-desc').textContent=m.desc;
+    document.getElementById('modal-swatch').className='modal-swatch '+m.texture;
+    document.getElementById('m-specs').innerHTML=m.specs.map(s=>`<div class="spec-item"><div class="spec-label">${s.l}</div><div class="spec-val">${s.v}</div></div>`).join('');
+    document.getElementById('m-designs').innerHTML=m.designs.map(d=>`<span class="design-tag">${d}</span>`).join('');
+    document.getElementById('m-rooms').innerHTML=m.rooms.map(r=>`<span class="design-tag">${r}</span>`).join('');
+    document.getElementById('modal-bg').classList.add('open');
+    document.body.style.overflow='hidden';
+}
+function closeModal(){
+    document.getElementById('modal-bg').classList.remove('open');
+    document.body.style.overflow='';
+}
+
+// touch-to-close swipe down on modal
+let touchStartY=0;
+document.getElementById('modal').addEventListener('touchstart',e=>{touchStartY=e.touches[0].clientY},{passive:true});
+document.getElementById('modal').addEventListener('touchmove',e=>{
+    const dy=e.touches[0].clientY-touchStartY;
+    if(dy>60&&document.getElementById('modal').scrollTop===0)closeModal();
+},{passive:true});
+
+document.getElementById('modal-close').addEventListener('click',closeModal);
+document.getElementById('modal-bg').addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+    btn.addEventListener('click',function(){
+        document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+        this.classList.add('active');
+        buildCards(this.dataset.filter);
+    });
+});
+
+document.getElementById('styles-grid').innerHTML=styles.map(s=>`
+<div class="style-card">
+  <div class="style-icon">${drawStyleIcon(s.icon)}</div>
+  <div class="style-name">${s.name}</div>
+  <div class="style-desc">${s.desc}</div>
+</div>`).join('');
+
+buildCards('all');
+</script>
 </body>
-
 </html>
