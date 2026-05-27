@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Commercial Services — BuildCo Construction</title>
-  <link rel="icon" type="image/x-icon" href="logo.ico">
+    <link rel="icon" type="image/x-icon" href="logo.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap"
@@ -116,9 +116,12 @@
             flex-direction: column;
             gap: 5px;
             cursor: pointer;
-            padding: 4px;
+            padding: 8px;
             background: none;
             border: none;
+            /* Ensure it's always on top and tappable */
+            position: relative;
+            z-index: 101;
         }
 
         .hamburger span {
@@ -127,6 +130,22 @@
             height: 2px;
             background: var(--white);
             transition: all 0.3s;
+            pointer-events: none;
+            /* spans shouldn't capture events */
+        }
+
+        /* Animated hamburger → X when open */
+        .hamburger.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
         }
 
         /* ── HERO ─────────────────────────────── */
@@ -715,7 +734,6 @@
             pointer-events: none;
         }
 
-        /* FIX: centre the section-tag inside CTA without using inline style */
         .cta-section .section-tag {
             justify-content: center;
         }
@@ -734,7 +752,6 @@
             margin-bottom: 1.2rem;
         }
 
-        /* FIX: missing amber colour on <em> inside cta-title */
         .cta-title em {
             font-style: normal;
             color: var(--amber);
@@ -793,13 +810,22 @@
         }
 
         /* ── MOBILE MENU ──────────────────────── */
+        /*
+         * FIX: Instead of toggling display (which can't animate and causes the
+         * race-condition where the document click listener fires before the menu
+         * is visible), we keep the menu in the DOM with display:flex at all times
+         * and animate opacity + translateY. pointer-events:none prevents
+         * interaction while hidden.
+         */
         .mobile-menu {
-            display: none;
+            display: flex;
+            /* always in layout */
             position: fixed;
             top: 64px;
             left: 0;
             right: 0;
             bottom: 0;
+            height: auto;
             background: rgba(17, 20, 24, 0.98);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
@@ -809,10 +835,20 @@
             z-index: 99;
             border-top: 1px solid var(--steel-border);
             overflow-y: auto;
+            /* Hidden state */
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-8px);
+            transition: opacity 0.25s ease, transform 0.25s ease;
+            /* Keep it out of tab order when closed */
+            visibility: hidden;
         }
 
         .mobile-menu.open {
-            display: flex;
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0px);
+            visibility: visible;
         }
 
         .mobile-menu a {
@@ -856,12 +892,10 @@
                 border-bottom: 1px solid var(--steel-border);
             }
 
-            /* Remove right border from every second step (last in row) */
             .process-step:nth-child(2n) {
                 border-right: none;
             }
 
-            /* Remove bottom border from last two steps */
             .process-step:nth-last-child(-n+2) {
                 border-bottom: none;
             }
@@ -879,19 +913,16 @@
                 display: flex;
             }
 
-            /* Stats: 2×2 grid on mobile */
             .stats-strip {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1.5rem;
             }
 
-            /* Add dividing line between stat pairs */
             .stats-strip>div:nth-child(-n+2) {
                 border-bottom: 1px solid var(--steel-border);
                 padding-bottom: 1.5rem;
             }
 
-            /* FIX: was .footer (class) — must be footer (element) */
             footer {
                 flex-direction: column;
                 align-items: flex-start;
@@ -922,7 +953,6 @@
                 text-align: center;
             }
 
-            /* Stack process steps fully on small screens */
             .process-grid {
                 grid-template-columns: 1fr;
             }
@@ -936,12 +966,10 @@
                 border-bottom: none;
             }
 
-            /* Services grid: single column */
             .services-grid {
                 grid-template-columns: 1fr;
             }
 
-            /* Stats: single column on very small screens */
             .stats-strip {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -963,7 +991,8 @@
             <li><a href="#">Contact</a></li>
         </ul>
         <a href="#contact" class="nav-cta">Get a Quote</a>
-        <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false"
+        <!-- FIX: removed inline onclick; handled entirely in JS below -->
+        <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false"
             aria-controls="mobileMenu">
             <span></span><span></span><span></span>
         </button>
@@ -976,7 +1005,7 @@
         <a href="#">Projects</a>
         <a href="#">About</a>
         <a href="#">Contact</a>
-        <a href="#contact" class="btn-primary" onclick="toggleMenu()">Get a Free Quote</a>
+        <a href="#contact" class="btn-primary">Get a Free Quote</a>
     </nav>
 
     <!-- HERO -->
@@ -1376,35 +1405,66 @@
     </footer>
 
     <script>
-        function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
-            const hamburger = document.querySelector('.hamburger');
-            const isOpen = menu.classList.toggle('open');
-            hamburger.setAttribute('aria-expanded', isOpen);
-            // Prevent body scroll when menu is open
-            document.body.style.overflow = isOpen ? 'hidden' : '';
-        }
+        (function () {
+            var hamburger = document.getElementById('hamburgerBtn');
+            var menu = document.getElementById('mobileMenu');
 
-        document.addEventListener('click', function (e) {
-            const menu = document.getElementById('mobileMenu');
-            const hamburger = document.querySelector('.hamburger');
-            if (menu.classList.contains('open') && !menu.contains(e.target) && !hamburger.contains(e.target)) {
+            function openMenu() {
+                menu.classList.add('open');
+                hamburger.classList.add('open');
+                hamburger.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMenu() {
                 menu.classList.remove('open');
+                hamburger.classList.remove('open');
                 hamburger.setAttribute('aria-expanded', 'false');
                 document.body.style.overflow = '';
             }
-        });
 
-        // Close mobile menu on any internal link click
-        document.querySelectorAll('.mobile-menu a').forEach(function (link) {
-            link.addEventListener('click', function () {
-                const menu = document.getElementById('mobileMenu');
-                const hamburger = document.querySelector('.hamburger');
-                menu.classList.remove('open');
-                hamburger.setAttribute('aria-expanded', 'false');
-                document.body.style.overflow = '';
+            function toggleMenu() {
+                if (menu.classList.contains('open')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            }
+
+            /*
+             * FIX: Use stopPropagation on the hamburger click so the event does NOT
+             * bubble up to the document listener below. Without this, the sequence was:
+             *   1. hamburger click → toggleMenu() opens menu
+             *   2. event bubbles to document → document listener sees menu is open
+             *      and immediately closes it again (race condition).
+             */
+            hamburger.addEventListener('click', function (e) {
+                e.stopPropagation();
+                toggleMenu();
             });
-        });
+
+            /* Close when clicking anywhere outside the menu */
+            document.addEventListener('click', function (e) {
+                if (menu.classList.contains('open') && !menu.contains(e.target)) {
+                    closeMenu();
+                }
+            });
+
+            /* Close on any menu link click (including the CTA button) */
+            menu.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    closeMenu();
+                });
+            });
+
+            /* Close on Escape key */
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && menu.classList.contains('open')) {
+                    closeMenu();
+                    hamburger.focus();
+                }
+            });
+        })();
     </script>
 </body>
 
