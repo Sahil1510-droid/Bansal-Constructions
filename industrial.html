@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IronForge Construction</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --black: #0a0a08;
+            --steel: #1c1c1a;
+            --iron: #2a2a27;
+            --rust: #c94b1a;
+            --rust-dim: #7a2d0d;
+            --amber: #e8930a;
+            --concrete: #b8b5aa;
+            --light: #e8e5dc;
+            --white: #f5f2e8;
+            --mono: 'Share Tech Mono', monospace;
+            --display: 'Bebas Neue', sans-serif;
+            --body: 'DM Sans', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--black);
+            color: var(--light);
+            font-family: var(--body);
+            overflow-x: hidden;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 4vw;
+            background: rgba(10, 10, 8, 0.92);
+            border-bottom: 1px solid rgba(201, 75, 26, 0.25);
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-logo {
+            font-family: var(--display);
+            font-size: clamp(1.4rem, 3vw, 1.8rem);
+            letter-spacing: 0.08em;
+            color: var(--white);
+        }
+
+        .nav-logo span {
+            color: var(--rust);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: clamp(1rem, 3vw, 2.5rem);
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--concrete);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--rust);
+        }
+
+        .nav-cta {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            background: var(--rust);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            padding: 0.6rem 1.4rem;
+            clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+            transition: background 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: var(--amber);
+            color: var(--black);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--light);
+            transition: all 0.3s;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding: 8rem 4vw 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.02) 0, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 60px),
+                repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 60px);
+            pointer-events: none;
+        }
+
+        .hero-eyebrow {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--rust);
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            display: inline-block;
+            width: 40px;
+            height: 2px;
+            background: var(--rust);
+        }
+
+        .hero-title {
+            font-family: var(--display);
+            font-size: clamp(3.5rem, 8vw, 8rem);
+            line-height: 0.92;
+            letter-spacing: 0.02em;
+            color: var(--white);
+            margin-bottom: 1.8rem;
+        }
+
+        .hero-title .accent {
+            color: var(--rust);
+            display: block;
+        }
+
+        .hero-title .outline {
+            -webkit-text-stroke: 1px var(--concrete);
+            color: transparent;
+        }
+
+        .hero-body {
+            font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+            line-height: 1.75;
+            color: var(--concrete);
+            max-width: 480px;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            background: var(--rust);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            padding: 0.9rem 2.2rem;
+            clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.2s, transform 0.15s;
+        }
+
+        .btn-primary:hover {
+            background: var(--amber);
+            color: var(--black);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            background: transparent;
+            color: var(--light);
+            border: 1px solid rgba(184, 181, 170, 0.35);
+            cursor: pointer;
+            padding: 0.9rem 2.2rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--rust);
+            color: var(--rust);
+        }
+
+        /* HERO VISUAL */
+        .hero-visual {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 1rem;
+            padding-left: 4vw;
+        }
+
+        .stat-block {
+            background: var(--iron);
+            border-left: 3px solid var(--rust);
+            padding: 1.2rem 1.6rem;
+            width: 100%;
+            max-width: 280px;
+            animation: slideIn 0.6s ease both;
+        }
+
+        .stat-block:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .stat-block:nth-child(3) {
+            animation-delay: 0.2s;
+            margin-left: 2rem;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .stat-num {
+            font-family: var(--display);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: var(--white);
+            line-height: 1;
+        }
+
+        .stat-num span {
+            color: var(--rust);
+        }
+
+        .stat-label {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--concrete);
+            margin-top: 0.3rem;
+        }
+
+        /* TICKER */
+        .ticker {
+            background: var(--rust);
+            padding: 0.65rem 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .ticker-inner {
+            display: inline-block;
+            animation: ticker 30s linear infinite;
+        }
+
+        .ticker-inner span {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--white);
+            padding: 0 3rem;
+        }
+
+        .ticker-inner span::before {
+            content: '◆  ';
+        }
+
+        @keyframes ticker {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* SERVICES */
+        .services {
+            padding: 7rem 4vw;
+            position: relative;
+        }
+
+        .section-label {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--rust);
+            margin-bottom: 0.8rem;
+        }
+
+        .section-title {
+            font-family: var(--display);
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            color: var(--white);
+            line-height: 0.95;
+            margin-bottom: 4rem;
+        }
+
+        .section-title .dim {
+            color: var(--iron);
+            -webkit-text-stroke: 1px var(--iron);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1px;
+            background: var(--iron);
+            border: 1px solid var(--iron);
+        }
+
+        .service-card {
+            background: var(--steel);
+            padding: 2.5rem 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s;
+            cursor: default;
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--rust);
+            transition: width 0.4s ease;
+        }
+
+        .service-card:hover {
+            background: var(--iron);
+        }
+
+        .service-card:hover::after {
+            width: 100%;
+        }
+
+        .service-num {
+            font-family: var(--display);
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.05);
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            line-height: 1;
+            user-select: none;
+        }
+
+        .service-icon {
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--rust-dim);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--rust);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .service-name {
+            font-family: var(--display);
+            font-size: 1.6rem;
+            letter-spacing: 0.04em;
+            color: var(--white);
+            margin-bottom: 0.8rem;
+        }
+
+        .service-desc {
+            font-size: 0.88rem;
+            line-height: 1.7;
+            color: var(--concrete);
+        }
+
+        /* PROCESS */
+        .process {
+            padding: 7rem 4vw;
+            background: var(--steel);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            margin-top: 4rem;
+            position: relative;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 28px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: repeating-linear-gradient(90deg, var(--rust) 0, var(--rust) 10px, transparent 10px, transparent 20px);
+            z-index: 0;
+        }
+
+        .step {
+            padding: 0 1.5rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-dot {
+            width: 56px;
+            height: 56px;
+            background: var(--black);
+            border: 2px solid var(--rust);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+
+        .step-dot-num {
+            font-family: var(--display);
+            font-size: 1.4rem;
+            color: var(--rust);
+        }
+
+        .step-name {
+            font-family: var(--display);
+            font-size: 1.3rem;
+            letter-spacing: 0.04em;
+            color: var(--white);
+            margin-bottom: 0.6rem;
+        }
+
+        .step-desc {
+            font-size: 0.85rem;
+            color: var(--concrete);
+            line-height: 1.65;
+        }
+
+        /* PROJECTS */
+        .projects {
+            padding: 7rem 4vw;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1rem;
+            margin-top: 4rem;
+        }
+
+        .project-card {
+            background: var(--iron);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-card:nth-child(1) {
+            grid-column: span 7;
+        }
+
+        .project-card:nth-child(2) {
+            grid-column: span 5;
+        }
+
+        .project-card:nth-child(3) {
+            grid-column: span 4;
+        }
+
+        .project-card:nth-child(4) {
+            grid-column: span 8;
+        }
+
+        .project-img {
+            width: 100%;
+            aspect-ratio: auto;
+            display: block;
+        }
+
+        .project-card:nth-child(1) .project-img {
+            height: 320px;
+        }
+
+        .project-card:nth-child(2) .project-img {
+            height: 320px;
+        }
+
+        .project-card:nth-child(3) .project-img {
+            height: 260px;
+        }
+
+        .project-card:nth-child(4) .project-img {
+            height: 260px;
+        }
+
+        /* SVG placeholder renders */
+        .project-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--iron) 0%, #1a1a18 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-placeholder::before {
+            content: attr(data-label);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: var(--display);
+            font-size: 5rem;
+            color: rgba(255, 255, 255, 0.04);
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        .project-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(201, 75, 26, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .project-overlay-text {
+            font-family: var(--display);
+            font-size: 1.2rem;
+            letter-spacing: 0.12em;
+            color: var(--white);
+        }
+
+        .project-meta {
+            padding: 1.2rem 1.5rem;
+            background: var(--steel);
+        }
+
+        .project-tag {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--rust);
+            margin-bottom: 0.4rem;
+        }
+
+        .project-title {
+            font-family: var(--display);
+            font-size: 1.25rem;
+            color: var(--white);
+        }
+
+        /* WHY US */
+        .why {
+            padding: 7rem 4vw;
+            background: var(--steel);
+        }
+
+        .why-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6vw;
+            align-items: center;
+        }
+
+        .why-left .section-title {
+            margin-bottom: 1.5rem;
+        }
+
+        .why-body {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--concrete);
+            margin-bottom: 2rem;
+        }
+
+        .why-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .why-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            font-size: 0.9rem;
+            color: var(--light);
+        }
+
+        .why-features li::before {
+            content: '→';
+            color: var(--rust);
+            font-family: var(--mono);
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .why-right {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .metric-card {
+            background: var(--black);
+            border: 1px solid rgba(201, 75, 26, 0.2);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: border-color 0.3s;
+        }
+
+        .metric-card:hover {
+            border-color: var(--rust);
+        }
+
+        .metric-card:nth-child(2) {
+            margin-top: 2rem;
+        }
+
+        .metric-card:nth-child(4) {
+            margin-top: 2rem;
+        }
+
+        .metric-big {
+            font-family: var(--display);
+            font-size: clamp(2.2rem, 4vw, 3rem);
+            color: var(--rust);
+            line-height: 1;
+            margin-bottom: 0.4rem;
+        }
+
+        .metric-label {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--concrete);
+        }
+
+        /* CTA */
+        .cta-section {
+            padding: 8rem 4vw;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: 'BUILD';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: var(--display);
+            font-size: clamp(8rem, 20vw, 18rem);
+            color: rgba(255, 255, 255, 0.025);
+            pointer-events: none;
+            white-space: nowrap;
+            letter-spacing: -0.02em;
+        }
+
+        .cta-section .section-label {
+            justify-content: center;
+            display: flex;
+        }
+
+        .cta-title {
+            font-family: var(--display);
+            font-size: clamp(2.8rem, 7vw, 6.5rem);
+            color: var(--white);
+            line-height: 0.95;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-title span {
+            color: var(--rust);
+        }
+
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--concrete);
+            max-width: 520px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--black);
+            border-top: 1px solid var(--iron);
+            padding: 4rem 4vw 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand .nav-logo {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .footer-desc {
+            font-size: 0.87rem;
+            color: var(--concrete);
+            line-height: 1.7;
+            max-width: 260px;
+        }
+
+        .footer-col h4 {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--rust);
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .footer-col ul a {
+            font-size: 0.87rem;
+            color: var(--concrete);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-col ul a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--iron);
+            padding-top: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-copy {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            color: rgba(184, 181, 170, 0.4);
+        }
+
+        /* MOBILE */
+        @media (max-width: 900px) {
+            nav {
+                padding: 1rem 5vw;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 7rem;
+                gap: 3rem;
+            }
+
+            .hero-visual {
+                padding-left: 0;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: stretch;
+            }
+
+            .stat-block {
+                max-width: none;
+                flex: 1 1 140px;
+            }
+
+            .stat-block:nth-child(3) {
+                margin-left: 0;
+            }
+
+            .process-steps::before {
+                display: none;
+            }
+
+            .process-steps {
+                gap: 1rem;
+            }
+
+            .step {
+                padding: 0 0 1rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card:nth-child(n) {
+                grid-column: span 1;
+            }
+
+            .project-card:nth-child(1) .project-img {
+                height: 220px;
+            }
+
+            .project-card:nth-child(2) .project-img {
+                height: 220px;
+            }
+
+            .project-card:nth-child(3) .project-img {
+                height: 200px;
+            }
+
+            .project-card:nth-child(4) .project-img {
+                height: 200px;
+            }
+
+            .why-inner {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-brand {
+                grid-column: span 2;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-title {
+                font-size: clamp(3rem, 13vw, 5rem);
+            }
+
+            .section-title {
+                font-size: clamp(2.2rem, 10vw, 3.5rem);
+            }
+
+            .why-right {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .metric-card:nth-child(2),
+            .metric-card:nth-child(4) {
+                margin-top: 0;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-brand {
+                grid-column: span 1;
+            }
+
+            .cta-section::before {
+                font-size: 4rem;
+            }
+        }
+
+        /* Mobile nav open state */
+        body.nav-open .nav-links {
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 56px;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 8, 0.98);
+            padding: 2rem 5vw;
+            gap: 1.5rem;
+            border-bottom: 1px solid var(--iron);
+            z-index: 99;
+        }
+
+        body.nav-open .nav-links a {
+            font-size: 0.9rem;
+        }
+
+        body.nav-open .hamburger span:nth-child(1) {
+            transform: rotate(45deg) translateY(7px);
+        }
+
+        body.nav-open .hamburger span:nth-child(2) {
+            opacity: 0;
+        }
+
+        body.nav-open .hamburger span:nth-child(3) {
+            transform: rotate(-45deg) translateY(-7px);
+        }
+
+        .footer-links a.active {
+            color: var(--rust);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-logo">Iron<span>Forge</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="residential.html">Residential</a></li>
+            <li><a href="commercial.html">Commercial</a></li>
+            <li><a href="industrial.html" class="active">Industrial</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get a
+            Quote</button>
+        <div class="hamburger" onclick="document.body.classList.toggle('nav-open')" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-eyebrow">Est. 2001 — Licensed & Bonded</div>
+            <h1 class="hero-title">
+                <span class="outline">We</span>
+                <span class="accent">Build</span>
+                Tomorrow
+            </h1>
+            <p class="hero-body">Heavy civil, industrial, and commercial construction delivered on time, on spec. From
+                foundations to finishing — IronForge brings industrial-grade precision to every project.</p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn-primary">Start a Project</a>
+                <a href="#projects" class="btn-outline">View Our Work</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="stat-block">
+                <div class="stat-num">38<span>+</span></div>
+                <div class="stat-label">Years in Operation</div>
+            </div>
+            <div class="stat-block">
+                <div class="stat-num">$2.4<span>B</span></div>
+                <div class="stat-label">Projects Delivered</div>
+            </div>
+            <div class="stat-block">
+                <div class="stat-num">0<span>.</span>3%</div>
+                <div class="stat-label">Defect Rate</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TICKER -->
+    <div class="ticker">
+        <div class="ticker-inner">
+            <span>Industrial Construction</span>
+            <span>Civil Engineering</span>
+            <span>Steel Fabrication</span>
+            <span>Site Development</span>
+            <span>Project Management</span>
+            <span>Safety Certified</span>
+            <span>Industrial Construction</span>
+            <span>Civil Engineering</span>
+            <span>Steel Fabrication</span>
+            <span>Site Development</span>
+            <span>Project Management</span>
+            <span>Safety Certified</span>
+        </div>
+    </div>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+        <div class="section-label">// What We Build</div>
+        <h2 class="section-title">Core<br><span class="dim">Services</span></h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-num">01</div>
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M3 21h18M4 21V9l8-6 8 6v12M9 21v-6h6v6" />
+                    </svg>
+                </div>
+                <div class="service-name">Industrial Facilities</div>
+                <p class="service-desc">Heavy-duty warehouses, manufacturing plants, and processing facilities
+                    engineered for maximum operational efficiency and longevity.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-num">02</div>
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="3" y="3" width="7" height="7" />
+                        <rect x="14" y="3" width="7" height="7" />
+                        <rect x="14" y="14" width="7" height="7" />
+                        <rect x="3" y="14" width="7" height="7" />
+                    </svg>
+                </div>
+                <div class="service-name">Civil Infrastructure</div>
+                <p class="service-desc">Roads, bridges, drainage systems, and utilities built to federal spec — on
+                    schedule, within budget, engineered to endure.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-num">03</div>
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M2 20h20M4 20V10l8-8 8 8v10" />
+                        <path d="M12 20v-6" />
+                        <path d="M8 20v-3h8v3" />
+                    </svg>
+                </div>
+                <div class="service-name">Commercial Build-Out</div>
+                <p class="service-desc">Ground-up commercial construction and tenant improvements that balance
+                    aesthetics, function, and code compliance.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-num">04</div>
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="3" />
+                        <path
+                            d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" />
+                    </svg>
+                </div>
+                <div class="service-name">Steel & Structural</div>
+                <p class="service-desc">In-house steel fabrication and structural erection for high-load applications —
+                    precision-cut, welded, and certified.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-num">05</div>
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 22V12M12 12L8 16M12 12l4 4" />
+                        <path d="M20 16.5A8 8 0 1 0 6 20" />
+                    </svg>
+                </div>
+                <div class="service-name">Site Development</div>
+                <p class="service-desc">Full land grading, excavation, erosion control, and utility installation. We
+                    prep the ground so your project starts right.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="process" id="process">
+        <div class="section-label">// How We Work</div>
+        <h2 class="section-title">The<br>Process</h2>
+        <div class="process-steps">
+            <div class="step">
+                <div class="step-dot">
+                    <div class="step-dot-num">01</div>
+                </div>
+                <div class="step-name">Discovery</div>
+                <p class="step-desc">Site assessment, scope definition, regulatory review, and feasibility analysis
+                    before a single dollar is committed.</p>
+            </div>
+            <div class="step">
+                <div class="step-dot">
+                    <div class="step-dot-num">02</div>
+                </div>
+                <div class="step-name">Design & Bid</div>
+                <p class="step-desc">Detailed drawings, material takeoffs, and transparent fixed-price bids. No
+                    surprises in the final invoice.</p>
+            </div>
+            <div class="step">
+                <div class="step-dot">
+                    <div class="step-dot-num">03</div>
+                </div>
+                <div class="step-name">Mobilize</div>
+                <p class="step-desc">Crew scheduling, equipment staging, supply chain lock-in, and permit clearance
+                    completed before groundbreak.</p>
+            </div>
+            <div class="step">
+                <div class="step-dot">
+                    <div class="step-dot-num">04</div>
+                </div>
+                <div class="step-name">Build</div>
+                <p class="step-desc">Structured phase milestones with daily logs, safety checks, and client access to
+                    real-time progress dashboards.</p>
+            </div>
+            <div class="step">
+                <div class="step-dot">
+                    <div class="step-dot-num">05</div>
+                </div>
+                <div class="step-name">Handover</div>
+                <p class="step-desc">Commissioning, punch list completion, as-built documentation, and a 2-year
+                    structural warranty on every project.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="projects" id="projects">
+        <div class="section-label">// Recent Work</div>
+        <h2 class="section-title">Selected<br>Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-img">
+                    <div class="project-placeholder" style="height:320px;" data-label="STRUCTURAL">
+                        <svg width="100%" height="100%" style="position:absolute;inset:0;opacity:0.12"
+                            viewBox="0 0 400 320" preserveAspectRatio="none">
+                            <line x1="0" y1="320" x2="200" y2="0" stroke="#c94b1a" stroke-width="1" />
+                            <line x1="400" y1="320" x2="200" y2="0" stroke="#c94b1a" stroke-width="1" />
+                            <line x1="0" y1="0" x2="400" y2="320" stroke="#c94b1a" stroke-width="0.5" />
+                            <line x1="0" y1="320" x2="400" y2="0" stroke="#c94b1a" stroke-width="0.5" />
+                            <rect x="20" y="40" width="360" height="240" fill="none" stroke="#c94b1a"
+                                stroke-width="1" />
+                            <rect x="60" y="80" width="280" height="160" fill="none" stroke="#c94b1a"
+                                stroke-width="0.5" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="project-overlay">
+                    <div class="project-overlay-text">View Case Study →</div>
+                </div>
+                <div class="project-meta">
+                    <div class="project-tag">Industrial / 2024</div>
+                    <div class="project-title">Meridian Logistics Hub — 480,000 sq ft</div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img">
+                    <div class="project-placeholder" style="height:320px;" data-label="CIVIL">
+                        <svg width="100%" height="100%" style="position:absolute;inset:0;opacity:0.12"
+                            viewBox="0 0 280 320" preserveAspectRatio="none">
+                            <rect x="40" y="40" width="200" height="240" fill="none" stroke="#c94b1a"
+                                stroke-width="1" />
+                            <line x1="40" y1="160" x2="240" y2="160" stroke="#c94b1a" stroke-width="0.5" />
+                            <line x1="140" y1="40" x2="140" y2="280" stroke="#c94b1a" stroke-width="0.5" />
+                            <circle cx="140" cy="160" r="80" fill="none" stroke="#c94b1a" stroke-width="0.5" />
+                            <circle cx="140" cy="160" r="40" fill="none" stroke="#c94b1a" stroke-width="0.5" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="project-overlay">
+                    <div class="project-overlay-text">View Case Study →</div>
+                </div>
+                <div class="project-meta">
+                    <div class="project-tag">Civil / 2023</div>
+                    <div class="project-title">Route 9 Bridge Overpass Retrofit</div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img">
+                    <div class="project-placeholder" style="height:260px;" data-label="STEEL">
+                        <svg width="100%" height="100%" style="position:absolute;inset:0;opacity:0.12"
+                            viewBox="0 0 240 260" preserveAspectRatio="none">
+                            <polyline points="20,240 120,20 220,240" fill="none" stroke="#c94b1a" stroke-width="1" />
+                            <line x1="20" y1="160" x2="220" y2="160" stroke="#c94b1a" stroke-width="0.5" />
+                            <line x1="50" y1="240" x2="190" y2="20" stroke="#c94b1a" stroke-width="0.5" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="project-overlay">
+                    <div class="project-overlay-text">View Case Study →</div>
+                </div>
+                <div class="project-meta">
+                    <div class="project-tag">Steel / 2023</div>
+                    <div class="project-title">Cascade Power Substation</div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img">
+                    <div class="project-placeholder" style="height:260px;" data-label="COMMERCIAL">
+                        <svg width="100%" height="100%" style="position:absolute;inset:0;opacity:0.12"
+                            viewBox="0 0 480 260" preserveAspectRatio="none">
+                            <rect x="20" y="60" width="100" height="180" fill="none" stroke="#c94b1a"
+                                stroke-width="1" />
+                            <rect x="140" y="20" width="100" height="220" fill="none" stroke="#c94b1a"
+                                stroke-width="1" />
+                            <rect x="260" y="80" width="100" height="160" fill="none" stroke="#c94b1a"
+                                stroke-width="1" />
+                            <rect x="380" y="40" width="80" height="200" fill="none" stroke="#c94b1a"
+                                stroke-width="1" />
+                            <line x1="0" y1="240" x2="480" y2="240" stroke="#c94b1a" stroke-width="1" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="project-overlay">
+                    <div class="project-overlay-text">View Case Study →</div>
+                </div>
+                <div class="project-meta">
+                    <div class="project-tag">Commercial / 2024</div>
+                    <div class="project-title">Northgate Mixed-Use Development — 12 Stories</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY US -->
+    <section class="why" id="about">
+        <div class="why-inner">
+            <div class="why-left">
+                <div class="section-label">// Why IronForge</div>
+                <h2 class="section-title">Built on<br>Accountability</h2>
+                <p class="why-body">We don't sub out our accountability. Every crew member wears our name on their
+                    hardhat because every result reflects our reputation. That's been true since 1987 and it's still
+                    true today.</p>
+                <ul class="why-features">
+                    <li>ISO 9001-certified quality management system</li>
+                    <li>OSHA 30-hour certified workforce, 3M+ hours without lost-time incident</li>
+                    <li>In-house steel fabrication for zero supply chain dependency</li>
+                    <li>Dedicated project superintendent for every single job</li>
+                    <li>2-year structural warranty, 10-year on waterproofing systems</li>
+                    <li>Live project dashboards updated daily for all clients</li>
+                </ul>
+            </div>
+            <div class="why-right">
+                <div class="metric-card">
+                    <div class="metric-big">97%</div>
+                    <div class="metric-label">On-Time Delivery</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-big">850<span style="font-size:1.2rem">+</span></div>
+                    <div class="metric-label">Projects Completed</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-big">0</div>
+                    <div class="metric-label">OSHA Lost-Time Incidents (5yr)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-big">4.9★</div>
+                    <div class="metric-label">Client Satisfaction Score</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="contact">
+        <div class="section-label">// Start Today</div>
+        <h2 class="cta-title">Let's<br><span>Build</span><br>Together</h2>
+        <p class="cta-sub">Request a no-obligation site assessment and fixed-price estimate. Our estimating team
+            responds within 24 hours.</p>
+        <div class="cta-actions">
+            <a href="tel:+91 89689-67835" class="btn-primary">Call +91 89689-67835</a>
+            <a href="mailto:projects@ironforge.com" class="btn-outline">Email Our Team</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <span class="nav-logo">Iron<span>Forge</span></span>
+                <p class="footer-desc">Heavy civil, industrial, and commercial construction since 1987. Licensed in all
+                    50 states. Bonded & insured.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="residential.html">Residential</a></li>
+                    <li><a href="commercial.html">Commercial</a></li>
+                    <li><a href="industrial.html" class="active">Industrial</a></li>
+                    <li><a href="curtain.html">Interior & Fit-Out</a></li>
+                    <li><a href="renovation.html">Renovation</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="projects.html">Our Projects</a></li>
+                    <li><a href="process.html">Our Process</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="tel:+91 89689-67835">+91 89689-67835</a></li>
+                    <li><a href="mailto:bansal_constructions.official@gmail.com">info@bansalconstructions.com</a></li>
+                    <!-- <li><a href="#">1420 Industrial Blvd</a></li>
+                    <li><a href="#">Pittsburgh, PA 15201</a></li> -->
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span class="footer-copy">© 2026 IRONFORGE CONSTRUCTION LLC. ALL RIGHTS RESERVED.</span>
+            <span class="footer-copy">LIC #PA-C-047382 | BONDED & INSURED</span>
+        </div>
+    </footer>
+
+    <script>
+        // Close mobile nav on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => document.body.classList.remove('nav-open'));
+        });
+        // Close on outside click
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav')) document.body.classList.remove('nav-open');
+        });
+    </script>
+</body>
+
+</html>
