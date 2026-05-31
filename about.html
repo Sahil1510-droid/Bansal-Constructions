@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Us — Bansal Constructions</title>
     <link rel="icon" type="image/x-icon" href="logo.ico">
-
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
@@ -45,7 +44,6 @@
             cursor: none;
         }
 
-        /* ── hide cursor on touch devices ── */
         @media (hover: none) {
             body {
                 cursor: auto;
@@ -57,7 +55,7 @@
             }
         }
 
-        /* ── CUSTOM CURSOR ── */
+        /* CUSTOM CURSOR */
         .cursor {
             position: fixed;
             top: 0;
@@ -87,7 +85,7 @@
             opacity: .6;
         }
 
-        /* ── NOISE OVERLAY ── */
+        /* NOISE OVERLAY */
         body::before {
             content: '';
             position: fixed;
@@ -98,7 +96,7 @@
             z-index: 9990;
         }
 
-        /* ── SCROLL PROGRESS ── */
+        /* SCROLL PROGRESS */
         #progress-bar {
             position: fixed;
             top: 0;
@@ -110,9 +108,7 @@
             transition: width .1s linear;
         }
 
-        /* ══════════════════════════════
-           NAV
-        ══════════════════════════════ */
+        /* NAV */
         nav {
             position: fixed;
             top: 0;
@@ -320,9 +316,7 @@
             padding: 12px 32px;
         }
 
-        /* ══════════════════════════════
-           PAGE HERO
-        ══════════════════════════════ */
+        /* PAGE HERO */
         .page-hero {
             min-height: 55vh;
             display: flex;
@@ -415,9 +409,7 @@
             animation: fadeUp .7s .55s ease forwards;
         }
 
-        /* ══════════════════════════════
-           SHARED SECTION UTILITIES
-        ══════════════════════════════ */
+        /* SHARED */
         .section {
             padding: 96px 5%;
         }
@@ -457,9 +449,7 @@
             color: var(--white);
         }
 
-        /* ══════════════════════════════
-           STORY SECTION
-        ══════════════════════════════ */
+        /* STORY */
         .story-section {
             background: var(--dark-2);
         }
@@ -487,10 +477,8 @@
             position: absolute;
             inset: 0;
             background:
-                repeating-linear-gradient(0deg, transparent, transparent 44px,
-                    rgba(201, 168, 76, .03) 44px, rgba(201, 168, 76, .03) 45px),
-                repeating-linear-gradient(90deg, transparent, transparent 44px,
-                    rgba(201, 168, 76, .03) 44px, rgba(201, 168, 76, .03) 45px);
+                repeating-linear-gradient(0deg, transparent, transparent 44px, rgba(201, 168, 76, .03) 44px, rgba(201, 168, 76, .03) 45px),
+                repeating-linear-gradient(90deg, transparent, transparent 44px, rgba(201, 168, 76, .03) 44px, rgba(201, 168, 76, .03) 45px);
         }
 
         .story-frame-icon {
@@ -604,7 +592,11 @@
         }
 
         /* ══════════════════════════════
-           TIMELINE
+           TIMELINE  —  FIXED
+           All content lives in .tl-right for every item.
+           Desktop: odd rows use `direction:rtl` so .tl-right
+                    renders visually on the LEFT of the centre line.
+           Mobile:  direction reset; .tl-left hidden; single column.
         ══════════════════════════════ */
         .timeline-section {
             background: var(--dark);
@@ -622,9 +614,7 @@
             top: 0;
             bottom: 0;
             width: 1px;
-            background: linear-gradient(to bottom,
-                    transparent, rgba(201, 168, 76, .3) 10%,
-                    rgba(201, 168, 76, .3) 90%, transparent);
+            background: linear-gradient(to bottom, transparent, rgba(201, 168, 76, .3) 10%, rgba(201, 168, 76, .3) 90%, transparent);
             transform: translateX(-50%);
         }
 
@@ -640,39 +630,30 @@
             margin-bottom: 0;
         }
 
+        /* Odd items: flip direction so .tl-right appears on the left */
+        .tl-item:nth-child(odd) {
+            direction: rtl;
+        }
+
+        .tl-item:nth-child(odd)>* {
+            direction: ltr;
+        }
+
+        .tl-item:nth-child(odd) .tl-left {
+            visibility: hidden;
+        }
+
+        /* Even items: normal direction, left column hidden */
+        .tl-item:nth-child(even) .tl-left {
+            visibility: hidden;
+        }
+
         .tl-left {
-            text-align: right;
             padding-right: 36px;
         }
 
         .tl-right {
             padding-left: 36px;
-        }
-
-        .tl-item:nth-child(odd) .tl-left {
-            order: 1;
-        }
-
-        .tl-item:nth-child(odd) .tl-center {
-            order: 2;
-        }
-
-        .tl-item:nth-child(odd) .tl-right {
-            order: 3;
-            visibility: hidden;
-        }
-
-        .tl-item:nth-child(even) .tl-left {
-            order: 1;
-            visibility: hidden;
-        }
-
-        .tl-item:nth-child(even) .tl-center {
-            order: 2;
-        }
-
-        .tl-item:nth-child(even) .tl-right {
-            order: 3;
         }
 
         .tl-center {
@@ -724,9 +705,7 @@
             color: var(--text-muted);
         }
 
-        /* ══════════════════════════════
-           TEAM
-        ══════════════════════════════ */
+        /* TEAM */
         .team-section {
             background: var(--dark-2);
         }
@@ -752,7 +731,7 @@
 
         .team-avatar {
             width: 100%;
-            aspect-ratio: 1 / 1;
+            aspect-ratio: 1/1;
             background: var(--stone);
             position: relative;
             overflow: hidden;
@@ -815,9 +794,7 @@
             color: var(--text-muted);
         }
 
-        /* ══════════════════════════════
-           VALUES
-        ══════════════════════════════ */
+        /* VALUES */
         .values-section {
             background: var(--dark);
         }
@@ -912,9 +889,7 @@
             color: var(--text-muted);
         }
 
-        /* ══════════════════════════════
-           STATS BELT
-        ══════════════════════════════ */
+        /* STATS BELT */
         .stats-belt {
             background: var(--gold);
             display: grid;
@@ -958,9 +933,7 @@
             font-weight: 500;
         }
 
-        /* ══════════════════════════════
-           CERTIFICATIONS
-        ══════════════════════════════ */
+        /* CERTIFICATIONS */
         .certs-section {
             background: var(--dark-2);
         }
@@ -1017,9 +990,7 @@
             color: var(--text-muted);
         }
 
-        /* ══════════════════════════════
-           CTA STRIP
-        ══════════════════════════════ */
+        /* CTA STRIP */
         .cta-strip {
             background: var(--dark-3);
             border-top: 1px solid rgba(201, 168, 76, .1);
@@ -1090,9 +1061,7 @@
             transform: translateY(-2px);
         }
 
-        /* ══════════════════════════════
-           FOOTER
-        ══════════════════════════════ */
+        /* FOOTER */
         footer {
             background: var(--dark-2);
             padding: 72px 5% 36px;
@@ -1237,9 +1206,7 @@
             fill: var(--gold);
         }
 
-        /* ══════════════════════════════
-           ANIMATIONS
-        ══════════════════════════════ */
+        /* ANIMATIONS */
         @keyframes fadeUp {
             from {
                 opacity: 0;
@@ -1305,9 +1272,7 @@
             transition-delay: .5s;
         }
 
-        /* ══════════════════════════════
-           RESPONSIVE — TABLET  ≤ 1100px
-        ══════════════════════════════ */
+        /* ── TABLET ≤ 1100px ── */
         @media (max-width: 1100px) {
             .team-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -1319,9 +1284,7 @@
             }
         }
 
-        /* ══════════════════════════════
-           RESPONSIVE — TABLET  ≤ 900px
-        ══════════════════════════════ */
+        /* ── TABLET ≤ 900px ── */
         @media (max-width: 900px) {
             .section {
                 padding: 72px 5%;
@@ -1332,7 +1295,6 @@
                 gap: 56px;
             }
 
-            /* Compact visual on tablet so badge doesn't clip */
             .story-frame {
                 aspect-ratio: 16/9;
             }
@@ -1373,7 +1335,7 @@
                 align-items: flex-start;
             }
 
-            /* Flatten timeline */
+            /* ── Mobile timeline: single left-aligned column ── */
             .timeline::before {
                 left: 22px;
                 transform: none;
@@ -1381,33 +1343,33 @@
 
             .tl-item {
                 grid-template-columns: 44px 1fr;
-                gap: 0;
                 margin-bottom: 48px;
+                /* Cancel the desktop rtl trick */
+                direction: ltr !important;
             }
 
-            .tl-item:nth-child(odd) .tl-left,
-            .tl-item:nth-child(even) .tl-left {
-                display: none;
+            .tl-item>* {
+                direction: ltr !important;
             }
 
-            .tl-item:nth-child(odd) .tl-right,
-            .tl-item:nth-child(even) .tl-right {
-                visibility: visible;
-                order: 3;
+            /* Hide the always-empty left column */
+            .tl-left {
+                display: none !important;
+            }
+
+            /* All content is already in .tl-right — just make sure it shows */
+            .tl-right {
+                visibility: visible !important;
                 padding-left: 20px;
                 text-align: left;
             }
 
-            .tl-item:nth-child(odd) .tl-center,
-            .tl-item:nth-child(even) .tl-center {
-                order: 2;
+            .tl-center {
                 align-items: flex-start;
             }
         }
 
-        /* ══════════════════════════════
-           RESPONSIVE — MOBILE  ≤ 768px
-        ══════════════════════════════ */
+        /* ── MOBILE ≤ 768px ── */
         @media (max-width: 768px) {
             nav {
                 padding: 0 4%;
@@ -1470,7 +1432,6 @@
                 padding: 16px 24px;
             }
 
-            /* Reduce transition delays on mobile so elements feel snappier */
             .d1 {
                 transition-delay: .05s;
             }
@@ -1488,9 +1449,7 @@
             }
         }
 
-        /* ══════════════════════════════
-           RESPONSIVE — MOBILE  ≤ 480px
-        ══════════════════════════════ */
+        /* ── MOBILE ≤ 480px ── */
         @media (max-width: 480px) {
             nav {
                 height: 60px;
@@ -1516,7 +1475,6 @@
                 font-size: 2.2rem;
             }
 
-            /* Ensure stats don't overflow on very small screens */
             .stats-belt {
                 grid-template-columns: 1fr 1fr;
             }
@@ -1529,7 +1487,6 @@
                 padding: 32px 12px;
             }
 
-            /* Cert cards full-width */
             .cert-card {
                 padding: 24px 20px;
             }
@@ -1552,7 +1509,6 @@
                 font-size: 1.6rem;
             }
 
-            /* Timeline dot size on tiny screens */
             .tl-dot {
                 width: 36px;
                 height: 36px;
@@ -1567,13 +1523,11 @@
                 grid-template-columns: 36px 1fr;
             }
 
-            .tl-item:nth-child(odd) .tl-right,
-            .tl-item:nth-child(even) .tl-right {
+            .tl-right {
                 padding-left: 16px;
             }
         }
 
-        /* ── Touch: disable hover transforms that feel buggy on tap ── */
         @media (hover: none) {
             .team-card:hover {
                 transform: none;
@@ -1588,14 +1542,11 @@
 
 <body>
 
-    <!-- Cursor -->
     <div class="cursor" id="cursor"></div>
     <div class="cursor-ring" id="cursor-ring"></div>
-
-    <!-- Scroll Progress -->
     <div id="progress-bar"></div>
 
-    <!-- ── NAV ── -->
+    <!-- NAV -->
     <nav id="navbar">
         <a href="index.html" class="nav-logo">
             <div class="logo-mark">
@@ -1629,16 +1580,13 @@
         <a href="contact.html" class="mobile-link mobile-menu-cta">Get a Quote</a>
     </div>
 
-    <!-- ── PAGE HERO ── -->
+    <!-- PAGE HERO -->
     <div class="page-hero">
         <div class="page-hero-bg"></div>
         <div class="page-hero-grid"></div>
         <div class="page-hero-glow"></div>
         <div class="page-hero-content">
-            <h1 class="page-hero-title">
-                Our Story,<br>
-                Our <em>Foundation</em>
-            </h1>
+            <h1 class="page-hero-title">Our Story,<br>Our <em>Foundation</em></h1>
             <p class="page-hero-sub">
                 For over 25 years, Bansal Constructions has shaped the skylines of North India — guided by an unwavering
                 belief that great buildings begin with great people.
@@ -1646,7 +1594,7 @@
         </div>
     </div>
 
-    <!-- ── STORY ── -->
+    <!-- STORY -->
     <section class="section story-section">
         <div class="section-inner">
             <div class="story-grid">
@@ -1669,7 +1617,6 @@
                         <div class="story-badge-label">Years of<br>Excellence</div>
                     </div>
                 </div>
-
                 <div class="story-text">
                     <div class="section-label reveal">
                         <div class="section-label-line"></div>
@@ -1700,7 +1647,7 @@
         </div>
     </section>
 
-    <!-- ── STATS BELT ── -->
+    <!-- STATS BELT -->
     <div class="stats-belt">
         <div class="stat-item reveal">
             <div class="stat-num"><span class="counter" data-target="500">0</span>+</div>
@@ -1720,7 +1667,14 @@
         </div>
     </div>
 
-    <!-- ── TIMELINE ── -->
+    <!-- TIMELINE
+         FIX: All content is in .tl-right for every item.
+         .tl-left is always empty.
+         On desktop, odd items use direction:rtl to push .tl-right
+         visually to the left of the centre line.
+         On mobile (≤900px), direction is reset and .tl-left is
+         display:none — so all items stack cleanly in one column.
+    -->
     <section class="section timeline-section">
         <div class="section-inner">
             <div class="section-label reveal">
@@ -1731,19 +1685,21 @@
 
             <div class="timeline">
 
+                <!-- 1998 — ODD → visually LEFT on desktop -->
                 <div class="tl-item reveal">
-                    <div class="tl-left">
+                    <div class="tl-left"></div>
+                    <div class="tl-center">
+                        <div class="tl-dot">✦</div>
+                    </div>
+                    <div class="tl-right">
                         <div class="tl-year">1998</div>
                         <div class="tl-title">The Foundation</div>
                         <div class="tl-desc">Sh. Ramesh Bansal establishes Bansal Constructions in Chandigarh with a
                             team of 12, completing the firm's first residential project in Sector 22.</div>
                     </div>
-                    <div class="tl-center">
-                        <div class="tl-dot">✦</div>
-                    </div>
-                    <div class="tl-right"></div>
                 </div>
 
+                <!-- 2005 — EVEN → visually RIGHT on desktop -->
                 <div class="tl-item reveal d1">
                     <div class="tl-left"></div>
                     <div class="tl-center">
@@ -1757,20 +1713,22 @@
                     </div>
                 </div>
 
+                <!-- 2010 — ODD → visually LEFT on desktop -->
                 <div class="tl-item reveal">
-                    <div class="tl-left">
+                    <div class="tl-left"></div>
+                    <div class="tl-center">
+                        <div class="tl-dot">✦</div>
+                    </div>
+                    <div class="tl-right">
                         <div class="tl-year">2010</div>
                         <div class="tl-title">100th Project</div>
                         <div class="tl-desc">Completion of the 100th project milestone. By this year, Bansal
                             Constructions had expanded its workforce to 120 and opened offices in Mohali and Panchkula.
                         </div>
                     </div>
-                    <div class="tl-center">
-                        <div class="tl-dot">✦</div>
-                    </div>
-                    <div class="tl-right"></div>
                 </div>
 
+                <!-- 2015 — EVEN → visually RIGHT on desktop -->
                 <div class="tl-item reveal d1">
                     <div class="tl-left"></div>
                     <div class="tl-center">
@@ -1784,19 +1742,21 @@
                     </div>
                 </div>
 
+                <!-- 2019 — ODD → visually LEFT on desktop -->
                 <div class="tl-item reveal">
-                    <div class="tl-left">
+                    <div class="tl-left"></div>
+                    <div class="tl-center">
+                        <div class="tl-dot">✦</div>
+                    </div>
+                    <div class="tl-right">
                         <div class="tl-year">2019</div>
                         <div class="tl-title">Green Building Certification</div>
                         <div class="tl-desc">Bansal Constructions becomes one of the first construction firms in North
                             India to adopt IGBC Green Building guidelines across all new residential projects.</div>
                     </div>
-                    <div class="tl-center">
-                        <div class="tl-dot">✦</div>
-                    </div>
-                    <div class="tl-right"></div>
                 </div>
 
+                <!-- 2024 — EVEN → visually RIGHT on desktop -->
                 <div class="tl-item reveal d1">
                     <div class="tl-left"></div>
                     <div class="tl-center">
@@ -1815,7 +1775,7 @@
         </div>
     </section>
 
-    <!-- ── VALUES ── -->
+    <!-- VALUES -->
     <section class="section values-section">
         <div class="section-inner">
             <div class="section-label reveal">
@@ -1826,23 +1786,19 @@
             <div class="values-grid">
                 <div class="value-card reveal">
                     <div class="value-num">01</div>
-                    <div class="value-icon">
-                        <svg viewBox="0 0 24 24">
+                    <div class="value-icon"><svg viewBox="0 0 24 24">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                        </svg>
-                    </div>
+                        </svg></div>
                     <h3 class="value-title">Integrity Above All</h3>
                     <p class="value-desc">We say what we mean and build what we promise. Transparent pricing, honest
                         timelines, and clear communication are non-negotiables at every project stage.</p>
                 </div>
                 <div class="value-card reveal d1">
                     <div class="value-num">02</div>
-                    <div class="value-icon">
-                        <svg viewBox="0 0 24 24">
+                    <div class="value-icon"><svg viewBox="0 0 24 24">
                             <circle cx="12" cy="12" r="10" />
                             <polyline points="12 6 12 12 16 14" />
-                        </svg>
-                    </div>
+                        </svg></div>
                     <h3 class="value-title">Precision &amp; Timeliness</h3>
                     <p class="value-desc">We treat project timelines as commitments, not suggestions. Our track record
                         of on-time deliveries is a source of immense professional pride.</p>
@@ -1863,11 +1819,9 @@
                 </div>
                 <div class="value-card reveal">
                     <div class="value-num">04</div>
-                    <div class="value-icon">
-                        <svg viewBox="0 0 24 24">
+                    <div class="value-icon"><svg viewBox="0 0 24 24">
                             <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-                        </svg>
-                    </div>
+                        </svg></div>
                     <h3 class="value-title">Engineering Excellence</h3>
                     <p class="value-desc">We invest in the best materials, modern machinery, and continuous skill
                         development so every structure we deliver exceeds structural and aesthetic benchmarks.</p>
@@ -1901,7 +1855,7 @@
         </div>
     </section>
 
-    <!-- ── TEAM ── -->
+    <!-- TEAM -->
     <section class="section team-section">
         <div class="section-inner">
             <div class="section-label reveal">
@@ -1914,12 +1868,10 @@
                     <div class="team-avatar">
                         <div class="team-avatar-bg"></div>
                         <div class="team-avatar-init">RB</div>
-                        <div class="team-avatar-icon">
-                            <svg viewBox="0 0 24 24">
+                        <div class="team-avatar-icon"><svg viewBox="0 0 24 24">
                                 <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
                                 <circle cx="12" cy="7" r="4" />
-                            </svg>
-                        </div>
+                            </svg></div>
                     </div>
                     <div class="team-info">
                         <div class="team-name">Sh. Ramesh Bansal</div>
@@ -1932,12 +1884,10 @@
                     <div class="team-avatar">
                         <div class="team-avatar-bg"></div>
                         <div class="team-avatar-init">AB</div>
-                        <div class="team-avatar-icon">
-                            <svg viewBox="0 0 24 24">
+                        <div class="team-avatar-icon"><svg viewBox="0 0 24 24">
                                 <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
                                 <circle cx="12" cy="7" r="4" />
-                            </svg>
-                        </div>
+                            </svg></div>
                     </div>
                     <div class="team-info">
                         <div class="team-name">Ar. Ankit Bansal</div>
@@ -1950,12 +1900,10 @@
                     <div class="team-avatar">
                         <div class="team-avatar-bg"></div>
                         <div class="team-avatar-init">PS</div>
-                        <div class="team-avatar-icon">
-                            <svg viewBox="0 0 24 24">
+                        <div class="team-avatar-icon"><svg viewBox="0 0 24 24">
                                 <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
                                 <circle cx="12" cy="7" r="4" />
-                            </svg>
-                        </div>
+                            </svg></div>
                     </div>
                     <div class="team-info">
                         <div class="team-name">Er. Priya Sharma</div>
@@ -1968,12 +1916,10 @@
                     <div class="team-avatar">
                         <div class="team-avatar-bg"></div>
                         <div class="team-avatar-init">VK</div>
-                        <div class="team-avatar-icon">
-                            <svg viewBox="0 0 24 24">
+                        <div class="team-avatar-icon"><svg viewBox="0 0 24 24">
                                 <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
                                 <circle cx="12" cy="7" r="4" />
-                            </svg>
-                        </div>
+                            </svg></div>
                     </div>
                     <div class="team-info">
                         <div class="team-name">Sh. Vikram Kapoor</div>
@@ -1986,7 +1932,7 @@
         </div>
     </section>
 
-    <!-- ── CERTIFICATIONS ── -->
+    <!-- CERTIFICATIONS -->
     <section class="section certs-section">
         <div class="section-inner">
             <div class="section-label reveal">
@@ -1996,11 +1942,9 @@
             <h2 class="section-title reveal">Accreditations &amp;<br>Certifications</h2>
             <div class="certs-grid">
                 <div class="cert-card reveal">
-                    <div class="cert-icon">
-                        <svg viewBox="0 0 24 24">
+                    <div class="cert-icon"><svg viewBox="0 0 24 24">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                        </svg>
-                    </div>
+                        </svg></div>
                     <div>
                         <div class="cert-title">ISO 9001:2015 Certified</div>
                         <div class="cert-body">Quality Management System certification ensuring consistent delivery of
@@ -2008,12 +1952,10 @@
                     </div>
                 </div>
                 <div class="cert-card reveal d1">
-                    <div class="cert-icon">
-                        <svg viewBox="0 0 24 24">
+                    <div class="cert-icon"><svg viewBox="0 0 24 24">
                             <circle cx="12" cy="8" r="6" />
                             <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11" />
-                        </svg>
-                    </div>
+                        </svg></div>
                     <div>
                         <div class="cert-title">RERA Registered</div>
                         <div class="cert-body">All residential projects are fully registered and compliant under the
@@ -2021,12 +1963,10 @@
                     </div>
                 </div>
                 <div class="cert-card reveal d2">
-                    <div class="cert-icon">
-                        <svg viewBox="0 0 24 24">
+                    <div class="cert-icon"><svg viewBox="0 0 24 24">
                             <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z" />
                             <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z" />
-                        </svg>
-                    </div>
+                        </svg></div>
                     <div>
                         <div class="cert-title">IGBC Green Building</div>
                         <div class="cert-body">Accredited practitioner status with the Indian Green Building Council for
@@ -2034,12 +1974,10 @@
                     </div>
                 </div>
                 <div class="cert-card reveal">
-                    <div class="cert-icon">
-                        <svg viewBox="0 0 24 24">
+                    <div class="cert-icon"><svg viewBox="0 0 24 24">
                             <rect x="2" y="7" width="20" height="14" rx="2" />
                             <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" />
-                        </svg>
-                    </div>
+                        </svg></div>
                     <div>
                         <div class="cert-title">MSME Registered Enterprise</div>
                         <div class="cert-body">Recognised under the Ministry of Micro, Small and Medium Enterprises,
@@ -2064,12 +2002,10 @@
                     </div>
                 </div>
                 <div class="cert-card reveal d2">
-                    <div class="cert-icon">
-                        <svg viewBox="0 0 24 24">
+                    <div class="cert-icon"><svg viewBox="0 0 24 24">
                             <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
                             <polyline points="22 4 12 14.01 9 11.01" />
-                        </svg>
-                    </div>
+                        </svg></div>
                     <div>
                         <div class="cert-title">BIS Compliant Materials</div>
                         <div class="cert-body">Committed to using only Bureau of Indian Standards certified construction
@@ -2080,38 +2016,30 @@
         </div>
     </section>
 
-    <!-- ── CTA STRIP ── -->
+    <!-- CTA STRIP -->
     <div class="cta-strip">
         <div class="cta-inner">
             <div class="cta-text reveal">
                 <h2>Ready to Build Something Great?</h2>
                 <p>Speak with our team today — consultations are always free and obligation-free.</p>
             </div>
-            <a href="index.html#contact" class="btn-primary reveal d2">
-                <span>Start Your Project →</span>
-            </a>
+            <a href="index.html#contact" class="btn-primary reveal d2"><span>Start Your Project →</span></a>
         </div>
     </div>
 
-    <!-- ── FOOTER ── -->
+    <!-- FOOTER -->
     <footer>
         <div class="footer-top">
-
             <div class="footer-brand">
-                <a href="index.html" class="nav-logo">
-                    <div class="logo-mark">
-                        <svg viewBox="0 0 20 20">
+                <a href="#" class="nav-logo">
+                    <div class="logo-mark"><svg viewBox="0 0 20 20">
                             <path d="M2 16 L10 4 L18 16 Z M6 16 L6 10 L14 10 L14 16" />
-                        </svg>
-                    </div>
-                    <div class="logo-text">
-                        <span class="logo-name">Bansal</span>
-                        <span class="logo-sub">Constructions</span>
-                    </div>
+                        </svg></div>
+                    <div class="logo-text"><span class="logo-name">Bansal</span><span
+                            class="logo-sub">Constructions</span></div>
                 </a>
-                <p>Building North India's finest residential, commercial, and industrial structures since 1998.
-                    Quality is not a feature — it is our identity.</p>
-
+                <p>Building India's finest residential, commercial, and industrial structures since 2001. Quality is not
+                    a feature — it is our identity.</p>
                 <div class="msme-badge">
                     <div class="msme-seal">
                         <svg viewBox="0 0 24 24">
@@ -2125,7 +2053,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="footer-col">
                 <div class="footer-col-title">Services</div>
                 <ul>
@@ -2136,7 +2063,6 @@
                     <li><a href="renovation.html">Renovation</a></li>
                 </ul>
             </div>
-
             <div class="footer-col">
                 <div class="footer-col-title">Company</div>
                 <ul>
@@ -2147,28 +2073,18 @@
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
-
             <div class="footer-col">
-                <div class="footer-col-title">Contact</div>
+                <div class="footer-col-title">Terms</div>
                 <ul>
-                    <li><a href="#">SCO 6, BDS Mall, Urban Estate Phase 1<br>Patiala 147001</a></li>
-                    <li><a href="tel:+918968967835">+91 89689 67835</a></li>
-                    <li><a
-                            href="mailto:bansalconstructions.official@gmail.com">bansalconstructions.official@gmail.com</a>
-                    </li>
-                    <li><a href="#">Mon–Sat: 9 AM – 6 PM</a></li>
+                    <li><a href="terms.html">Terms &amp; Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
                 </ul>
             </div>
-
         </div>
-
         <div class="footer-bottom">
-            <div class="footer-copy">
-                © 2026 Bansal Constructions. All rights reserved. &nbsp;|&nbsp;
-                MSME Udyam No: UDYAM-PB-17-0130006
-            </div>
+            <div class="footer-copy">© 2001 Bansal Constructions Pvt. Ltd. All rights reserved.</div>
             <div class="footer-socials">
-                <a href="https://www.instagram.com/bansal_constructions/" target="_blank" rel="noopener noreferrer"
+                <a href="https://www.instagram.com/bansal_constructions/" target="_blank" rel="noopener"
                     class="social-btn" aria-label="Instagram">
                     <svg viewBox="0 0 24 24">
                         <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
@@ -2180,23 +2096,19 @@
         </div>
     </footer>
 
-    <!-- ── SCRIPTS ── -->
     <script>
-        // ── Custom Cursor (desktop only) ──
+        // Custom Cursor
         const cursor = document.getElementById('cursor');
         const ring = document.getElementById('cursor-ring');
         if (window.matchMedia('(hover: hover)').matches) {
             let mx = 0, my = 0, rx = 0, ry = 0;
             document.addEventListener('mousemove', e => {
                 mx = e.clientX; my = e.clientY;
-                cursor.style.left = mx + 'px';
-                cursor.style.top = my + 'px';
+                cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
             });
             (function animRing() {
-                rx += (mx - rx) * .12;
-                ry += (my - ry) * .12;
-                ring.style.left = rx + 'px';
-                ring.style.top = ry + 'px';
+                rx += (mx - rx) * .12; ry += (my - ry) * .12;
+                ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
                 requestAnimationFrame(animRing);
             })();
             document.querySelectorAll('a, button').forEach(el => {
@@ -2211,82 +2123,56 @@
             });
         }
 
-        // ── Scroll Progress ──
+        // Scroll Progress
         const bar = document.getElementById('progress-bar');
         window.addEventListener('scroll', () => {
-            const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-            bar.style.width = pct + '%';
+            bar.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
         }, { passive: true });
 
-        // ── Navbar ──
+        // Navbar
         const nav = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            nav.classList.toggle('scrolled', window.scrollY > 60);
-        }, { passive: true });
+        window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
 
-        // ── Hamburger ──
+        // Hamburger
         const ham = document.getElementById('hamburger');
         const menu = document.getElementById('mobile-menu');
-
         ham.addEventListener('click', () => {
-            const isOpen = menu.classList.contains('open');
-            ham.classList.toggle('open');
-            menu.classList.toggle('open');
-            document.body.style.overflow = isOpen ? '' : 'hidden';
-            ham.setAttribute('aria-label', isOpen ? 'Open menu' : 'Close menu');
+            const open = menu.classList.contains('open');
+            ham.classList.toggle('open'); menu.classList.toggle('open');
+            document.body.style.overflow = open ? '' : 'hidden';
+            ham.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
         });
-
-        document.querySelectorAll('.mobile-link').forEach(a => {
-            a.addEventListener('click', () => {
-                ham.classList.remove('open');
-                menu.classList.remove('open');
-                document.body.style.overflow = '';
-                ham.setAttribute('aria-label', 'Open menu');
-            });
-        });
-
-        // Close mobile menu on Escape key
+        document.querySelectorAll('.mobile-link').forEach(a => a.addEventListener('click', () => {
+            ham.classList.remove('open'); menu.classList.remove('open');
+            document.body.style.overflow = ''; ham.setAttribute('aria-label', 'Open menu');
+        }));
         document.addEventListener('keydown', e => {
             if (e.key === 'Escape' && menu.classList.contains('open')) {
-                ham.classList.remove('open');
-                menu.classList.remove('open');
-                document.body.style.overflow = '';
-                ham.setAttribute('aria-label', 'Open menu');
+                ham.classList.remove('open'); menu.classList.remove('open');
+                document.body.style.overflow = ''; ham.setAttribute('aria-label', 'Open menu');
             }
         });
 
-        // ── Scroll Reveal ──
+        // Scroll Reveal
         const ro = new IntersectionObserver(entries => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.classList.add('visible');
-                    ro.unobserve(e.target);
-                }
-            });
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
         }, { threshold: .08 });
-
         document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => ro.observe(el));
 
-        // ── Counter Animation ──
+        // Counter Animation
         const co = new IntersectionObserver(entries => {
             entries.forEach(e => {
                 if (!e.isIntersecting) return;
-                const el = e.target;
-                const target = +el.dataset.target;
-                const dur = 1600;
-                const start = performance.now();
+                const el = e.target, target = +el.dataset.target, dur = 1600, start = performance.now();
                 const ease = t => 1 - Math.pow(1 - t, 3);
                 const step = now => {
                     const t = Math.min((now - start) / dur, 1);
                     el.textContent = Math.floor(ease(t) * target);
-                    if (t < 1) requestAnimationFrame(step);
-                    else el.textContent = target;
+                    if (t < 1) requestAnimationFrame(step); else el.textContent = target;
                 };
-                requestAnimationFrame(step);
-                co.unobserve(el);
+                requestAnimationFrame(step); co.unobserve(el);
             });
         }, { threshold: .5 });
-
         document.querySelectorAll('.counter').forEach(el => co.observe(el));
     </script>
 </body>
