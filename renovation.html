@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renovation Services — Bansal Constructions</title>
+    <link rel="icon" type="image/x-icon" href="logo.ico">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Barlow:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --gold: #C9A84C;
+            --gold-light: #E8C96B;
+            --gold-dust: #F5E6B2;
+            --gold-dark: #8B6914;
+            --gold-deep: #5C420A;
+            --charcoal: #1A1A1A;
+            --charcoal-mid: #2C2C2C;
+            --charcoal-light: #3D3D3D;
+            --warm-white: #FAF7F0;
+            --off-white: #F0EAD6;
+            --text-muted: #9A8A6A;
+            --text-light: #C4B48A;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--charcoal);
+            color: var(--warm-white);
+            overflow-x: hidden;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 4rem;
+            background: rgba(26, 26, 26, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+
+        .nav-logo span {
+            color: var(--warm-white);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+
+        .nav-cta {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 0.6rem 1.6rem;
+            font-family: 'Barlow', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .nav-cta:hover {
+            background: var(--gold);
+            color: var(--charcoal);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--gold);
+            transition: all 0.3s;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 0 4rem;
+            padding-top: 80px;
+            background: linear-gradient(135deg, #0D0D0D 0%, #1A1A1A 50%, #242010 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 70% 50%, rgba(201, 168, 76, 0.08) 0%, transparent 65%);
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            opacity: 0.04;
+            background-image: linear-gradient(var(--gold) 1px, transparent 1px), linear-gradient(90deg, var(--gold) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 1px solid rgba(201, 168, 76, 0.4);
+            padding: 0.4rem 1rem;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--gold);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--warm-white);
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--text-light);
+            max-width: 520px;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--charcoal);
+            padding: 0.9rem 2.4rem;
+            font-family: 'Barlow', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--warm-white);
+            padding: 0.9rem 2.4rem;
+            font-family: 'Barlow', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .hero-stats {
+            position: absolute;
+            bottom: 3rem;
+            right: 4rem;
+            display: flex;
+            gap: 3rem;
+            z-index: 2;
+        }
+
+        .stat {
+            text-align: right;
+        }
+
+        .stat-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-top: 0.3rem;
+        }
+
+        /* ── SECTION SHARED ── */
+        section {
+            padding: 6rem 4rem;
+        }
+
+        .section-tag {
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-weight: 300;
+            line-height: 1.8;
+            max-width: 560px;
+        }
+
+        .gold-line {
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
+            margin: 1.5rem 0;
+        }
+
+        /* ── SERVICES ── */
+        .services {
+            background: var(--charcoal-mid);
+        }
+
+        .services-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1px;
+            background: rgba(201, 168, 76, 0.1);
+        }
+
+        .service-card {
+            background: var(--charcoal-mid);
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.4s;
+            cursor: default;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            background: #252525;
+        }
+
+        .service-icon {
+            width: 52px;
+            height: 52px;
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            color: var(--warm-white);
+            margin-bottom: 0.75rem;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-link {
+            color: var(--gold);
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-link::after {
+            content: '→';
+            transition: transform 0.3s;
+        }
+
+        .service-link:hover::after {
+            transform: translateX(4px);
+        }
+
+        .service-num {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: rgba(201, 168, 76, 0.06);
+            line-height: 1;
+        }
+
+        /* ── PROCESS ── */
+        .process {
+            background: var(--charcoal);
+        }
+
+        .process-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .step {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.8rem 0;
+            position: relative;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+        }
+
+        .step:last-child {
+            border-bottom: none;
+        }
+
+        .step-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: rgba(201, 168, 76, 0.25);
+            min-width: 2.5rem;
+            line-height: 1;
+            padding-top: 0.2rem;
+            transition: color 0.3s;
+        }
+
+        .step:hover .step-num {
+            color: var(--gold);
+        }
+
+        .step-content h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            color: var(--warm-white);
+            margin-bottom: 0.5rem;
+        }
+
+        .step-content p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .process-visual {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(145deg, #1E1A10, #2A2210);
+            border: 1px solid rgba(201, 168, 76, 0.15);
+            overflow: hidden;
+        }
+
+        .process-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(201, 168, 76, 0.02) 20px, rgba(201, 168, 76, 0.02) 21px);
+        }
+
+        .process-visual-inner {
+            position: absolute;
+            inset: 2.5rem;
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .pv-icon {
+            font-size: 4rem;
+            opacity: 0.6;
+        }
+
+        .pv-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--gold);
+            text-align: center;
+        }
+
+        .pv-sub {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .process-visual .corner {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-color: var(--gold);
+            border-style: solid;
+            opacity: 0.5;
+        }
+
+        .corner.tl {
+            top: 1rem;
+            left: 1rem;
+            border-width: 2px 0 0 2px;
+        }
+
+        .corner.tr {
+            top: 1rem;
+            right: 1rem;
+            border-width: 2px 2px 0 0;
+        }
+
+        .corner.bl {
+            bottom: 1rem;
+            left: 1rem;
+            border-width: 0 0 2px 2px;
+        }
+
+        .corner.br {
+            bottom: 1rem;
+            right: 1rem;
+            border-width: 0 2px 2px 0;
+        }
+
+        /* ── PROJECTS ── */
+        .projects {
+            background: #111;
+        }
+
+        .projects-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 3.5rem;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto auto;
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            background: var(--charcoal-light);
+        }
+
+        .project-card.large {
+            grid-column: span 2;
+        }
+
+        .project-visual {
+            height: 260px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1A1500, #2D2510);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-card.large .project-visual {
+            height: 320px;
+        }
+
+        .project-visual-bg {
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(-45deg, transparent, transparent 30px, rgba(201, 168, 76, 0.03) 30px, rgba(201, 168, 76, 0.03) 31px);
+        }
+
+        .project-emoji {
+            font-size: 5rem;
+            opacity: 0.4;
+            z-index: 1;
+        }
+
+        .project-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(10, 8, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-overlay-text {
+            color: var(--gold);
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .project-info {
+            padding: 1.25rem 1.5rem;
+            background: var(--charcoal-mid);
+        }
+
+        .project-category {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.4rem;
+        }
+
+        .project-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .project-meta {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ── TESTIMONIALS ── */
+        .testimonials {
+            background: var(--charcoal-mid);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3.5rem;
+        }
+
+        .testimonial {
+            padding: 2rem;
+            border: 1px solid rgba(201, 168, 76, 0.15);
+            position: relative;
+            background: var(--charcoal);
+        }
+
+        .testimonial::before {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            color: rgba(201, 168, 76, 0.12);
+            position: absolute;
+            top: -0.5rem;
+            left: 1.5rem;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(201, 168, 76, 0.15);
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .author-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .author-role {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .stars {
+            color: var(--gold);
+            font-size: 0.8rem;
+            margin-bottom: 0.75rem;
+            letter-spacing: 2px;
+        }
+
+        /* ── CTA ── */
+        .cta-section {
+            background: linear-gradient(135deg, #1A1400 0%, #2C2210 50%, #1A1200 100%);
+            padding: 7rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid rgba(201, 168, 76, 0.2);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(201, 168, 76, 0.06) 0%, transparent 70%);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 4vw, 3.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section h2 em {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .cta-section p {
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            font-size: 1rem;
+        }
+
+        .cta-form {
+            display: flex;
+            gap: 0;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        .cta-form input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            border-right: none;
+            color: var(--warm-white);
+            font-family: 'Barlow', sans-serif;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .cta-form input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .cta-form input:focus {
+            border-color: var(--gold);
+        }
+
+        .cta-form button {
+            background: var(--gold);
+            color: var(--charcoal);
+            border: none;
+            padding: 1rem 2rem;
+            font-family: 'Barlow', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.3s;
+            white-space: nowrap;
+        }
+
+        .cta-form button:hover {
+            background: var(--gold-light);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #0D0D0D;
+            padding: 3rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            border-top: 1px solid rgba(201, 168, 76, 0.1);
+        }
+
+        footer .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--gold);
+        }
+
+        footer p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* ── DIVIDER ── */
+        .gold-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 0;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            nav {
+                padding: 1.2rem 2.5rem;
+            }
+
+            .hero {
+                padding: 2rem 2.5rem;
+                padding-top: 100px;
+            }
+
+            .hero-stats {
+                right: 2.5rem;
+                gap: 2rem;
+            }
+
+            section {
+                padding: 5rem 2.5rem;
+            }
+
+            .process-inner {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .process-visual {
+                height: 300px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .project-card.large {
+                grid-column: span 2;
+            }
+
+            footer {
+                padding: 2.5rem;
+            }
+
+            .cta-section {
+                padding: 5rem 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero {
+                padding: 1.5rem;
+                padding-top: 90px;
+                min-height: 100svh;
+            }
+
+            .hero-stats {
+                position: static;
+                flex-direction: row;
+                justify-content: flex-start;
+                gap: 2rem;
+                margin-top: 3rem;
+                padding-top: 2rem;
+                border-top: 1px solid rgba(201, 168, 76, 0.15);
+            }
+
+            .stat {
+                text-align: left;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .services-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card.large {
+                grid-column: span 1;
+            }
+
+            .project-card.large .project-visual {
+                height: 220px;
+            }
+
+            .cta-section {
+                padding: 4rem 1.5rem;
+            }
+
+            .cta-form {
+                flex-direction: column;
+            }
+
+            .cta-form input {
+                border-right: 1px solid rgba(201, 168, 76, 0.3);
+                border-bottom: none;
+            }
+
+            .cta-form button {
+                width: 100%;
+            }
+
+            footer {
+                padding: 2rem 1.5rem;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .projects-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .btn-primary,
+            .btn-outline {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* ── MOBILE NAV ── */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(13, 13, 13, 0.98);
+            z-index: 200;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .mobile-nav.open {
+            display: flex;
+        }
+
+        .mobile-nav a {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--warm-white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--gold);
+        }
+
+        .mobile-nav-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* ── ANIMATION ── */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            animation: fadeUp 0.6s ease both;
+        }
+
+        .hero h1 {
+            animation: fadeUp 0.7s 0.1s ease both;
+        }
+
+        .hero p {
+            animation: fadeUp 0.7s 0.2s ease both;
+        }
+
+        .hero-actions {
+            animation: fadeUp 0.7s 0.3s ease both;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="index.html" class="nav-logo">Bansal<span>Constructions</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="residential.html">Residential</a></li>
+            <li><a href="commercial.html">Commercial</a></li>
+            <li><a href="industrial.html">Industrial</a></li>
+            <li><a href="renovation.html" class="active">Renovation</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a href="contact.html" class="nav-cta">Get a Quote</a>
+        <button class="hamburger" onclick="document.getElementById('mobileNav').classList.add('open')"
+            aria-label="Open menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- MOBILE NAV -->
+    <div id="mobileNav" class="mobile-nav">
+        <button class="mobile-nav-close"
+            onclick="document.getElementById('mobileNav').classList.remove('open')">✕</button>
+        <a href="index.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
+        <a href="renovation.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Renovation</a>
+        <a href="projects.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Projects</a>
+        <a href="contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-grid"></div>
+        <div class="hero-content">
+            <div class="hero-badge">Premium Renovation Services</div>
+            <h1>Crafting Spaces<br>Worth <em>Remembering</em></h1>
+            <p>From timeworn structures to architectural masterpieces — our renovation specialists transform your vision
+                into enduring reality, with craftsmanship that speaks for itself.</p>
+            <div class="hero-actions">
+                <a href="services.html" class="btn-primary">Explore Services</a>
+                <a href="projects.html" class="btn-outline">View Our Work</a>
+            </div>
+        </div>
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-num">25+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">100+</div>
+                <div class="stat-label">Projects Complete</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">100%</div>
+                <div class="stat-label">Client Satisfaction</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-divider"></div>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+        <div class="services-header">
+            <div>
+                <span class="section-tag">What We Offer</span>
+                <h2 class="section-title">Our Renovation<br>Specialities</h2>
+                <div class="gold-line"></div>
+                <p class="section-subtitle">Each project receives our full attention, blending traditional craft with
+                    modern precision to deliver exceptional results.</p>
+            </div>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-num">01</div>
+                <div class="service-icon">🏛️</div>
+                <h3>Full Home Renovation</h3>
+                <p>Complete structural and aesthetic transformation of your entire home, from foundation reinforcement
+                    to interior finishing with premium materials.</p>
+                <a href="contact.html" class="service-link">Enquire Now</a>
+            </div>
+            <div class="service-card">
+                <div class="service-num">02</div>
+                <div class="service-icon">🍳</div>
+                <h3>Kitchen Remodelling</h3>
+                <p>Modern kitchen redesigns combining superior functionality with luxurious aesthetics — custom
+                    cabinetry, countertops, and integrated appliance solutions.</p>
+                <a href="contact.html" class="service-link">Enquire Now</a>
+            </div>
+            <div class="service-card">
+                <div class="service-num">03</div>
+                <div class="service-icon">🛁</div>
+                <h3>Bathroom Transformation</h3>
+                <p>From spa-inspired en-suites to sleek powder rooms — we design and construct bathrooms that elevate
+                    your daily rituals.</p>
+                <a href="contact.html" class="service-link">Enquire Now</a>
+            </div>
+            <div class="service-card">
+                <div class="service-num">04</div>
+                <div class="service-icon">🏢</div>
+                <h3>Commercial Fitouts</h3>
+                <p>Office, retail, and hospitality renovation tailored to your brand identity — delivering spaces that
+                    impress clients and energise teams.</p>
+                <a href="contact.html" class="service-link">Enquire Now</a>
+            </div>
+            <div class="service-card">
+                <div class="service-num">05</div>
+                <div class="service-icon">🪟</div>
+                <h3>Heritage Restoration</h3>
+                <p>Sensitive restoration of historic and heritage buildings, preserving original character while
+                    integrating modern comfort and building code compliance.</p>
+                <a href="contact.html" class="service-link">Enquire Now</a>
+            </div>
+            <div class="service-card">
+                <div class="service-num">06</div>
+                <div class="service-icon">🌿</div>
+                <h3>Outdoor & Landscaping</h3>
+                <p>Alfresco entertaining areas, pool surrounds, and garden architecture that extend your living space
+                    seamlessly into the outdoors.</p>
+                <a href="contact.html" class="service-link">Enquire Now</a>
+            </div>
+            <div class="service-card">
+                <div class="service-num">07</div>
+                <div class="service-icon">🪚</div>
+                <h3>Custom Woodwork</h3>
+                <p>From bespoke cabinetry and shelving to intricate timber detailing — we craft functional, high-quality
+                    woodwork that adds warmth and character to your space.</p>
+                <a href="contact.html" class="service-link">Enquire Now</a>
+            </div>
+            <div class="service-card">
+                <div class="service-num">08</div>
+                <div class="service-icon">🌐</div>
+                <h3>Smart Home Integration</h3>
+                <p>Future-proof your property with seamless automation — from intelligent lighting and climate control
+                    to advanced security systems, all integrated for effortless living.</p>
+                <a href="contact.html" class="service-link">Enquire Now</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-divider"></div>
+
+    <!-- PROCESS -->
+    <section class="process">
+        <div class="process-inner">
+            <div>
+                <span class="section-tag">How We Work</span>
+                <h2 class="section-title">A Seamless Process,<br>Start to Finish</h2>
+                <div class="gold-line"></div>
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-num">01</div>
+                        <div class="step-content">
+                            <h4>Initial Consultation</h4>
+                            <p>We sit with you to understand your vision, goals, and budget — no pressure, just a
+                                genuine conversation about possibilities.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">02</div>
+                        <div class="step-content">
+                            <h4>Design & Planning</h4>
+                            <p>Our designers produce detailed plans and 3D renders, giving you full clarity before a
+                                single nail is driven.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">03</div>
+                        <div class="step-content">
+                            <h4>Expert Construction</h4>
+                            <p>Skilled tradespeople execute the build to exacting standards, with regular updates and
+                                site access throughout.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">04</div>
+                        <div class="step-content">
+                            <h4>Handover & Warranty</h4>
+                            <p>A thorough quality inspection precedes your handover, backed by our 5-year craftsmanship
+                                warranty.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="process-visual">
+                <div class="corner tl"></div>
+                <div class="corner tr"></div>
+                <div class="corner bl"></div>
+                <div class="corner br"></div>
+                <div class="process-visual-inner">
+                    <div class="pv-icon">🏗️</div>
+                    <div class="pv-text">Built with Precision</div>
+                    <div class="pv-sub">Every detail, deliberate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-divider"></div>
+
+    <!-- PROJECTS -->
+    <section class="projects" id="projects">
+        <div class="projects-header">
+            <div>
+                <span class="section-tag">Our Portfolio</span>
+                <h2 class="section-title">Recent Projects</h2>
+                <div class="gold-line"></div>
+            </div>
+            <a href="contact.html" class="btn-outline">View All Work</a>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card large">
+                <div class="project-visual">
+                    <div class="project-visual-bg"></div>
+                    <div class="project-emoji">🏛️</div>
+                    <div class="project-overlay"><span class="project-overlay-text">View Project →</span></div>
+                </div>
+                <div class="project-info">
+                    <div class="project-category">Full Renovation</div>
+                    <div class="project-name">Meridian Heritage Estate</div>
+                    <div class="project-meta">Heritage Restoration · 18 months · Sydney</div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-visual">
+                    <div class="project-visual-bg"></div>
+                    <div class="project-emoji">🍳</div>
+                    <div class="project-overlay"><span class="project-overlay-text">View →</span></div>
+                </div>
+                <div class="project-info">
+                    <div class="project-category">Kitchen</div>
+                    <div class="project-name">The Linden Kitchen</div>
+                    <div class="project-meta">Luxury Remodel · 8 weeks</div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-visual">
+                    <div class="project-visual-bg"></div>
+                    <div class="project-emoji">🏢</div>
+                    <div class="project-overlay"><span class="project-overlay-text">View →</span></div>
+                </div>
+                <div class="project-info">
+                    <div class="project-category">Commercial</div>
+                    <div class="project-name">Apex Office Fitout</div>
+                    <div class="project-meta">3 Floors · 12 weeks · Melbourne</div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-visual">
+                    <div class="project-visual-bg"></div>
+                    <div class="project-emoji">🛁</div>
+                    <div class="project-overlay"><span class="project-overlay-text">View →</span></div>
+                </div>
+                <div class="project-info">
+                    <div class="project-category">Bathroom</div>
+                    <div class="project-name">Cerulean Spa Suite</div>
+                    <div class="project-meta">Luxury En-Suite · 6 weeks</div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-visual">
+                    <div class="project-visual-bg"></div>
+                    <div class="project-emoji">🌿</div>
+                    <div class="project-overlay"><span class="project-overlay-text">View →</span></div>
+                </div>
+                <div class="project-info">
+                    <div class="project-category">Outdoor</div>
+                    <div class="project-name">Greystone Alfresco</div>
+                    <div class="project-meta">Pool & Entertaining · 10 weeks</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-divider"></div>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials">
+        <span class="section-tag">Client Stories</span>
+        <h2 class="section-title">What Our Clients Say</h2>
+        <div class="gold-line"></div>
+        <div class="testimonials-grid">
+            <div class="testimonial">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">Bansal Constructions turned our 1920s terrace into something extraordinary.
+                    They
+                    understood the soul of the original structure and enhanced it beautifully. The attention to detail
+                    was unmatched.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">SR</div>
+                    <div>
+                        <div class="author-name">Samantha R.</div>
+                        <div class="author-role">Homeowner, Paddington</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">Our office fitout was completed ahead of schedule and under budget. The team
+                    was professional throughout and the final result exceeded every expectation we had set out.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">MK</div>
+                    <div>
+                        <div class="author-name">Michael K.</div>
+                        <div class="author-role">Director, Apex Group</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">From the first consultation to the final walkthrough, Bansal Constructions
+                    made the
+                    renovation journey stress-free. Our kitchen is now the heart of our home and we couldn't be happier.
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">LT</div>
+                    <div>
+                        <div class="author-name">Laura T.</div>
+                        <div class="author-role">Homeowner, Mosman</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="contact">
+        <div class="cta-content">
+            <span class="section-tag" style="display:block; margin-bottom: 1rem;">Start Your Journey</span>
+            <h2>Ready to <em>Transform</em> Your Space?</h2>
+            <p>Leave your details and our renovation specialists will be in touch within 24 hours.</p>
+            <div class="cta-form">
+                <input type="email" placeholder="Your email address">
+                <button type="button">Get Free Quote</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="logo">Bansal Constructions</div>
+        <p>© 2026 Bansal Constructions. All rights reserved.</p>
+        <ul class="footer-links">
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Sitemap</a></li>
+        </ul>
+    </footer>
+
+</body>
+
+</html>
