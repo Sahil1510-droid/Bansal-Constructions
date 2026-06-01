@@ -9,7 +9,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap"
         rel="stylesheet" />
-    <style>
+    <script src="preloader.js"></script>
+<style>
         *,
         *::before,
         *::after {
@@ -455,6 +456,13 @@
             .summary-grid {
                 gap: 12px;
                 margin-bottom: 2rem
+            }
+        }
+
+
+        @media(min-width:500px) {
+            .sum-card:nth-child(3) {
+                grid-column: auto
             }
         }
 
@@ -1145,13 +1153,6 @@
                     <div class="sum-card-sub">cement, steel, sand, aggregate, bricks</div>
                 </div>
             </div>
-            <style>
-                @media(min-width:500px) {
-                    .sum-card:nth-child(3) {
-                        grid-column: auto
-                    }
-                }
-            </style>
 
             <!-- Grand Total -->
             <div class="grand-total">
