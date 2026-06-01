@@ -10,6 +10,7 @@
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="style.css">
+    <script src="preloader.js"></script>
   <style>
     /* =====================================================
      MOBILE-FIRST IMPROVEMENTS
@@ -1387,7 +1388,7 @@
             this.clearActiveAnimation();
             let toggle = false;
             this.currentInterval = setInterval(() => {
-              document.title = toggle ? "📢 WE MISS YOU!" : "👀 Come Look!";
+              document.title = toggle ? "📢 WE MISS YOU!" : "👀 Come Back!";
               toggle = !toggle;
             }, 800);
           } else {
