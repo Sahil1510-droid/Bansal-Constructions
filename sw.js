@@ -1,5 +1,5 @@
 const CACHE_NAME = 'construction-offline-v1';
-const OFFLINE_URL = '/offline.html';
+const OFFLINE_URL = 'offline.html';
 
 // 1. Install Service Worker and cache the offline page
 self.addEventListener('install', (event) => {
