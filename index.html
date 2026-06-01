@@ -639,40 +639,7 @@
       margin: 0 1px;
     }
 
-    /* ─────────────────────────────────────────
-     FOOTER
-  ───────────────────────────────────────── */
-    @media (max-width: 768px) {
-      footer {
-        padding: 56px 4% 32px;
-      }
-
-      .footer-top {
-        grid-template-columns: 1fr;
-        gap: 36px;
-      }
-
-      .footer-brand p {
-        font-size: .85rem;
-      }
-
-      .footer-bottom {
-        flex-direction: column;
-        gap: 16px;
-        text-align: center;
-      }
-
-      .footer-copy {
-        font-size: .75rem;
-      }
-    }
-
-    @media (max-width: 1024px) {
-      .footer-top {
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
-      }
-    }
+    
 
     /* ─────────────────────────────────────────
      SECTION TITLES — fluid scaling
@@ -1324,76 +1291,16 @@
     <span id="visitorCount" style="display:none;">0</span>
   </div>
 
-  <!-- Footer -->
-  <footer>
-    <div class="footer-top">
-      <div class="footer-brand">
-        <a href="#" class="nav-logo">
-          <div class="logo-mark"><svg viewBox="0 0 20 20">
-              <path d="M2 16 L10 4 L18 16 Z M6 16 L6 10 L14 10 L14 16" />
-            </svg></div>
-          <div class="logo-text"><span class="logo-name">Bansal</span><span class="logo-sub">Constructions</span></div>
-        </a>
-        <p>Building India's finest residential, commercial, and industrial structures since 2001. Quality is not a
-          feature — it is our identity.</p>
+<div id="footer-container"></div>
 
-
-        <div class="msme-badge">
-          <div class="msme-seal">
-            <svg viewBox="0 0 24 24">
-              <rect x="2" y="7" width="20" height="14" rx="2" />
-              <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" />
-            </svg>
-          </div>
-          <div class="msme-info">
-            <div class="msme-label">MSME · Udyam Registered</div>
-            <div class="msme-number">UDYAM-PB-17-0130006</div>
-          </div>
-        </div>
-
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Services</div>
-        <ul>
-          <li><a href="residential.html">Residential</a></li>
-          <li><a href="commercial.html">Commercial</a></li>
-          <li><a href="industrial.html">Industrial</a></li>
-          <li><a href="curtain.html">Interior & Fit-Out</a></li>
-          <li><a href="renovation.html">Renovation</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Company</div>
-        <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="projects.html">Our Projects</a></li>
-          <li><a href="process.html">Our Process</a></li>
-          <li><a href="careers.html">Careers</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Terms</div>
-        <ul>
-          <li><a href="terms.html">Terms & Conditions</a></li>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="footer-copy">© 2001 Bansal Constructions Pvt. Ltd. All rights reserved.</div>
-      <div class="footer-socials">
-        <a href="https://www.instagram.com/bansal_constructions/" target="_blank" rel="noopener" class="social-btn"
-          aria-label="Instagram">
-          <svg viewBox="0 0 24 24">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
-            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-          </svg>
-        </a>
-      </div>
-    </div>
-  </footer>
+<script>
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer-container').innerHTML = data;
+        });
+</script>
+  
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="script.js"></script>
 </body>
