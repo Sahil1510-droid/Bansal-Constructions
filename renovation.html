@@ -1125,8 +1125,10 @@
         <button class="mobile-nav-close"
             onclick="document.getElementById('mobileNav').classList.remove('open')">✕</button>
         <a href="index.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
-        <a href="renovation.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Renovation</a>
-        <a href="projects.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Projects</a>
+        <a href="residential.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Residential</a>
+        <a href="commercial.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Commercial</a>
+        <a href="industrial.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Industrial</a>
+        <a href="about.html" onclick="document.getElementById('mobileNav').classList.remove('open')">About</a>
         <a href="contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
     </div>
 
@@ -1431,23 +1433,89 @@
             <span class="section-tag" style="display:block; margin-bottom: 1rem;">Start Your Journey</span>
             <h2>Ready to <em>Transform</em> Your Space?</h2>
             <p>Leave your details and our renovation specialists will be in touch within 24 hours.</p>
-            <div class="cta-form">
-                <input type="email" placeholder="Your email address">
-                <button type="button">Get Free Quote</button>
-            </div>
+
+            <form id="ctaForm" class="cta-form">
+                <input type="email" id="userEmail" placeholder="Your email address" required>
+                <button type="submit" id="submitBtn">Get Free Quote</button>
+            </form>
+
+            <div id="formFeedback" style="margin-top: 1rem; font-weight: bold;"></div>
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer>
-        <div class="logo">Bansal Constructions</div>
+        <div class="nav-logo" style="font-size: 1.2rem; font-weight: bold;">
+            Bansal<span>Constructions</span>
+        </div>
         <p>© 2026 Bansal Constructions. All rights reserved.</p>
         <ul class="footer-links">
-            <li><a href="#">Privacy</a></li>
-            <li><a href="#">Terms</a></li>
-            <li><a href="#">Sitemap</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="terms.html">Terms</a></li>
+            <li><a href="sitemap.html">Sitemap</a></li>
         </ul>
     </footer>
+
+
+    <script>
+        document.getElementById('ctaForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const form = e.target;
+            const emailInput = form.querySelector('#userEmail');
+            const feedback = document.getElementById('formFeedback');
+            const btn = document.getElementById('submitBtn');
+
+            // 1. Enhanced Validation using Regex
+            const emailValue = emailInput.value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailRegex.test(emailValue)) {
+                updateFeedback("Please enter a valid email address.", "error");
+                return;
+            }
+
+            // 2. Prepare payload
+            const formData = { email: emailValue, timestamp: new Date().toISOString() };
+
+            // 3. UI State Management
+            setLoadingState(true, btn);
+            feedback.innerText = "";
+
+            try {
+                const response = await fetch('/api/submit-quote', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                if (!response.ok) throw new Error('Network response was not ok');
+
+                // Success state
+                updateFeedback("Thank you! We'll be in touch within 24 hours.", "success");
+                form.reset();
+            } catch (error) {
+                console.error("Submission Error:", error);
+                updateFeedback("Connection failed. Please try again later.", "error");
+            } finally {
+                setLoadingState(false, btn);
+            }
+        });
+
+        // Helper functions for cleaner code
+        function updateFeedback(message, type) {
+            const feedback = document.getElementById('formFeedback');
+            feedback.innerText = message;
+            feedback.style.color = type === 'error' ? '#d9534f' : '#5cb85c';
+        }
+
+        function setLoadingState(isLoading, btn) {
+            btn.disabled = isLoading;
+            btn.innerText = isLoading ? "Processing..." : "Get Free Quote";
+        }
+
+    </script>
+
 
 </body>
 
