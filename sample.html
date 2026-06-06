@@ -1,166 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Simple JavaScript Counter</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
 
-    <style>
-        .slider-container {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            height: 500px;
-            margin: 20px auto;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-            user-select: none;
-        }
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
 
-        .slider-container img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            pointer-events: none;
-        }
+.counter-container {
+    text-align: center;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
 
-        .image-before {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 50%;
-            /* Initial split position */
-            height: 100%;
-            overflow: hidden;
-            z-index: 2;
-        }
+h1 {
+    color: #333;
+    margin-bottom: 0.5rem;
+}
 
-        /* Force the underlying image to stay full width despite its parent container being squeezed */
-        .image-before img {
-            width: 800px;
-            /* Must match container max-width */
-            max-width: none;
-        }
+#value {
+    font-size: 4rem;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 1.5rem;
+    color: #222;
+}
 
-        .slider-handle {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            /* Must match initial width of .image-before */
-            width: 4px;
-            height: 100%;
-            background: #ffffff;
-            cursor: ew-resize;
-            z-index: 3;
-        }
+.button-container {
+    display: flex;
+    gap: 10px;
+}
 
-        .handle-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 40px;
-            height: 40px;
-            background: #2563eb;
-            /* Clean professional blue accent color */
-            border: 3px solid #ffffff;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #ffffff;
-            font-size: 12px;
-            gap: 4px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        }
+.btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
 
-        /* Make it adapt perfectly on smaller screens */
-        @media (max-width: 800px) {
-            .slider-container {
-                height: 350px;
-            }
+/* Button specific colors */
+.decrease { background-color: #ff4d4d; color: white; }
+.reset { background-color: #cccccc; color: #333; }
+.increase { background-color: #4caf50; color: white; }
 
-            .image-before img {
-                width: 100vw;
-            }
-        }
-    </style>
+.btn:hover {
+    opacity: 0.9;
+}
+</style>
 </head>
 
 <body>
-    <div class="slider-container">
-        <!-- The "After" image acts as the background base -->
-        <div class="image-after">
-            <img src="bathroom.png" alt="Completed Project Room">
-        </div>
 
-        <!-- The "Before" image sits inside a resizable wrapper -->
-        <div class="image-before">
-            <img src="4.png" alt="Raw Construction Site">
-        </div>
-
-        <!-- The physical sliding bar and handle -->
-        <div class="slider-handle">
-            <div class="handle-button">
-                <span>&#9664;</span><span>&#9654;</span>
-            </div>
+    <div class="counter-container">
+        <h1>Counter</h1>
+        <span id="value">0</span>
+        
+        <div class="button-container">
+            <button class="btn decrease">Decrease</button>
+            <button class="btn reset">Reset</button>
+            <button class="btn increase">Increase</button>
         </div>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const container = document.querySelector(".slider-container");
-            const beforeImage = document.querySelector(".image-before");
-            const imgInsideBefore = beforeImage.querySelector("img");
-            const handle = document.querySelector(".slider-handle");
+    <script>// Initialize the count variable
+let count = 0;
 
-            // Keep internal image width structurally aligned with container sizing changes
-            const adjustInnerImageWidth = () => {
-                imgInsideBefore.style.width = `${container.offsetWidth}px`;
-            };
+// Select the value element and all buttons
+const value = document.getElementById('value');
+const decreaseBtn = document.querySelector('.decrease');
+const resetBtn = document.querySelector('.reset');
+const increaseBtn = document.querySelector('.increase');
 
-            adjustInnerImageWidth();
-            window.addEventListener("resize", adjustInnerImageWidth);
+// Add event listener for the Increase button
+increaseBtn.addEventListener('click', () => {
+    count++;
+    updateDisplay();
+});
 
-            let isSliding = false;
+// Add event listener for the Decrease button
+decreaseBtn.addEventListener('click', () => {
+    count--;
+    updateDisplay();
+});
 
-            const moveSlider = (clientX) => {
-                const rect = container.getBoundingClientRect();
-                let positionX = clientX - rect.left;
+// Add event listener for the Reset button
+resetBtn.addEventListener('click', () => {
+    count = 0;
+    updateDisplay();
+});
 
-                // Constrain within the box boundaries
-                if (positionX < 0) positionX = 0;
-                if (positionX > rect.width) positionX = rect.width;
-
-                const percentage = (positionX / rect.width) * 100;
-
-                beforeImage.style.width = `${percentage}%`;
-                handle.style.left = `${percentage}%`;
-            };
-
-            // Mouse events
-            container.addEventListener("mousedown", () => isSliding = true);
-            window.addEventListener("mouseup", () => isSliding = false);
-            container.addEventListener("mousemove", (e) => {
-                if (!isSliding) return;
-                moveSlider(e.clientX);
-            });
-
-            // Touch/Mobile screen support
-            container.addEventListener("touchstart", () => isSliding = true);
-            window.addEventListener("touchend", () => isSliding = false);
-            container.addEventListener("touchmove", (e) => {
-                if (!isSliding) return;
-                moveSlider(e.touches[0].clientX);
-            });
-        });
-    </script>
-
+// Helper function to update the text on the screen and change colors
+function updateDisplay() {
+    value.textContent = count;
+    
+    // Optional: Add a little color flair based on the value
+    if (count > 0) {
+        value.style.color = "#4caf50"; // Green for positive
+    } else if (count < 0) {
+        value.style.color = "#ff4d4d"; // Red for negative
+    } else {
+        value.style.color = "#222";    // Dark grey for zero
+    }
+}</script>
 </body>
-
 </html>

@@ -172,19 +172,39 @@ document.addEventListener('mousemove', e => {
     document.querySelector('.hero-glow').style.transform = `translate(${x}px, ${y}px)`;
 });
 
-/* ── Visitor Counter with rolling digit animation ── */
+/* ── Visitor Counter with rolling digit animation (Local Storage Version) ── */
 (function () {
-    const API_URL = "https://api.counterapi.dev/v2/sahil-bansals-team-2985/bansal-constructions/up";
     const POLL_MS = 1000;
     const DIGITS = 5;
-    const CELL_H = 22;
+    const CELL_H = 22; // Must match the height of .vc-cell in CSS
 
-  let current = 0;
+    let current = 0;
     let firstLoad = true;
     let pollTimer = null;
 
+    // --- Local Storage Logic ---
+    function getStoredCount() {
+        const stored = localStorage.getItem("local_visitor_count");
+        // If nothing is stored yet, default to our starting baseline of 13150
+        return stored ? parseInt(stored, 10) : 13150;
+    }
+
+    function incrementAndGetCount() {
+        // Check if this session has already registered a hit
+        if (!sessionStorage.getItem("session_counted")) {
+            let count = getStoredCount();
+            count += 1;
+            localStorage.setItem("local_visitor_count", count);
+            sessionStorage.setItem("session_counted", "true");
+            return count;
+        }
+        return getStoredCount();
+    }
+
+    // --- Visual Animation Logic ---
     function buildRoller(count) {
         const roller = document.getElementById("vc-roller");
+        if (!roller) return;
         roller.innerHTML = "";
         const str = String(count).padStart(DIGITS, "0");
 
@@ -192,17 +212,22 @@ document.addEventListener('mousemove', e => {
             const fromRight = DIGITS - 1 - i;
             if (fromRight > 0 && fromRight % 3 === 0) {
                 const sep = document.createElement("span");
-                sep.className = "vc-comma-sep"; sep.textContent = ",";
+                sep.className = "vc-comma-sep"; 
+                sep.textContent = ",";
                 roller.appendChild(sep);
             }
             const box = document.createElement("div");
-            box.className = "vc-dbox"; box.id = "vcd-" + i;
-            box.innerHTML = `<div class="vc-tape" id="vct-${i}">${[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map(n => `<div class="vc-cell">${n}</div>`).join("")
-                }</div>`;
+            box.className = "vc-dbox"; 
+            box.id = "vcd-" + i;
+            box.innerHTML = `<div class="vc-tape" id="vct-${i}">${[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map(n => `<div class="vc-cell">${n}</div>`).join("")}</div>`;
             roller.appendChild(box);
+            
             requestAnimationFrame(() => {
                 const t = document.getElementById("vct-" + i);
-                if (t) { t.style.transition = "none"; t.style.transform = `translateY(${-parseInt(ch) * CELL_H}px)`; }
+                if (t) { 
+                    t.style.transition = "none"; 
+                    t.style.transform = `translateY(${-parseInt(ch, 10) * CELL_H}px)`; 
+                }
             });
         });
     }
@@ -215,40 +240,52 @@ document.addEventListener('mousemove', e => {
                 const t = document.getElementById("vct-" + i);
                 if (!t) return;
                 t.style.transition = "transform 0.55s cubic-bezier(0.22,1,0.36,1)";
-                t.style.transform = `translateY(${-parseInt(ch) * CELL_H}px)`;
+                t.style.transform = `translateY(${-parseInt(ch, 10) * CELL_H}px)`;
             }
         });
     }
 
-    function fetchCount() {
-        fetch(API_URL, { method: "GET" })
-            .then(r => r.json())
-            .then(result => {
-                console.log(result);
-                if (result.code === "200" && result.data && result.data.up_count !== undefined) {
-                    const n = result.data.up_count;
-                    document.getElementById("visitorCount").innerText = n;
-                    if (firstLoad) { buildRoller(n); firstLoad = false; }
-                    else rollTo(n);
-                    current = n;
-                } else {
-                    document.getElementById("visitorCount").innerText = "0";
-                    if (firstLoad) { buildRoller(0); firstLoad = false; }
-                }
-            })
-            .catch(err => {
-                console.error("Error:", err);
-                document.getElementById("visitorCount").innerText = "0";
-                if (firstLoad) { buildRoller(0); firstLoad = false; }
-            });
+    function updateCounterUI() {
+        // Fetch current count state from local storage
+        const n = getStoredCount();
+        
+        const fallbackTextEl = document.getElementById("visitorCount");
+        if (fallbackTextEl) fallbackTextEl.innerText = n;
+
+        if (firstLoad) { 
+            buildRoller(n); 
+            firstLoad = false; 
+        } else { 
+            rollTo(n); 
+        }
+        current = n;
     }
 
-    function start() { clearInterval(pollTimer); pollTimer = setInterval(fetchCount, POLL_MS); }
+    function handleInitialLoad() {
+        // Increment count only when the user opens a fresh session
+        incrementAndGetCount();
+        updateCounterUI();
+    }
+
+    function startPolling() { 
+        clearInterval(pollTimer); 
+        // This simulates checking for updates (useful if they have multiple tabs of your site open)
+        pollTimer = setInterval(updateCounterUI, POLL_MS); 
+    }
 
     document.addEventListener("visibilitychange", () => {
-        if (document.hidden) clearInterval(pollTimer);
-        else { fetchCount(); start(); }
+        if (document.hidden) {
+            clearInterval(pollTimer);
+        } else { 
+            updateCounterUI(); 
+            startPolling(); 
+        }
     });
 
-    document.addEventListener("DOMContentLoaded", () => { fetchCount(); start(); });
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", () => { handleInitialLoad(); startPolling(); });
+    } else {
+        handleInitialLoad();
+        startPolling();
+    }
 })();
