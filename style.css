@@ -1763,3 +1763,90 @@ footer {
         box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
     }
 }
+
+
+
+
+
+
+
+
+
+
+/* Slider Container */
+.image-slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* Spans the height of .project-visual */
+    overflow: hidden;
+    user-select: none;
+}
+
+/* Ensure images fill the card properly */
+.slider-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Before Image Wrapper (Controls the visible width) */
+.img-before-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    /* Starting position at 50% */
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Force the before image to match the container width, not the wrapper width */
+.img-before-wrapper .img-before {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+}
+
+/* Vertical Slider Line */
+.slider-handle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 4px;
+    height: 100%;
+    background: #ffffff;
+    cursor: ew-resize;
+    transform: translateX(-50%);
+    z-index: 10;
+    /* Higher than .project-overlay */
+}
+
+/* Center Knob/Button */
+.handle-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background: #ffffff;
+    color: #333333;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Keep overlay above the slider but below handle if needed, or above everything */
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    /* Sit above the images, but below the handle */
+}

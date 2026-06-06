@@ -1,28 +1,40 @@
 // preloader.js
 
-// 1. Fetch and inject the preloader HTML at the top of the body automatically
-fetch('preloader.html')
+// 1. Create a promise for fetching and injecting the HTML
+const preloaderInjected = fetch('preloader.html')
     .then(response => response.text())
     .then(data => {
-        // Insert the preloader right at the beginning of the <body>
         document.body.insertAdjacentHTML('afterbegin', data);
+        // Returns true to signal this step is complete
+        return true;
     })
-    .catch(err => console.error('Error loading the preloader:', err));
+    .catch(err => {
+        console.error('Error loading the preloader:', err);
+        return false;
+    });
 
-// 2. Hide the preloader once the rest of the page finishes loading
-window.addEventListener('load', function () {
-    // We use a small interval to ensure the fetched HTML has actually mounted to the DOM
-    const checkExist = setInterval(function () {
-        const preloader = document.getElementById('preloader');
+// 2. Create a promise for the window 'load' event
+const windowLoaded = new Promise((resolve) => {
+    if (document.readyState === 'complete') {
+        resolve();
+    } else {
+        window.addEventListener('load', resolve);
+    }
+});
 
-        if (preloader) {
-            preloader.classList.add('fade-out');
+// 3. Wait for BOTH conditions to be met before hiding the preloader
+Promise.all([preloaderInjected, windowLoaded]).then(([injectedSuccessfully]) => {
+    if (!injectedSuccessfully) return; // Exit if the preloader failed to load
 
-            setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 500);
+    const preloader = document.getElementById('preloader');
 
-            clearInterval(checkExist);
-        }
-    }, 50); // Checks every 50ms until found, then clears itself
+    if (preloader) {
+        // Add your fade-out class
+        preloader.classList.add('fade-out');
+
+        // Completely remove from layout after CSS transition finishes (500ms)
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 500);
+    }
 });

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .slider-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            height: 500px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            user-select: none;
+        }
+
+        .slider-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+        }
+
+        .image-before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            /* Initial split position */
+            height: 100%;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        /* Force the underlying image to stay full width despite its parent container being squeezed */
+        .image-before img {
+            width: 800px;
+            /* Must match container max-width */
+            max-width: none;
+        }
+
+        .slider-handle {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            /* Must match initial width of .image-before */
+            width: 4px;
+            height: 100%;
+            background: #ffffff;
+            cursor: ew-resize;
+            z-index: 3;
+        }
+
+        .handle-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: #2563eb;
+            /* Clean professional blue accent color */
+            border: 3px solid #ffffff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            font-size: 12px;
+            gap: 4px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Make it adapt perfectly on smaller screens */
+        @media (max-width: 800px) {
+            .slider-container {
+                height: 350px;
+            }
+
+            .image-before img {
+                width: 100vw;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider-container">
+        <!-- The "After" image acts as the background base -->
+        <div class="image-after">
+            <img src="bathroom.png" alt="Completed Project Room">
+        </div>
+
+        <!-- The "Before" image sits inside a resizable wrapper -->
+        <div class="image-before">
+            <img src="4.png" alt="Raw Construction Site">
+        </div>
+
+        <!-- The physical sliding bar and handle -->
+        <div class="slider-handle">
+            <div class="handle-button">
+                <span>&#9664;</span><span>&#9654;</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.querySelector(".slider-container");
+            const beforeImage = document.querySelector(".image-before");
+            const imgInsideBefore = beforeImage.querySelector("img");
+            const handle = document.querySelector(".slider-handle");
+
+            // Keep internal image width structurally aligned with container sizing changes
+            const adjustInnerImageWidth = () => {
+                imgInsideBefore.style.width = `${container.offsetWidth}px`;
+            };
+
+            adjustInnerImageWidth();
+            window.addEventListener("resize", adjustInnerImageWidth);
+
+            let isSliding = false;
+
+            const moveSlider = (clientX) => {
+                const rect = container.getBoundingClientRect();
+                let positionX = clientX - rect.left;
+
+                // Constrain within the box boundaries
+                if (positionX < 0) positionX = 0;
+                if (positionX > rect.width) positionX = rect.width;
+
+                const percentage = (positionX / rect.width) * 100;
+
+                beforeImage.style.width = `${percentage}%`;
+                handle.style.left = `${percentage}%`;
+            };
+
+            // Mouse events
+            container.addEventListener("mousedown", () => isSliding = true);
+            window.addEventListener("mouseup", () => isSliding = false);
+            container.addEventListener("mousemove", (e) => {
+                if (!isSliding) return;
+                moveSlider(e.clientX);
+            });
+
+            // Touch/Mobile screen support
+            container.addEventListener("touchstart", () => isSliding = true);
+            window.addEventListener("touchend", () => isSliding = false);
+            container.addEventListener("touchmove", (e) => {
+                if (!isSliding) return;
+                moveSlider(e.touches[0].clientX);
+            });
+        });
+    </script>
+
+</body>
+
+</html>
