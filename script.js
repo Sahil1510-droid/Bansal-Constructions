@@ -174,12 +174,12 @@ document.addEventListener('mousemove', e => {
 
 /* ── Visitor Counter with rolling digit animation ── */
 (function () {
-    const API_URL = "https://api.counterapi.dev/v2/sahil-Shri Shyams-team-2985/Shri Shyam-constructions/up";
+    const API_URL = "https://api.counterapi.dev/v2/sahil-bansals-team-2985/bansal-constructions/up";
     const POLL_MS = 1000;
     const DIGITS = 5;
     const CELL_H = 22;
 
-    let current = 0;
+  let current = 0;
     let firstLoad = true;
     let pollTimer = null;
 
